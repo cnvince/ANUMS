@@ -1,8 +1,8 @@
-package ResultPool;
+package Broker;
 
-public class Result {
+public class Controller {
 
-	public Result() {
+	public Controller() {
 		// TODO Auto-generated constructor stub
 	}
 

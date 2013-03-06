@@ -1,9 +1,6 @@
 package Adapters;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
@@ -20,7 +17,7 @@ import org.xml.sax.SAXException;
 import util.Parser;
 import util.StringFormat;
 
-import Entities.Result;
+import ResultPool.RankList;
 import InterFaces.Adapter;
 
 public class YouTubeAdapter implements Adapter {
@@ -46,10 +43,10 @@ public class YouTubeAdapter implements Adapter {
 	}
 
 	@Override
-	public ArrayList<Result> query(String query)
+	public RankList query(String query)
 			throws XPathExpressionException {
 		query=StringFormat.toURL(query);
-		ArrayList<Result> results = new ArrayList<Result>();
+		RankList ranklist=new RankList();
 		String redirectUrl = "http://www.youtube.com/user/ANUchannel/videos?query="
 				+ query;
 		try {
@@ -96,7 +93,7 @@ public class YouTubeAdapter implements Adapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return results;
+		return ranklist;
 		// TODO Auto-generated method stub
 	}
 

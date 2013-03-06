@@ -1,7 +1,6 @@
 package Adapters;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
@@ -18,8 +17,8 @@ import org.xml.sax.SAXException;
 import util.Parser;
 import util.StringFormat;
 
-import Entities.Result;
 import InterFaces.Adapter;
+import ResultPool.RankList;
 
 public class LibraryCatalogAdapter implements Adapter {
 
@@ -29,11 +28,11 @@ public class LibraryCatalogAdapter implements Adapter {
 	
 
 	@Override
-	public ArrayList<Result> query(String query)
+	public RankList query(String query)
 			throws XPathExpressionException {
 		// TODO Auto-generated method stub
 		query=StringFormat.toURL(query);
-		ArrayList<Result> results=new ArrayList<Result>();
+		RankList ranklist=new RankList();
 		String redirectUrl="http://library.anu.edu.au/search/Y?SEARCH="+query;
 		try {
 			Document document=Parser.parse(redirectUrl);
@@ -70,7 +69,7 @@ public class LibraryCatalogAdapter implements Adapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return results;
+		return ranklist;
 	}
 
 	/**

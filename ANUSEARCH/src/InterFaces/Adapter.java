@@ -1,11 +1,9 @@
 package InterFaces;
 
-import java.util.ArrayList;
-
 import javax.xml.xpath.XPathExpressionException;
 
-import Entities.Result;
+import ResultPool.RankList;
 
 public interface Adapter {
-	public ArrayList<Result> query(String query) throws XPathExpressionException;
+	public RankList query(String query) throws XPathExpressionException;
 }

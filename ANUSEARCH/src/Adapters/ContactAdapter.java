@@ -1,8 +1,6 @@
 package Adapters;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,8 +17,9 @@ import org.xml.sax.SAXException;
 
 import util.Parser;
 import util.StringFormat;
-import Entities.Result;
 import InterFaces.Adapter;
+import ResultPool.RankList;
+import Results.Result;
 
 public class ContactAdapter implements Adapter{
 
@@ -28,10 +27,10 @@ public class ContactAdapter implements Adapter{
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayList<Result> query(String query)
+	public RankList query(String query)
 			throws XPathExpressionException {
 		query =StringFormat.toURL(query);
-		ArrayList<Result> results = new ArrayList<Result>();
+		RankList ranklist=new RankList();
 		String redirectUrl = "http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext="
 				+ query;
 		System.out.println(redirectUrl);
@@ -69,7 +68,7 @@ public class ContactAdapter implements Adapter{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return results;
+		return ranklist;
 	}
 
 	/**
