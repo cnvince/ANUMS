@@ -37,25 +37,26 @@ public class StudyAtAdapter implements Adapter {
 		try {
 			Document document=Parser.parse(redirectUrl);
 			XPath xpath = XPathFactory.newInstance().newXPath();
-			NodeList nodeList = (NodeList) xpath.evaluate("//OL[@id=\"fb-results\"]/LI", document,
+			NodeList nodeList = (NodeList) xpath.evaluate("//DIV[@class=\"search_result_set\"]", document,
 					XPathConstants.NODESET);
-//			NodeList nodeList = (NodeList) xpath.evaluate(new String("//ol[@id=\"fb-results\"]/li").toUpperCase(), document,
-//					XPathConstants.NODESET);
 			System.out.println(nodeList.getLength());
 			int length=nodeList.getLength();
 			for(int i=0;i<length;i++)
 			{
 				Element 	Node_Li=(Element)nodeList.item(i);
+				Node		Area = (Node) xpath.evaluate("H3/A", Node_Li,
+						XPathConstants.NODE);
+				String area=Area.getTextContent();
 				System.out.println("=================================================");
-				Node		Title = (Node) xpath.evaluate("H3", Node_Li,
-						XPathConstants.NODE);
-				Node 		Summary= (Node) xpath.evaluate("P/SPAN[@class=\"fb-result-summary\"]", Node_Li,
-						XPathConstants.NODE);
-				Node 		Link= (Node) xpath.evaluate("P/CITE", Node_Li,
-						XPathConstants.NODE);
-				System.out.println("Title:"+Title.getTextContent().trim());
-				System.out.println("Summary:"+Summary.getTextContent().trim());
-				System.out.println("Link:"+Link.getTextContent().trim());
+				NodeList		ResultLink = (NodeList) xpath.evaluate("DIV/P[@class=\"result_link\"]/B/A", Node_Li,
+						XPathConstants.NODESET);
+				for(int j=0;j<ResultLink.getLength();j++)
+				{
+					Element Link=(Element)ResultLink.item(j);
+					String title=Link.getTextContent().trim();
+					String link=Link.getAttribute("href");
+					System.out.println(title+" "+link+" "+area);
+				}
 			}
 			
 		} catch (ParserConfigurationException e) {
@@ -76,7 +77,13 @@ public class StudyAtAdapter implements Adapter {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		StudyAtAdapter adapter=new StudyAtAdapter();
+		try {
+			adapter.query("paul");
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

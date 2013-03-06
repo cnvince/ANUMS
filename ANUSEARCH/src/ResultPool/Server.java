@@ -1,12 +1,8 @@
-package Entities;
+package ResultPool;
 
-public class Result {
-	
-	private String Title;
-	private String Link;
-	private int ServerID;
-	
-	public Result() {
+public class Server {
+
+	public Server() {
 		// TODO Auto-generated constructor stub
 	}
 
