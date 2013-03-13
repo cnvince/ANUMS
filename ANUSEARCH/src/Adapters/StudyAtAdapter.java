@@ -43,9 +43,9 @@ public class StudyAtAdapter implements Adapter {
 			int length = nodeList.getLength();
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
-				Node Area = (Node) xpath.evaluate("H3/A", Node_Li,
+				Node Area = (Node) xpath.evaluate("H3", Node_Li,
 						XPathConstants.NODE);
-				String area = Area.getTextContent();
+				String area = Area.getTextContent().trim();
 				System.out
 						.println("=================================================");
 				NodeList ResultLink = (NodeList) xpath.evaluate(
@@ -79,7 +79,7 @@ public class StudyAtAdapter implements Adapter {
 		// TODO Auto-generated method stub
 		StudyAtAdapter adapter = new StudyAtAdapter();
 		try {
-			adapter.query("paul");
+			adapter.query("paul Thomas");
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

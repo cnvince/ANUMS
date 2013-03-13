@@ -53,6 +53,7 @@ public class WebAdapter implements Adapter{
 				result.setLink(Link.getTextContent().trim());
 				result.setTitle(Title.getTextContent().trim());
 				result.setSummary(Summary.getTextContent().trim());
+				ranklist.addResult(result);
 			}
 			
 		} catch (ParserConfigurationException e) {

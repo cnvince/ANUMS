@@ -19,6 +19,10 @@ public class RankList {
 	{
 		return ranking.indexOf(result);
 	}
+	public ArrayList<Result> getList()
+	{
+		return ranking;
+	}
 
 	/**
 	 * @param args

@@ -18,6 +18,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import util.Parser;
+import util.ResultWritter;
 import util.StringFormat;
 import InterFaces.Adapter;
 import ResultPool.RankList;
@@ -26,6 +27,7 @@ import Results.Result;
 
 public class ContactAdapter implements Adapter {
 
+	ResultWritter rw=new ResultWritter();
 	public ContactAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,54 +49,39 @@ public class ContactAdapter implements Adapter {
 			Matcher matcher = pattern.matcher(context);
 			if (matcher.find()) {
 				ContactResult result=new ContactResult();
-				System.out.println("true");
-				pattern =Pattern.compile("Name:\\s+[\\w|\\s]+");
-				matcher=pattern.matcher(context);
-				while(matcher.find())
+				NodeList nodeList = (NodeList) xpath.evaluate("//CENTER//TABLE//TR", document,
+						XPathConstants.NODESET);
+				System.out.println(nodeList.getLength());
+				for(int i=0;i<nodeList.getLength();i++)
 				{
-					String name=matcher.group();
-					name=name.substring(name.indexOf(":")+1, name.indexOf("Position")).trim();
-//					System.out.println("Name:"+name);
-					result.setTitle(name);
-				}
-				pattern =Pattern.compile("Position:\\s+[\\w|\\s]+");
-				matcher=pattern.matcher(context);
-				while(matcher.find())
-				{
-					String position=matcher.group();
-					position=position.substring(position.indexOf(":")+1, position.indexOf("Phone")).trim();
-//					System.out.println("Position:"+position);
-					result.setPosition(position);
-				}
-				pattern =Pattern.compile("Phone:\\s+[\\d|\\s]+");
-				matcher=pattern.matcher(context);
-				while(matcher.find())
-				{
-					String phone=matcher.group();
-					phone=phone.substring(phone.indexOf(":")+1).trim();
-//					System.out.println("Phone:"+phone);
-					result.setPhone(phone);
-				}
-				pattern =Pattern.compile("Email:\\s+[\\S]+@[\\S]+");
-				matcher=pattern.matcher(context);
-				while(matcher.find())
-				{
-					String email=matcher.group();
-					email=email.substring(email.indexOf(":")+1, email.indexOf("Address")).trim();
-//					System.out.println("Email:"+email);
-					result.setEmail(email);
-				}
-				pattern =Pattern.compile("Address:\\s+.+[\\t|\\n]");
-				matcher=pattern.matcher(context);
-				while(matcher.find())
-				{
-					String address=matcher.group();
-					address=address.substring(address.indexOf(":")+1).trim();
-//					System.out.println("Address:"+address);
-					result.setAddress(address);
+					Node row=nodeList.item(i);
+					String value=row.getTextContent().trim();
+					System.out.println(value);
+					if(value.startsWith("Name"))
+					{
+						result.setTitle(value.substring(value.indexOf(":")+1).trim());
+					}
+					else if(value.startsWith("Position"))
+					{
+						result.setPosition(value.substring(value.indexOf(":")+1).trim());
+					}
+					else if(value.startsWith("Phone"))
+					{
+						result.setPhone(value.substring(value.indexOf(":")+1).trim());
+					}
+					else if(value.startsWith("Email"))
+					{
+						result.setEmail(value.substring(value.indexOf(":")+1).trim());
+					}
+					else if(value.startsWith("Address"))
+					{
+						result.setAddress(value.substring(value.indexOf(":")+1));
+					}
 				}
 				result.setLink(redirectUrl);
 				ranklist.addResult(result);
+				
+//				rw.write(result.getLink());
 				return ranklist;
 			}
 			NodeList nodeList = (NodeList) xpath.evaluate("//P//TR", document,
@@ -108,14 +95,16 @@ public class ContactAdapter implements Adapter {
 				System.out
 						.println("=================================================");
 				Node contact = tds.item(0);
-				System.out.println(contact.getNodeName());
+//				System.out.println(contact.getNodeName());
 				Node Title = tds.item(1);
 				Element Link = (Element) xpath.evaluate("A", Title,
 						XPathConstants.NODE);
 				Node Summary = tds.item(2);
 				result.setTitle(Title.getTextContent().trim());
-				result.setLink("link:" + Link.getAttribute("href").trim());
+				result.setLink(Link.getAttribute("href").trim());
 				result.setSummary(Summary.getTextContent().trim());
+//				rw.write(result.getLink());
+				ranklist.addResult(result);
 			}
 
 		} catch (ParserConfigurationException e) {
@@ -138,7 +127,7 @@ public class ContactAdapter implements Adapter {
 		// TODO Auto-generated method stub
 		ContactAdapter ca = new ContactAdapter();
 		try {
-			ca.query("david hawking");
+			ca.query("paul");
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
