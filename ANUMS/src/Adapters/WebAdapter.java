@@ -17,47 +17,43 @@ import org.xml.sax.SAXException;
 import util.Parser;
 import util.StringFormat;
 
-import InterFaces.Adapter;
 import ResultPool.RankList;
-import Results.LibcataResult;
+import Results.WebResult;
+import InterFaces.Adapter;
+public class WebAdapter implements Adapter{
 
-public class LibraryCatalogAdapter implements Adapter {
-
-	public LibraryCatalogAdapter() {
+	public WebAdapter() {
 		// TODO Auto-generated constructor stub
 	}
-	
-
-	@Override
-	public RankList query(String query)
-			throws XPathExpressionException {
-		// TODO Auto-generated method stub
+	public RankList query(String query) throws XPathExpressionException
+	{
+		//transform string
 		query=StringFormat.toURL(query);
 		RankList ranklist=new RankList();
-		String redirectUrl="http://library.anu.edu.au/search/Y?SEARCH="+query;
+		
+		String redirectUrl="http://search.anu.edu.au/search/search.cgi?collection=anu_search&query="+query;
 		try {
 			Document document=Parser.parse(redirectUrl);
 			XPath xpath = XPathFactory.newInstance().newXPath();
-			NodeList nodeList = (NodeList) xpath.evaluate("//TD[@class=\"briefCitRow\"]", document,
+			NodeList nodeList = (NodeList) xpath.evaluate("//OL[@id=\"fb-results\"]/LI", document,
 					XPathConstants.NODESET);
 			System.out.println(nodeList.getLength());
 			int length=nodeList.getLength();
 			for(int i=0;i<length;i++)
 			{
-				Element 	ROW=(Element)nodeList.item(i);
-				LibcataResult result=new LibcataResult();
+				Element 	Node_Li=(Element)nodeList.item(i);
 				System.out.println("=================================================");
-				Node		Title = (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]/A", ROW,
+				Node		Title = (Node) xpath.evaluate("H3", Node_Li,
 						XPathConstants.NODE);
-				String title=Title.getTextContent().trim();
-				result.setTitle(title);
-				String Link=((Element)Title).getAttribute("href");
-				result.setLink(Link);
-				Node 		Summary= (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]", ROW,
+				Node 		Summary= (Node) xpath.evaluate("P/SPAN[@class=\"fb-result-summary\"]", Node_Li,
 						XPathConstants.NODE);
-				String textarea=Summary.getTextContent().trim();
-				String summary=textarea.substring(title.length()+1).trim();
-				result.setSummary(summary);
+				Node 		Link= (Node) xpath.evaluate("P/CITE", Node_Li,
+						XPathConstants.NODE);
+				WebResult result=new WebResult();
+				result.setLink(Link.getTextContent().trim());
+				result.setTitle(Title.getTextContent().trim());
+				result.setSummary(Summary.getTextContent().trim());
+				ranklist.addResult(result);
 			}
 			
 		} catch (ParserConfigurationException e) {
@@ -72,20 +68,18 @@ public class LibraryCatalogAdapter implements Adapter {
 		}
 		return ranklist;
 	}
-
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LibraryCatalogAdapter adapter=new LibraryCatalogAdapter();
+		WebAdapter wa=new WebAdapter();
 		try {
-			adapter.query("machine learning");
+			wa.query("david");
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }
