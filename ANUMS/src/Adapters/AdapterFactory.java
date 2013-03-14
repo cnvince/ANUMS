@@ -63,10 +63,15 @@ public class AdapterFactory {
 		ResultTable table=new ResultTable();
 		try {
 			table.AddRankList(ContactUrl,contactAdapter.query(query) );
+			System.out.println("searching contact...");
 			table.AddRankList(LibUrl, libAdapter.query(query));
+			System.out.println("searching library...");
 			table.AddRankList(StuUrl, studyatAdapter.query(query));
+			System.out.println("searching studyat...");
 			table.AddRankList(webUrl, webadapter.query(query));
+			System.out.println("searching anuweb...");
 			table.AddRankList(youtubeUrl, youtubeAdapter.query(query));
+			System.out.println("searching youtube...");
 			
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block

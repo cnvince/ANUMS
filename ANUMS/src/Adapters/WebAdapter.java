@@ -37,12 +37,12 @@ public class WebAdapter implements Adapter{
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			NodeList nodeList = (NodeList) xpath.evaluate("//OL[@id=\"fb-results\"]/LI", document,
 					XPathConstants.NODESET);
-			System.out.println(nodeList.getLength());
+//			System.out.println(nodeList.getLength());
 			int length=nodeList.getLength();
 			for(int i=0;i<length;i++)
 			{
 				Element 	Node_Li=(Element)nodeList.item(i);
-				System.out.println("=================================================");
+//				System.out.println("=================================================");
 				Node		Title = (Node) xpath.evaluate("H3", Node_Li,
 						XPathConstants.NODE);
 				Node 		Summary= (Node) xpath.evaluate("P/SPAN[@class=\"fb-result-summary\"]", Node_Li,

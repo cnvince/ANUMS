@@ -18,6 +18,7 @@ import util.Parser;
 import util.StringFormat;
 
 import ResultPool.RankList;
+import Results.YoutubeResult;
 import InterFaces.Adapter;
 
 public class YouTubeAdapter implements Adapter {
@@ -56,12 +57,11 @@ public class YouTubeAdapter implements Adapter {
 					.evaluate(
 							"//LI[@class=\"channels-content-item\"]/SPAN[@class=\"context-data-item\"]",
 							document, XPathConstants.NODESET);
-			System.out.println(nodeList.getLength());
 			int length = nodeList.getLength();
 			for (int i = 0; i < length; i++) {
 				Element Node_SPAN = (Element) nodeList.item(i);
-				System.out
-						.println("=================================================");
+//				System.out
+//						.println("=================================================");
 				Node Summary = (Node) xpath.evaluate("SPAN[@class=\"content-item-detail\"]/A", Node_SPAN,
 						XPathConstants.NODE);
 				Element summary=(Element)Summary;
@@ -73,14 +73,18 @@ public class YouTubeAdapter implements Adapter {
 				Node VIEWCOUNT= (Node) xpath.evaluate("SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-view-count\"]", Node_SPAN,
 						XPathConstants.NODE);
 				String count=VIEWCOUNT.getTextContent();
+				count=count.substring(0,count.indexOf("views")-1).trim();
 				Node TIME=(Node) xpath.evaluate("SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-time-created\"]", Node_SPAN,
 						XPathConstants.NODE);
 				String time=TIME.getTextContent();
-				System.out.println("Title:"+Title);
-				System.out.println("Link:"+Link);
-				System.out.println("ViewCount:"+count.trim());
-				System.out.println("Time:"+time);
-				System.out.println("ImageLink:"+imgLink);
+				YoutubeResult result=new YoutubeResult();
+				result.setTitle(Title);
+				result.setImgUrl(imgLink);
+				result.setLink(Link);
+//				result.setSummary(summary);
+				result.setTime(time);
+//				result.setViewCount(Integer.parseInt(count));
+				ranklist.addResult(result);
 			}
 
 		} catch (ParserConfigurationException e) {

@@ -92,8 +92,8 @@ public class ContactAdapter implements Adapter {
 				Element row = (Element) nodeList.item(i);
 				NodeList tds = (NodeList) xpath.evaluate("TD", row,
 						XPathConstants.NODESET);
-				System.out
-						.println("=================================================");
+//				System.out
+//						.println("=================================================");
 				Node contact = tds.item(0);
 //				System.out.println(contact.getNodeName());
 				Node Title = tds.item(1);

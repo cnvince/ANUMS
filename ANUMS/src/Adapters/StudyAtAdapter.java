@@ -19,6 +19,7 @@ import util.StringFormat;
 
 import InterFaces.Adapter;
 import ResultPool.RankList;
+import Results.StudyAtResult;
 
 public class StudyAtAdapter implements Adapter {
 
@@ -39,15 +40,15 @@ public class StudyAtAdapter implements Adapter {
 			NodeList nodeList = (NodeList) xpath.evaluate(
 					"//DIV[@class=\"search_result_set\"]", document,
 					XPathConstants.NODESET);
-			System.out.println(nodeList.getLength());
+//			System.out.println(nodeList.getLength());
 			int length = nodeList.getLength();
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
 				Node Area = (Node) xpath.evaluate("H3", Node_Li,
 						XPathConstants.NODE);
 				String area = Area.getTextContent().trim();
-				System.out
-						.println("=================================================");
+//				System.out
+//						.println("=================================================");
 				NodeList ResultLink = (NodeList) xpath.evaluate(
 						"DIV/P[@class=\"result_link\"]/B/A", Node_Li,
 						XPathConstants.NODESET);
@@ -55,7 +56,11 @@ public class StudyAtAdapter implements Adapter {
 					Element Link = (Element) ResultLink.item(j);
 					String title = Link.getTextContent().trim();
 					String link = Link.getAttribute("href");
-					System.out.println(title + " " + link + " " + area);
+//					System.out.println(title + " " + link + " " + area);
+					StudyAtResult result=new StudyAtResult();
+					result.setTitle(title);
+					result.setLink(link);
+					result.setCategory(area);
 				}
 			}
 

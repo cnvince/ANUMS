@@ -1,8 +1,5 @@
 package Broker;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -27,20 +24,20 @@ public class Controller {
 		factory.initialAdapters();
 		map=factory.executeQuery(queryString);
 		display(map);
+		System.out.println("result returned");
 		return map;
 	}
 	public void display(ResultTable table)
 	{
 		HashMap<String,RankList> ranking=table.getTable();
-		System.out.println("listsize:"+ranking.size());
+//		System.out.println("listsize:"+ranking.size());
 		for(Entry<String,RankList> me:ranking.entrySet())
 		{
 			RankList list=me.getValue();
-			System.out.println(me.getKey());
 			ArrayList<Result> results=list.getList();
 			for(Result result:results)
 			{
-				rw.write(result.getTitle()+":"+result.getLink());
+				rw.write(result.getTitle()+":"+result.getLink()+" source:"+me.getKey());
 //				ResultWritter.write(result.getTitle()+":"+result.getLink());
 			}
 		}

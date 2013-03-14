@@ -40,13 +40,13 @@ public class LibraryCatalogAdapter implements Adapter {
 			XPath xpath = XPathFactory.newInstance().newXPath();
 			NodeList nodeList = (NodeList) xpath.evaluate("//TD[@class=\"briefCitRow\"]", document,
 					XPathConstants.NODESET);
-			System.out.println(nodeList.getLength());
+//			System.out.println(nodeList.getLength());
 			int length=nodeList.getLength();
 			for(int i=0;i<length;i++)
 			{
 				Element 	ROW=(Element)nodeList.item(i);
 				LibcataResult result=new LibcataResult();
-				System.out.println("=================================================");
+//				System.out.println("=================================================");
 				Node		Title = (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]/A", ROW,
 						XPathConstants.NODE);
 				String title=Title.getTextContent().trim();
@@ -58,6 +58,7 @@ public class LibraryCatalogAdapter implements Adapter {
 				String textarea=Summary.getTextContent().trim();
 				String summary=textarea.substring(title.length()+1).trim();
 				result.setSummary(summary);
+				ranklist.addResult(result);
 			}
 			
 		} catch (ParserConfigurationException e) {
