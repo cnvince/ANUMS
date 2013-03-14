@@ -11,10 +11,14 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/user/git/MetaSearch/ANUSEARCH/lib/guava-r07.jar"/>
-	<classpathentry kind="lib" path="/Users/user/git/MetaSearch/ANUSEARCH/lib/nekohtml-1.9.11.jar"/>
-	<classpathentry kind="lib" path="/Users/user/git/MetaSearch/ANUSEARCH/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/guava-r07.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/nekohtml-1.9.11.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/xercesImpl.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

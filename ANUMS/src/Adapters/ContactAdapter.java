@@ -1,7 +1,6 @@
 package Adapters;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +22,6 @@ import util.StringFormat;
 import InterFaces.Adapter;
 import ResultPool.RankList;
 import Results.ContactResult;
-import Results.Result;
 
 public class ContactAdapter implements Adapter {
 
