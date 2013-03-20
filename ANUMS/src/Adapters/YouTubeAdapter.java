@@ -19,6 +19,7 @@ import util.StringFormat;
 
 import ResultPool.RankList;
 import Results.YoutubeResult;
+import DataType.ServerSource;
 import InterFaces.Adapter;
 
 public class YouTubeAdapter implements Adapter {
@@ -68,9 +69,10 @@ public class YouTubeAdapter implements Adapter {
 				Element summary=(Element)Summary;
 				String Title=summary.getAttribute("title");
 				String Link=summary.getAttribute("href");
-				Node IMG=(Node) xpath.evaluate("A//IMG", Node_SPAN,
+				Node IMG=(Node) xpath.evaluate("A//SPAN[@class=\"yt-thumb-clip-inner\"]//IMG", Node_SPAN,
 						XPathConstants.NODE);
 				String imgLink=((Element)IMG).getAttribute("src");
+				imgLink=imgLink.replaceAll("//", "");
 				Node VIEWCOUNT= (Node) xpath.evaluate("SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-view-count\"]", Node_SPAN,
 						XPathConstants.NODE);
 				String count=VIEWCOUNT.getTextContent();
@@ -80,12 +82,12 @@ public class YouTubeAdapter implements Adapter {
 				String time=TIME.getTextContent();
 				YoutubeResult result=new YoutubeResult();
 				result.setTitle(Title);
-				result.setImgUrl(imgLink);
+				result.setImgUrl("http://"+imgLink);
 				result.setLink(hostUrl+Link);
 //				result.setSummary(summary);
 				result.setTime(time);
 //				result.setViewCount(Integer.parseInt(count));
-				result.setSource("YouTube");
+				result.setSource(ServerSource.YOUTUBE);
 				ranklist.addResult(result);
 			}
 

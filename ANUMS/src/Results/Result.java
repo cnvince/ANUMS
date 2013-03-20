@@ -1,10 +1,12 @@
 package Results;
 
+import DataType.ServerSource;
+
 public class Result {
 
 	protected String Title;
 	protected String Link;
-	protected String Source;
+	protected ServerSource Source;
 	public Result() {
 		// TODO Auto-generated constructor stub
 	}
@@ -25,11 +27,11 @@ public class Result {
 		Link = link;
 	}
 
-	public String getSource() {
+	public ServerSource getSource() {
 		return Source;
 	}
 
-	public void setSource(String source) {
+	public void setSource(ServerSource source) {
 		Source = source;
 	}
 

@@ -17,6 +17,7 @@ import org.xml.sax.SAXException;
 import util.Parser;
 import util.StringFormat;
 
+import DataType.ServerSource;
 import InterFaces.Adapter;
 import ResultPool.RankList;
 import Results.LibcataResult;
@@ -59,7 +60,7 @@ public class LibraryCatalogAdapter implements Adapter {
 				String textarea=Summary.getTextContent().trim();
 				String summary=textarea.substring(title.length()+1).trim();
 				result.setSummary(summary);
-				result.setSource("Library");
+				result.setSource(ServerSource.LIBRARY);
 				ranklist.addResult(result);
 			}
 			

@@ -11,11 +11,13 @@ public class AdapterFactory {
 	private StudyAtAdapter studyatAdapter;
 	private WebAdapter webadapter;
 	private YouTubeAdapter youtubeAdapter;
+	private MapAdapter mapAdapter;
 	private static String ContactUrl="contact";
 	private static String LibUrl="library";
 	private static String StuUrl="studyat";
 	private static String webUrl="web";
 	private static String youtubeUrl="youtube";
+	private static String mapUrl="map";
 	public ContactAdapter getContactAdapter() {
 		return contactAdapter;
 	}
@@ -46,6 +48,12 @@ public class AdapterFactory {
 	public void setYoutubeAdapter(YouTubeAdapter youtubeAdapter) {
 		this.youtubeAdapter = youtubeAdapter;
 	}
+	public MapAdapter getMapAdapter() {
+		return mapAdapter;
+	}
+	public void setMapAdapter(MapAdapter mapAdapter) {
+		this.mapAdapter = mapAdapter;
+	}
 	public AdapterFactory() {
 		// TODO Auto-generated constructor stub
 	}
@@ -57,6 +65,7 @@ public class AdapterFactory {
 		studyatAdapter	=new StudyAtAdapter();
 		webadapter		=new WebAdapter();
 		youtubeAdapter	=new YouTubeAdapter();
+		mapAdapter		=new MapAdapter();
 	}
 	public ResultTable executeQuery(String query)
 	{
@@ -72,6 +81,8 @@ public class AdapterFactory {
 			System.out.println("searching anuweb...");
 			table.AddRankList(youtubeUrl, youtubeAdapter.query(query));
 			System.out.println("searching youtube...");
+			table.AddRankList(mapUrl, mapAdapter.query(query));
+			System.out.println("searching map...");
 			
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block

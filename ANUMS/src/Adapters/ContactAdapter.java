@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import util.Parser;
 import util.StringFormat;
+import DataType.ServerSource;
 import InterFaces.Adapter;
 import ResultPool.RankList;
 import Results.ContactResult;
@@ -76,7 +77,7 @@ public class ContactAdapter implements Adapter {
 						result.setAddress(value.substring(value.indexOf(":")+1));
 					}
 				}
-				result.setSource("Contact");
+				result.setSource(ServerSource.CONTACT);
 				result.setLink(redirectUrl);
 				ranklist.addResult(result);
 				
@@ -104,7 +105,7 @@ public class ContactAdapter implements Adapter {
 				link=hostUrl+link.substring(link.indexOf(".")+1);
 				result.setLink(link);
 				result.setSummary(Summary.getTextContent().trim());
-				result.setSource("Contact");
+				result.setSource(ServerSource.CONTACT);
 //				rw.write(result.getLink());
 				ranklist.addResult(result);
 			}

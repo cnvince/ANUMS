@@ -17,6 +17,7 @@ import org.xml.sax.SAXException;
 import util.Parser;
 import util.StringFormat;
 
+import DataType.ServerSource;
 import InterFaces.Adapter;
 import ResultPool.RankList;
 import Results.StudyAtResult;
@@ -62,7 +63,7 @@ public class StudyAtAdapter implements Adapter {
 					result.setTitle(title);
 					result.setLink(link);
 					result.setCategory(area);
-					result.setSource("StudyAt");
+					result.setSource(ServerSource.STUDYAT);
 					ranklist.addResult(result);
 				}
 			}

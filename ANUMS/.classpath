@@ -20,5 +20,9 @@
 	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/guava-r07.jar"/>
 	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/nekohtml-1.9.11.jar"/>
 	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/twitter4j-async-2.2.6.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/twitter4j-core-2.2.6.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/twitter4j-media-support-2.2.6.jar"/>
+	<classpathentry kind="lib" path="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/lib/twitter4j-stream-2.2.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,8 +1,11 @@
 package Broker;
 
-import Adapters.AdapterFactory;
-import ResultPool.ResultTable;
+import java.util.ArrayList;
 
+import Adapters.AdapterFactory;
+import MergingAlgorithms.SimpleRRMerger;
+import ResultPool.ResultTable;
+import Results.Result;
 public class Controller {
 //	ResultWritter rw=new ResultWritter();
 	public Controller() {
@@ -18,6 +21,16 @@ public class Controller {
 //		display(map);
 		System.out.println("result returned");
 		return map;
+	}
+	public ArrayList<Result> merge(ResultTable map)
+	{
+		SimpleRRMerger merger=new SimpleRRMerger();
+		return merger.executeMerging(map);
+	}
+	public ArrayList<Result> fetchResult(String Query)
+	{
+		ResultTable map=query(Query);
+		return merge(map);
 	}
 //	public void display(ResultTable table)
 //	{

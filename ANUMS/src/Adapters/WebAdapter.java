@@ -19,6 +19,7 @@ import util.StringFormat;
 
 import ResultPool.RankList;
 import Results.WebResult;
+import DataType.ServerSource;
 import InterFaces.Adapter;
 public class WebAdapter implements Adapter{
 
@@ -56,7 +57,7 @@ public class WebAdapter implements Adapter{
 				result.setLink("http://"+Link.getTextContent().trim());
 				result.setTitle(Title.getTextContent().trim());
 				result.setSummary(Summary.getTextContent().trim());
-				result.setSource("ANUWEB");
+				result.setSource(ServerSource.WEB);
 				ranklist.addResult(result);
 				}
 			}
