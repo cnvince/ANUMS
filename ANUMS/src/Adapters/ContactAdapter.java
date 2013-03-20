@@ -17,7 +17,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import util.Parser;
-import util.ResultWritter;
 import util.StringFormat;
 import InterFaces.Adapter;
 import ResultPool.RankList;
@@ -25,7 +24,8 @@ import Results.ContactResult;
 
 public class ContactAdapter implements Adapter {
 
-	ResultWritter rw=new ResultWritter();
+	public static String hostUrl="http://www.anu.edu.au/dirs";
+//	ResultWritter rw=new ResultWritter();
 	public ContactAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -76,6 +76,7 @@ public class ContactAdapter implements Adapter {
 						result.setAddress(value.substring(value.indexOf(":")+1));
 					}
 				}
+				result.setSource("Contact");
 				result.setLink(redirectUrl);
 				ranklist.addResult(result);
 				
@@ -99,8 +100,11 @@ public class ContactAdapter implements Adapter {
 						XPathConstants.NODE);
 				Node Summary = tds.item(2);
 				result.setTitle(Title.getTextContent().trim());
-				result.setLink(Link.getAttribute("href").trim());
+				String link=Link.getAttribute("href").trim();
+				link=hostUrl+link.substring(link.indexOf(".")+1);
+				result.setLink(link);
 				result.setSummary(Summary.getTextContent().trim());
+				result.setSource("Contact");
 //				rw.write(result.getLink());
 				ranklist.addResult(result);
 			}

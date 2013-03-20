@@ -22,6 +22,7 @@ import Results.WebResult;
 import InterFaces.Adapter;
 public class WebAdapter implements Adapter{
 
+	public static String hostUrl="http://search.anu.edu.au/search/";
 	public WebAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -49,11 +50,15 @@ public class WebAdapter implements Adapter{
 						XPathConstants.NODE);
 				Node 		Link= (Node) xpath.evaluate("P/CITE", Node_Li,
 						XPathConstants.NODE);
+				if(Title!=null)
+				{
 				WebResult result=new WebResult();
-				result.setLink(Link.getTextContent().trim());
+				result.setLink("http://"+Link.getTextContent().trim());
 				result.setTitle(Title.getTextContent().trim());
 				result.setSummary(Summary.getTextContent().trim());
+				result.setSource("ANUWEB");
 				ranklist.addResult(result);
+				}
 			}
 			
 		} catch (ParserConfigurationException e) {

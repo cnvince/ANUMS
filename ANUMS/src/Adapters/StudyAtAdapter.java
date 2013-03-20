@@ -23,6 +23,7 @@ import Results.StudyAtResult;
 
 public class StudyAtAdapter implements Adapter {
 
+	public static String hostUrl="http://studyat.anu.edu.au";
 	public StudyAtAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -55,12 +56,14 @@ public class StudyAtAdapter implements Adapter {
 				for (int j = 0; j < ResultLink.getLength(); j++) {
 					Element Link = (Element) ResultLink.item(j);
 					String title = Link.getTextContent().trim();
-					String link = Link.getAttribute("href");
+					String link = "http://studyat.anu.edu.au"+Link.getAttribute("href").trim();
 //					System.out.println(title + " " + link + " " + area);
 					StudyAtResult result=new StudyAtResult();
 					result.setTitle(title);
 					result.setLink(link);
 					result.setCategory(area);
+					result.setSource("StudyAt");
+					ranklist.addResult(result);
 				}
 			}
 

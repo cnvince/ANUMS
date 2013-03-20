@@ -23,6 +23,7 @@ import Results.LibcataResult;
 
 public class LibraryCatalogAdapter implements Adapter {
 
+	public static String hostUrl="http://library.anu.edu.au";
 	public LibraryCatalogAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -51,13 +52,14 @@ public class LibraryCatalogAdapter implements Adapter {
 						XPathConstants.NODE);
 				String title=Title.getTextContent().trim();
 				result.setTitle(title);
-				String Link=((Element)Title).getAttribute("href");
+				String Link=hostUrl+((Element)Title).getAttribute("href").trim();
 				result.setLink(Link);
 				Node 		Summary= (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]", ROW,
 						XPathConstants.NODE);
 				String textarea=Summary.getTextContent().trim();
 				String summary=textarea.substring(title.length()+1).trim();
 				result.setSummary(summary);
+				result.setSource("Library");
 				ranklist.addResult(result);
 			}
 			

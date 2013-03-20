@@ -23,6 +23,7 @@ import InterFaces.Adapter;
 
 public class YouTubeAdapter implements Adapter {
 
+	public static String hostUrl="http://www.youtube.com";
 	public YouTubeAdapter() {
 		// TODO Auto-generated constructor stub
 	}
@@ -80,10 +81,11 @@ public class YouTubeAdapter implements Adapter {
 				YoutubeResult result=new YoutubeResult();
 				result.setTitle(Title);
 				result.setImgUrl(imgLink);
-				result.setLink(Link);
+				result.setLink(hostUrl+Link);
 //				result.setSummary(summary);
 				result.setTime(time);
 //				result.setViewCount(Integer.parseInt(count));
+				result.setSource("YouTube");
 				ranklist.addResult(result);
 			}
 

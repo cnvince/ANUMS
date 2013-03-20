@@ -1,18 +1,10 @@
 package Broker;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-import util.ResultWritter;
-
 import Adapters.AdapterFactory;
-import ResultPool.RankList;
 import ResultPool.ResultTable;
-import Results.Result;
 
 public class Controller {
-	ResultWritter rw=new ResultWritter();
+//	ResultWritter rw=new ResultWritter();
 	public Controller() {
 		// TODO Auto-generated constructor stub
 		
@@ -23,25 +15,25 @@ public class Controller {
 		AdapterFactory factory=new AdapterFactory();
 		factory.initialAdapters();
 		map=factory.executeQuery(queryString);
-		display(map);
+//		display(map);
 		System.out.println("result returned");
 		return map;
 	}
-	public void display(ResultTable table)
-	{
-		HashMap<String,RankList> ranking=table.getTable();
-//		System.out.println("listsize:"+ranking.size());
-		for(Entry<String,RankList> me:ranking.entrySet())
-		{
-			RankList list=me.getValue();
-			ArrayList<Result> results=list.getList();
-			for(Result result:results)
-			{
-				rw.write(result.getTitle()+":"+result.getLink()+" source:"+me.getKey());
-//				ResultWritter.write(result.getTitle()+":"+result.getLink());
-			}
-		}
-	}
+//	public void display(ResultTable table)
+//	{
+//		HashMap<String,RankList> ranking=table.getTable();
+////		System.out.println("listsize:"+ranking.size());
+//		for(Entry<String,RankList> me:ranking.entrySet())
+//		{
+//			RankList list=me.getValue();
+//			ArrayList<Result> results=list.getList();
+//			for(Result result:results)
+//			{
+//				rw.write(result.getTitle()+":"+result.getLink()+" source:"+me.getKey());
+////				ResultWritter.write(result.getTitle()+":"+result.getLink());
+//			}
+//		}
+//	}
 	/**
 	 * @param args
 	 */

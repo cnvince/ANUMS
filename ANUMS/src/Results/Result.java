@@ -4,6 +4,7 @@ public class Result {
 
 	protected String Title;
 	protected String Link;
+	protected String Source;
 	public Result() {
 		// TODO Auto-generated constructor stub
 	}
@@ -22,6 +23,14 @@ public class Result {
 
 	public void setLink(String link) {
 		Link = link;
+	}
+
+	public String getSource() {
+		return Source;
+	}
+
+	public void setSource(String source) {
+		Source = source;
 	}
 
 	/**
