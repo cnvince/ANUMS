@@ -17,12 +17,14 @@ public class Parser {
 
 	public static Document parse(String urlstr)
 			throws ParserConfigurationException, IOException, SAXException {
-
+			long start=System.currentTimeMillis();
 		   DOMParser parser = new DOMParser();
 	        parser.setFeature("http://xml.org/sax/features/namespaces", false); // IMPORTANT!!
 	        InputStream byteStream = util.InputStreamLoader.OpenStream(urlstr);
 	        parser.parse(new org.xml.sax.InputSource(byteStream));
 	        Document document = parser.getDocument();
+	        long end=System.currentTimeMillis();
+	        System.out.println(urlstr+":"+(end-start)/1000+"s");
 		return document;
 	}
 

@@ -1,14 +1,27 @@
 package Results;
 
+import java.io.Serializable;
+
 import DataType.ServerSource;
 
-public class Result {
+public class Result implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String Title;
 	protected String Link;
 	protected ServerSource Source;
 	public Result() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Result(String title, String link, ServerSource source) {
+		super();
+		Title = title;
+		Link = link;
+		Source = source;
 	}
 
 	public String getTitle() {

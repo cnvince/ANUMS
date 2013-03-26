@@ -2,6 +2,10 @@ package Results;
 
 public class ContactResult extends Result {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1897620677864216133L;
 	private String Position;
 	private String Phone;
 	private String Email;
@@ -10,6 +14,16 @@ public class ContactResult extends Result {
 	
 	public String getPosition() {
 		return Position;
+	}
+
+	public ContactResult(String position, String phone, String email,
+			String address, String summary) {
+		super();
+		Position = position;
+		Phone = phone;
+		Email = email;
+		Address = address;
+		Summary = summary;
 	}
 
 	public void setPosition(String position) {

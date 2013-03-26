@@ -20,50 +20,25 @@ import util.StringFormat;
 import DataType.ServerSource;
 import InterFaces.Adapter;
 import ResultPool.RankList;
+import ResultPool.ResultTable;
 import Results.LibcataResult;
 
 public class LibraryCatalogAdapter implements Adapter {
 
-	public static String hostUrl="http://library.anu.edu.au";
-	public LibraryCatalogAdapter() {
-		// TODO Auto-generated constructor stub
-	}
-	
+	Thread t;
+	public String queryTerm;
+	public final ServerSource source = ServerSource.LIBRARY;
+	public static String hostUrl = "http://library.anu.edu.au";
+	public String redirectUrl = "http://library.anu.edu.au/search/Y?SEARCH=";
+	public Document document;
+	public XPath xpath;
 
-	@Override
-	public RankList query(String query)
-			throws XPathExpressionException {
-		// TODO Auto-generated method stub
-		query=StringFormat.toURL(query);
-		RankList ranklist=new RankList();
-		String redirectUrl="http://library.anu.edu.au/search/Y?SEARCH="+query;
+	public LibraryCatalogAdapter(String query) {
+		// TODO Auto-generated constructor stub
+		queryTerm = StringFormat.toURL(query);
+		redirectUrl = redirectUrl + queryTerm;
 		try {
-			Document document=Parser.parse(redirectUrl);
-			XPath xpath = XPathFactory.newInstance().newXPath();
-			NodeList nodeList = (NodeList) xpath.evaluate("//TD[@class=\"briefCitRow\"]", document,
-					XPathConstants.NODESET);
-//			System.out.println(nodeList.getLength());
-			int length=nodeList.getLength();
-			for(int i=0;i<length;i++)
-			{
-				Element 	ROW=(Element)nodeList.item(i);
-				LibcataResult result=new LibcataResult();
-//				System.out.println("=================================================");
-				Node		Title = (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]/A", ROW,
-						XPathConstants.NODE);
-				String title=Title.getTextContent().trim();
-				result.setTitle(title);
-				String Link=hostUrl+((Element)Title).getAttribute("href").trim();
-				result.setLink(Link);
-				Node 		Summary= (Node) xpath.evaluate("TABLE//SPAN[@class=\"briefcitTitle\"]", ROW,
-						XPathConstants.NODE);
-				String textarea=Summary.getTextContent().trim();
-				String summary=textarea.substring(title.length()+1).trim();
-				result.setSummary(summary);
-				result.setSource(ServerSource.LIBRARY);
-				ranklist.addResult(result);
-			}
-			
+			document = Parser.parse(redirectUrl);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,6 +49,46 @@ public class LibraryCatalogAdapter implements Adapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		xpath = XPathFactory.newInstance().newXPath();
+		t = new Thread(this, "Library Adapter");
+	}
+
+	@Override
+	public RankList query(String query) {
+		// TODO Auto-generated method stub
+
+		RankList ranklist = new RankList();
+		try {
+			NodeList nodeList = (NodeList) xpath.evaluate(
+					"//TD[@class=\"briefCitRow\"]", document,
+					XPathConstants.NODESET);
+			int length = nodeList.getLength();
+			for (int i = 0; i < length; i++) {
+				Element ROW = (Element) nodeList.item(i);
+				LibcataResult result = new LibcataResult();
+				// System.out.println("=================================================");
+				Node Title = (Node) xpath.evaluate(
+						"TABLE//SPAN[@class=\"briefcitTitle\"]/A", ROW,
+						XPathConstants.NODE);
+				String title = Title.getTextContent().trim();
+				result.setTitle(title);
+				String Link = hostUrl
+						+ ((Element) Title).getAttribute("href").trim();
+				result.setLink(Link);
+				Node Summary = (Node) xpath.evaluate(
+						"TABLE//SPAN[@class=\"briefcitTitle\"]", ROW,
+						XPathConstants.NODE);
+				String textarea = Summary.getTextContent().trim();
+				String summary = textarea.substring(title.length() + 1).trim();
+				result.setSummary(summary);
+				result.setSource(source);
+				ranklist.addResult(result);
+			}
+
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ranklist;
 	}
 
@@ -81,15 +96,18 @@ public class LibraryCatalogAdapter implements Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		LibraryCatalogAdapter adapter=new LibraryCatalogAdapter();
-		try {
-			adapter.query("machine learning");
-		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+	}
+
+	public void display() {
+		System.out.println(this.source + "created...");
+		for (int i = 0; i < 10; i++)
+			System.out.println(this.source + ":" + i);
+	}
+
+	@Override
+	public void run() {
+		ResultTable.AddRankList(source, query(queryTerm));
 	}
 
 }

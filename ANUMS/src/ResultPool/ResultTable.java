@@ -8,35 +8,40 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import DataType.ServerSource;
 import Results.Result;
 
 public class ResultTable {
-	private HashMap<String,RankList> ranking=new HashMap<String,RankList>();
+	private static HashMap<ServerSource,RankList> ranking=new HashMap<ServerSource,RankList>();
 	
 	public ResultTable() {
 		// TODO Auto-generated constructor stub
 		
 	}
-	public RankList getRankList(String url)
+	public static RankList getRankList(ServerSource url)
 	{
 		return ranking.get(url);
 	}
-	public void AddRankList(String url,RankList list)
+	public static void AddRankList(ServerSource url,RankList list)
 	{
 		ranking.put(url, list);
 	}
-	public HashMap<String,RankList> getTable()
+	public static HashMap<ServerSource,RankList> getTable()
 	{
 		return ranking;
 	}
 	//to check if the server is already exist
-	public Boolean isServerExist(String url)
+	public static Boolean isServerExist(String url)
 	{
 		if(ranking.containsKey(url))
 			return true;
 		else
 			return false;
 			
+	}
+	public static void clearTable()
+	{
+		ranking.clear();
 	}
 	
 	

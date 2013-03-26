@@ -11,6 +11,11 @@ public class WebResult extends Result {
 		return Summary;
 	}
 
+	public WebResult(String summary) {
+		super();
+		Summary = summary;
+	}
+
 	public void setSummary(String summary) {
 		Summary = summary;
 	}

@@ -2,6 +2,15 @@ package Results;
 
 public class LibcataResult extends Result {
 
+	public LibcataResult(String summary) {
+		super();
+		this.summary = summary;
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8623372095255896706L;
 	private String summary;
 	public String getSummary() {
 		return summary;

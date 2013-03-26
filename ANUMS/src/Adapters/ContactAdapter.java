@@ -1,8 +1,7 @@
 package Adapters;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
@@ -21,95 +20,25 @@ import util.StringFormat;
 import DataType.ServerSource;
 import InterFaces.Adapter;
 import ResultPool.RankList;
+import ResultPool.ResultTable;
 import Results.ContactResult;
+import Results.Result;
 
 public class ContactAdapter implements Adapter {
 
-	public static String hostUrl="http://www.anu.edu.au/dirs";
-//	ResultWritter rw=new ResultWritter();
-	public ContactAdapter() {
-		// TODO Auto-generated constructor stub
-	}
+	Thread t;
+	public static String hostUrl = "http://www.anu.edu.au/dirs";
+	public String queryTerm = "";
+	public final ServerSource source = ServerSource.CONTACT;
+	private XPath xpath = XPathFactory.newInstance().newXPath();
+	private Document document;
+	private String redirectUrl = "http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext=";
 
-	public RankList query(String query) throws XPathExpressionException {
-		query = StringFormat.toURL(query);
-		RankList ranklist = new RankList();
-		String redirectUrl = "http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext="
-				+ query;
-		System.out.println(redirectUrl);
+	public ContactAdapter(String query) {
+		queryTerm = StringFormat.toURL(query);
+		redirectUrl = redirectUrl + queryTerm;
 		try {
-			Document document = Parser.parse(redirectUrl);
-			XPath xpath = XPathFactory.newInstance().newXPath();
-			Node root = (Node) xpath.evaluate("//BODY", document,
-					XPathConstants.NODE);
-			String context = root.getTextContent();
-//			 System.out.println("CONTEXT:"+context);
-			Pattern pattern = Pattern.compile("(\\d)+ item returned");
-			Matcher matcher = pattern.matcher(context);
-			if (matcher.find()) {
-				ContactResult result=new ContactResult();
-				NodeList nodeList = (NodeList) xpath.evaluate("//CENTER//TABLE//TR", document,
-						XPathConstants.NODESET);
-				System.out.println(nodeList.getLength());
-				for(int i=0;i<nodeList.getLength();i++)
-				{
-					Node row=nodeList.item(i);
-					String value=row.getTextContent().trim();
-					System.out.println(value);
-					if(value.startsWith("Name"))
-					{
-						result.setTitle(value.substring(value.indexOf(":")+1).trim());
-					}
-					else if(value.startsWith("Position"))
-					{
-						result.setPosition(value.substring(value.indexOf(":")+1).trim());
-					}
-					else if(value.startsWith("Phone"))
-					{
-						result.setPhone(value.substring(value.indexOf(":")+1).trim());
-					}
-					else if(value.startsWith("Email"))
-					{
-						result.setEmail(value.substring(value.indexOf(":")+1).trim());
-					}
-					else if(value.startsWith("Address"))
-					{
-						result.setAddress(value.substring(value.indexOf(":")+1));
-					}
-				}
-				result.setSource(ServerSource.CONTACT);
-				result.setLink(redirectUrl);
-				ranklist.addResult(result);
-				
-//				rw.write(result.getLink());
-				return ranklist;
-			}
-			NodeList nodeList = (NodeList) xpath.evaluate("//P//TR", document,
-					XPathConstants.NODESET);
-			int length = nodeList.getLength();
-			for (int i = 0; i < length; i++) {
-				ContactResult result=new ContactResult();
-				Element row = (Element) nodeList.item(i);
-				NodeList tds = (NodeList) xpath.evaluate("TD", row,
-						XPathConstants.NODESET);
-//				System.out
-//						.println("=================================================");
-				Node contact = tds.item(0);
-//				System.out.println(contact.getNodeName());
-				Node Title = tds.item(1);
-				Element Link = (Element) xpath.evaluate("A", Title,
-						XPathConstants.NODE);
-				Node Summary = tds.item(2);
-				result.setTitle(Title.getTextContent().trim());
-				String link=Link.getAttribute("href").trim();
-				link=hostUrl+link.substring(link.indexOf(".")+1);
-				result.setLink(link);
-				result.setSummary(Summary.getTextContent().trim());
-				result.setSource(ServerSource.CONTACT);
-//				rw.write(result.getLink());
-				ranklist.addResult(result);
-			}
-
+			document = Parser.parse(redirectUrl);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,6 +49,77 @@ public class ContactAdapter implements Adapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		t = new Thread(this, "ContactAdapter");
+	}
+
+	public RankList query(String query) {
+
+		RankList ranklist = new RankList();
+		try {
+			Node CenterNode=(Node) xpath.evaluate("//CENTER", document,
+					XPathConstants.NODE);
+			if(CenterNode!=null)
+			{
+				NodeList nodeList = (NodeList) xpath
+						.evaluate("//CENTER//TABLE//TR", document,
+								XPathConstants.NODESET);
+				ContactResult result = new ContactResult();
+				for (int i = 0; i < nodeList.getLength(); i++) {
+					Node row = nodeList.item(i);
+					String value = row.getTextContent().trim();
+					if(value=="")
+					{
+						result.setSource(source);
+						result.setLink(redirectUrl);
+						ranklist.addResult(result);
+						result=new ContactResult();
+					}
+					if (value.startsWith("Name")) {
+						result.setTitle(value.substring(value.indexOf(":") + 1)
+								.trim());
+					} else if (value.startsWith("Position")) {
+						result.setPosition(value.substring(
+								value.indexOf(":") + 1).trim());
+					} else if (value.startsWith("Phone")) {
+						result.setPhone(value.substring(value.indexOf(":") + 1)
+								.trim());
+					} else if (value.startsWith("Email")) {
+						result.setEmail(value.substring(value.indexOf(":") + 1)
+								.trim());
+					} else if (value.startsWith("Address")) {
+						result.setAddress(value.substring(value.indexOf(":") + 1));
+					}
+				}
+				return ranklist;
+				
+				
+			}
+			
+			NodeList nodeList = (NodeList) xpath.evaluate("//P//TR", document,
+					XPathConstants.NODESET);
+			int length = nodeList.getLength();
+			for (int i = 0; i < length; i++) {
+				ContactResult result = new ContactResult();
+				Element row = (Element) nodeList.item(i);
+				NodeList tds = (NodeList) xpath.evaluate("TD", row,
+						XPathConstants.NODESET);
+				Node Title = tds.item(1);
+				Element Link = (Element) xpath.evaluate("A", Title,
+						XPathConstants.NODE);
+				Node Summary = tds.item(2);
+				result.setTitle(Title.getTextContent().trim());
+				String link = Link.getAttribute("href").trim();
+				link = hostUrl + link.substring(link.indexOf(".") + 1);
+				result.setLink(link);
+				result.setSummary(Summary.getTextContent().trim());
+				result.setSource(ServerSource.CONTACT);
+				ranklist.addResult(result);
+			}
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return ranklist;
 	}
 
@@ -127,14 +127,20 @@ public class ContactAdapter implements Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ContactAdapter ca = new ContactAdapter();
-		try {
-			ca.query("paul");
-		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		ContactAdapter ad=new ContactAdapter("jerry");
+		RankList list=ad.query("paul");
+		ArrayList<Result> results=list.getList();
+		for(int i=0;i<results.size();i++)
+		{
+			ContactResult result=(ContactResult) results.get(i);
+			System.out.println(result.getTitle()+" "+result.getAddress()+" "+result.getEmail()+" "+result.getLink()+
+					" "+result.getPhone()+" "+result.getPosition()+result.getSource());
 		}
+	}
+
+	@Override
+	public void run() {
+		ResultTable.AddRankList(source, query(queryTerm));
 	}
 
 }
