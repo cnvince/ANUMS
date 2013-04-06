@@ -1,5 +1,9 @@
 package com.adapters;
 
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -14,6 +18,7 @@ import com.datatype.ServerSource;
 import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 import com.results.StudyAtResult;
 import com.util.Parser;
 import com.util.StringFormat;
@@ -21,17 +26,20 @@ import com.util.StringFormat;
 public class StudyAtAdapter implements Adapter {
 
 	Thread t;
-	public final ServerSource source = ServerSource.STUDYAT;
+	public final int source = ServerSource.STUDYAT;
 	public String queryTerm = "";
 	public static String hostUrl = "http://studyat.anu.edu.au";
 	public String redirectUrl = "http://studyat.anu.edu.au/search?search_terms=";
 	public Document document;
 	public XPath xpath;
-
-	public StudyAtAdapter(String query) {
+	public ResultTable results;
+	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
+	public StudyAtAdapter(String query, ResultTable results,HashMap<Integer,Server> serverTable) {
 		// TODO Auto-generated constructor stub
 		queryTerm = StringFormat.toURL(query);
 		redirectUrl = redirectUrl + queryTerm;
+		this.results=results;
+		this.sTable=serverTable;
 		document = Parser.parse(redirectUrl);
 		xpath = XPathFactory.newInstance().newXPath();
 		t = new Thread(this, "StudyAt Adapter");
@@ -41,8 +49,32 @@ public class StudyAtAdapter implements Adapter {
 	public RankList query(String query) {
 		if (document == null)
 			return null;
+		
 		// TODO Auto-generated method stub
 		RankList ranklist = new RankList();
+		Pattern pattern=Pattern.compile("\\d+\\s+matches");
+		Node body;
+		Matcher matcher = null;
+		try {
+			body = (Node) xpath
+					.evaluate("//BODY", document,
+							XPathConstants.NODE);
+			matcher=pattern.matcher(body.getTextContent());
+		} catch (XPathExpressionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int size=0;
+		while(matcher.find())
+		{
+			String match=matcher.group();
+			size+=Integer.parseInt(match.substring(0, match.indexOf("matches")).trim());
+		}
+		Server server=new Server();
+		server.setServer(source);
+		server.setResult_size(size);
+		sTable.put(source, server);
+		
 		try {
 			NodeList nodeList = (NodeList) xpath.evaluate(
 					"//DIV[@class=\"search_result_set\"]", document,
@@ -86,7 +118,7 @@ public class StudyAtAdapter implements Adapter {
 
 	@Override
 	public void run() {
-		ResultTable.AddRankList(source, query(queryTerm));
+		results.AddRankList(source, query(queryTerm));
 	}
 
 }

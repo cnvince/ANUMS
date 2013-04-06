@@ -1,6 +1,7 @@
 package com.adapters;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -16,6 +17,7 @@ import com.datatype.ServerSource;
 import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 import com.results.YoutubeResult;
 import com.util.Parser;
 import com.util.StringFormat;
@@ -23,17 +25,20 @@ import com.util.StringFormat;
 public class YouTubeAdapter implements Adapter {
 
 	Thread t;
-	public final ServerSource source = ServerSource.YOUTUBE;
-	public String queryTerm = "";
-	public static String hostUrl = "http://www.youtube.com";
-	public Document document;
-	public XPath xpath;
-	String redirectUrl = "http://www.youtube.com/user/ANUchannel/videos?query=";
-
-	public YouTubeAdapter(String query) {
+	private final int source = ServerSource.YOUTUBE;
+	private String queryTerm = "";
+	private static String hostUrl = "http://www.youtube.com";
+	private Document document;
+	private XPath xpath;
+	private String redirectUrl = "http://www.youtube.com/user/ANUchannel/videos?query=";
+	public ResultTable results;
+	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
+	public YouTubeAdapter(String query, ResultTable results,HashMap<Integer,Server> serverTable) {
 		// TODO Auto-generated constructor stub
 		queryTerm = StringFormat.toURL(query);
 		redirectUrl = redirectUrl + queryTerm;
+		this.results=results;
+		this.sTable=serverTable;
 		document = Parser.parse(redirectUrl);
 		xpath = XPathFactory.newInstance().newXPath();
 		t = new Thread(this, "Youtube Adapter");
@@ -51,6 +56,7 @@ public class YouTubeAdapter implements Adapter {
 	public RankList query(String query) {
 		if (document == null)
 			return null;
+		
 		RankList ranklist = new RankList();
 		try {
 			NodeList nodeList = (NodeList) xpath
@@ -58,6 +64,10 @@ public class YouTubeAdapter implements Adapter {
 							"//LI[@class=\"channels-content-item\"]/SPAN[@class=\"context-data-item\"]",
 							document, XPathConstants.NODESET);
 			int length = nodeList.getLength();
+			Server server=new Server();
+			server.setServer(source);
+			server.setResult_size(length);
+			sTable.put(source, server);
 			for (int i = 0; i < length; i++) {
 				Element Node_SPAN = (Element) nodeList.item(i);
 				Node Summary = (Node) xpath.evaluate(
@@ -103,7 +113,7 @@ public class YouTubeAdapter implements Adapter {
 
 	@Override
 	public void run() {
-		ResultTable.AddRankList(source, query(queryTerm));
+		results.AddRankList(source, query(queryTerm));
 	}
 
 }

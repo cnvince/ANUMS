@@ -1,22 +1,14 @@
 package com.resultpool;
 
-public class Server {
+public class Server implements Comparable<Server>{
 
-	private String serverURL;
+	private int server;
 	private int size;
 	private float tf;
 	private float idf;
 	private int result_size;
 	public Server() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public String getServerURL() {
-		return serverURL;
-	}
-
-	public void setServerURL(String serverURL) {
-		this.serverURL = serverURL;
 	}
 
 	public int getSize() {
@@ -57,6 +49,20 @@ public class Server {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public int getServer() {
+		return server;
+	}
+
+	public void setServer(int server) {
+		this.server = server;
+	}
+
+	@Override
+	public int compareTo(Server o) {
+		int size=o.getResult_size();
+		return size-this.result_size;
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.adapters;
 
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -14,6 +18,7 @@ import com.datatype.ServerSource;
 import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 import com.results.WebResult;
 import com.util.Parser;
 import com.util.StringFormat;
@@ -22,16 +27,19 @@ public class WebAdapter implements Adapter {
 
 	Thread t;
 	public String queryTerm;
-	public ServerSource source = ServerSource.WEB;
+	public int source = ServerSource.WEB;
 	public static String hostUrl = "http://search.anu.edu.au/search/";
 	public String redirectUrl = "http://search.anu.edu.au/search/search.cgi?collection=anu_search&query=";
 	public Document document;
 	public XPath xpath;
-
-	public WebAdapter(String query) {
+	public ResultTable results;
+	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
+	public WebAdapter(String query, ResultTable results,HashMap<Integer,Server>serverTable) {
 		// TODO Auto-generated constructor stub
 		queryTerm = StringFormat.toURL(query);
 		redirectUrl = redirectUrl + queryTerm;
+		this.results=results;
+		this.sTable=serverTable;
 		document = Parser.parse(redirectUrl);
 		xpath = XPathFactory.newInstance().newXPath();
 		t = new Thread(this, "Web Adapter");
@@ -42,7 +50,30 @@ public class WebAdapter implements Adapter {
 			return null;
 		// transform string
 		RankList ranklist = new RankList();
-
+		Pattern pattern=Pattern.compile("\\S+\\s+search results");
+		Node body;
+		Matcher matcher = null;
+		try {
+			body = (Node) xpath
+					.evaluate("//BODY", document,
+							XPathConstants.NODE);
+			matcher=pattern.matcher(body.getTextContent());
+		} catch (XPathExpressionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int size=0;
+		while(matcher.find())
+		{
+			System.out.println("webtrue");
+			String match=matcher.group();
+			match=match.replaceAll(",", "");
+			size=Integer.parseInt(match.substring(0, match.indexOf("search results")).trim());
+		}
+		Server server=new Server();
+		server.setServer(source);
+		server.setResult_size(size);
+		sTable.put(source, server);
 		try {
 			NodeList nodeList = (NodeList) xpath.evaluate(
 					"//OL[@id=\"fb-results\"]/LI", document,
@@ -89,7 +120,7 @@ public class WebAdapter implements Adapter {
 
 	@Override
 	public void run() {
-		ResultTable.AddRankList(source, query(queryTerm));
+		results.AddRankList(source, query(queryTerm));
 
 	}
 

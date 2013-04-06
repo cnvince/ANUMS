@@ -1,52 +1,42 @@
 package com.resultpool;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.datatype.ServerSource;
-import com.results.Result;
-
 
 public class ResultTable {
-	private static HashMap<ServerSource,RankList> ranking=new HashMap<ServerSource,RankList>();
-	
+	private HashMap<Integer, RankList> ranking = new HashMap<Integer, RankList>();
+
 	public ResultTable() {
 		// TODO Auto-generated constructor stub
-		
+
 	}
-	public static RankList getRankList(ServerSource url)
-	{
+
+	public RankList getRankList(ServerSource url) {
 		return ranking.get(url);
 	}
-	public static void AddRankList(ServerSource url,RankList list)
-	{
-		if(list!=null)
-			ranking.put(url, list);
+
+	public void AddRankList(int source, RankList list) {
+		if (list != null||list.getList().size()!=0)
+			ranking.put(source, list);
 	}
-	public static HashMap<ServerSource,RankList> getTable()
-	{
+
+	public HashMap<Integer, RankList> getTable() {
 		return ranking;
 	}
-	//to check if the server is already exist
-	public static Boolean isServerExist(String url)
-	{
-		if(ranking.containsKey(url))
+
+	// to check if the server is already exist
+	public Boolean isServerExist(String url) {
+		if (ranking.containsKey(url))
 			return true;
 		else
 			return false;
-			
+
 	}
-	public static void clearTable()
-	{
+
+	public void clearTable() {
 		ranking.clear();
 	}
-	
-	
+
 	/**
 	 * @param args
 	 */

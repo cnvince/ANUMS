@@ -1,5 +1,9 @@
 package com.adapters;
 
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -14,6 +18,7 @@ import com.datatype.ServerSource;
 import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 import com.results.LibcataResult;
 import com.util.Parser;
 import com.util.StringFormat;
@@ -24,17 +29,20 @@ public class LibraryCatalogAdapter implements Adapter {
 
 	Thread t;
 	public String queryTerm;
-	public final ServerSource source = ServerSource.LIBRARY;
+	public final int source = ServerSource.LIBRARY;
 	public static String hostUrl = "http://library.anu.edu.au";
 	public String redirectUrl = "http://library.anu.edu.au/search/Y?SEARCH=";
 	public Document document;
 	public XPath xpath;
-
-	public LibraryCatalogAdapter(String query) {
+	public ResultTable results;
+	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
+	public LibraryCatalogAdapter(String query,ResultTable results, HashMap<Integer,Server> serverTable) {
 		// TODO Auto-generated constructor stub
 		queryTerm = StringFormat.toURL(query);
 		redirectUrl = redirectUrl + queryTerm;
 			document = Parser.parse(redirectUrl);
+		this.results=results;
+		this.sTable=serverTable;
 		xpath = XPathFactory.newInstance().newXPath();
 		t = new Thread(this, "Library Adapter");
 	}
@@ -44,6 +52,29 @@ public class LibraryCatalogAdapter implements Adapter {
 		// TODO Auto-generated method stub
 		if(document==null)
 			return null;
+		Pattern pattern=Pattern.compile("\\d+\\s+(results|result) found");
+		Node body;
+		Matcher matcher = null;
+		try {
+			body = (Node) xpath
+					.evaluate("//BODY", document,
+							XPathConstants.NODE);
+			matcher=pattern.matcher(body.getTextContent());
+		} catch (XPathExpressionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		int size=0;
+		while(matcher.find())
+		{
+			String match=matcher.group();
+			size=Integer.parseInt(match.substring(0, match.indexOf("result")).trim());
+			System.out.println("size:"+size);
+		}
+		Server server=new Server();
+		server.setServer(source);
+		server.setResult_size(size);
+		sTable.put(source, server);
 		RankList ranklist = new RankList();
 		try {
 			NodeList nodeList = (NodeList) xpath.evaluate(
@@ -95,7 +126,7 @@ public class LibraryCatalogAdapter implements Adapter {
 
 	@Override
 	public void run() {
-		ResultTable.AddRankList(source, query(queryTerm));
+		results.AddRankList(source, query(queryTerm));
 	}
 
 }

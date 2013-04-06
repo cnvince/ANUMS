@@ -1,7 +1,10 @@
 package com.adapters;
 
+import java.util.HashMap;
+
 import com.datatype.ServerSource;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 
 
 public class AdapterFactory {
@@ -15,7 +18,8 @@ public class AdapterFactory {
 	private ResearcherAdapter resAdapter;
 	private ResearcherAdapter res_pubAdapter;
 	private DspaceAdapter dspaceAdapter;
-
+	public ResultTable results=new ResultTable();
+	public HashMap<Integer, Server> ServerTable=new HashMap<Integer,Server>();
 	public ResearcherAdapter getResAdapter() {
 		return resAdapter;
 	}
@@ -104,16 +108,16 @@ public class AdapterFactory {
 
 	// initial instances of adapters
 	public void allocateAdapters(String query) {
-		contactAdapter = new ContactAdapter(query);
-		libAdapter = new LibraryCatalogAdapter(query);
-		studyatAdapter = new StudyAtAdapter(query);
-		webadapter = new WebAdapter(query);
-		youtubeAdapter = new YouTubeAdapter(query);
-		mapAdapter = new MapAdapter(query);
-		resAdapter = new ResearcherAdapter(ServerSource.RESEARCHERS, query);
+		contactAdapter = new ContactAdapter(query,results,ServerTable);
+		libAdapter = new LibraryCatalogAdapter(query,results,ServerTable);
+		studyatAdapter = new StudyAtAdapter(query,results,ServerTable);
+		webadapter = new WebAdapter(query,results,ServerTable);
+		youtubeAdapter = new YouTubeAdapter(query,results,ServerTable);
+		mapAdapter = new MapAdapter(query,results,ServerTable);
+		resAdapter = new ResearcherAdapter(ServerSource.RESEARCHERS, query,results,ServerTable);
 		res_pubAdapter = new ResearcherAdapter(ServerSource.RES_PUBLICATIONS,
-				query);
-		res_proAdapter = new ResearcherAdapter(ServerSource.RES_PROJECTS, query);
+				query,results,ServerTable);
+		res_proAdapter = new ResearcherAdapter(ServerSource.RES_PROJECTS, query,results,ServerTable);
 //		dspaceAdapter = new DspaceAdapter(query);
 		contactAdapter.t.start();
 		libAdapter.t.start();
@@ -142,9 +146,10 @@ public class AdapterFactory {
 		 }
 	}
 
-	public void executeQuery(String query) {
+	public ResultTable executeQuery(String query) {
 		allocateAdapters(query);
-		System.out.println("com.results:" + ResultTable.getTable().size());
+		System.out.println("com.results:" + results.getTable().size());
+		return results;
 	}
 
 	/**

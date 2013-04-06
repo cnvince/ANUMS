@@ -1,6 +1,9 @@
 package com.adapters;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -15,8 +18,8 @@ import com.datatype.ServerSource;
 import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
+import com.resultpool.Server;
 import com.results.ContactResult;
-import com.results.Result;
 import com.util.Parser;
 import com.util.StringFormat;
 
@@ -26,14 +29,17 @@ public class ContactAdapter implements Adapter {
 	Thread t;
 	public static String hostUrl = "http://www.anu.edu.au/dirs";
 	public String queryTerm = "";
-	public final ServerSource source = ServerSource.CONTACT;
+	public final int source = ServerSource.CONTACT;
 	private XPath xpath = XPathFactory.newInstance().newXPath();
 	private Document document;
 	private String redirectUrl = "http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext=";
-
-	public ContactAdapter(String query) {
+	public ResultTable results;
+	public HashMap<Integer, Server> sTable;
+	public ContactAdapter(String query, ResultTable results, HashMap<Integer, Server> serverTable) {
 		queryTerm = StringFormat.toURL(query);
 		redirectUrl = redirectUrl + queryTerm;
+		this.results=results;
+		this.sTable=serverTable;
 		document = Parser.parse(redirectUrl);
 		t = new Thread(this, "ContactAdapter");
 	}
@@ -42,6 +48,31 @@ public class ContactAdapter implements Adapter {
 
 		if(document==null)
 			return null;
+		Pattern pattern=Pattern.compile("\\d+ (item|items) returned");
+		Node body;
+		Matcher matcher = null;
+		try {
+			body = (Node) xpath
+					.evaluate("//BODY", document,
+							XPathConstants.NODE);
+			matcher=pattern.matcher(body.getTextContent());
+		} catch (XPathExpressionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		int size=0;
+		while(matcher.find())
+		{
+			System.out.println("true");
+			String match=matcher.group();
+			size=Integer.parseInt(match.substring(0, match.indexOf("item")).trim());
+			System.out.println("size:"+size);
+		}
+		Server server=new Server();
+		server.setServer(source);
+		server.setResult_size(size);
+		sTable.put(source, server);
 		RankList ranklist = new RankList();
 		try {
 			Node CenterNode=(Node) xpath.evaluate("//CENTER", document,
@@ -117,20 +148,11 @@ public class ContactAdapter implements Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ContactAdapter ad=new ContactAdapter("jerry");
-		RankList list=ad.query("paul");
-		ArrayList<Result> results=list.getList();
-		for(int i=0;i<results.size();i++)
-		{
-			ContactResult result=(ContactResult) results.get(i);
-			System.out.println(result.getTitle()+" "+result.getAddress()+" "+result.getEmail()+" "+result.getLink()+
-					" "+result.getPhone()+" "+result.getPosition()+result.getSource());
-		}
 	}
 
 	@Override
 	public void run() {
-		ResultTable.AddRankList(source, query(queryTerm));
+		results.AddRankList(source, query(queryTerm));
 	}
 
 }
