@@ -16,7 +16,7 @@ public class ResultTable {
 	}
 
 	public void AddRankList(int source, RankList list) {
-		if (list != null||list.getList().size()!=0)
+		if (list != null&&list.getList().size()!=0)
 			ranking.put(source, list);
 	}
 

@@ -1,76 +1,57 @@
 package com.adapters;
 
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.datatype.ServerSource;
-import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.WebResult;
-import com.util.Parser;
-import com.util.StringFormat;
 
-public class WebAdapter implements Adapter {
+public class WebAdapter extends Adapter {
 
-	Thread t;
-	public String queryTerm;
-	public int source = ServerSource.WEB;
-	public static String hostUrl = "http://search.anu.edu.au/search/";
-	public String redirectUrl = "http://search.anu.edu.au/search/search.cgi?collection=anu_search&query=";
-	public Document document;
-	public XPath xpath;
-	public ResultTable results;
-	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
-	public WebAdapter(String query, ResultTable results,HashMap<Integer,Server>serverTable) {
+	public WebAdapter(CountDownLatch countDownLatch, Document document,
+			ResultTable results, HashMap<Integer, Server> serverTable,
+			String hostUrl, int source) {
+		super(countDownLatch, document, results, serverTable, hostUrl, source);
 		// TODO Auto-generated constructor stub
-		queryTerm = StringFormat.toURL(query);
-		redirectUrl = redirectUrl + queryTerm;
-		this.results=results;
-		this.sTable=serverTable;
-		document = Parser.parse(redirectUrl);
-		xpath = XPathFactory.newInstance().newXPath();
-		t = new Thread(this, "Web Adapter");
 	}
 
-	public RankList query(String query) {
+	public RankList query() {
 		if (document == null)
 			return null;
 		// transform string
 		RankList ranklist = new RankList();
-		Pattern pattern=Pattern.compile("\\S+\\s+search results");
+		Pattern pattern = Pattern.compile("\\S+\\s+search results");
 		Node body;
 		Matcher matcher = null;
 		try {
-			body = (Node) xpath
-					.evaluate("//BODY", document,
-							XPathConstants.NODE);
-			matcher=pattern.matcher(body.getTextContent());
+			body = (Node) xpath.evaluate("//BODY", document,
+					XPathConstants.NODE);
+			matcher = pattern.matcher(body.getTextContent());
 		} catch (XPathExpressionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int size=0;
-		while(matcher.find())
-		{
+		int size = 0;
+		while (matcher.find()) {
 			System.out.println("webtrue");
-			String match=matcher.group();
-			match=match.replaceAll(",", "");
-			size=Integer.parseInt(match.substring(0, match.indexOf("search results")).trim());
+			String match = matcher.group();
+			match = match.replaceAll(",", "");
+			size = Integer.parseInt(match.substring(0,
+					match.indexOf("search results")).trim());
 		}
-		Server server=new Server();
+		Server server = new Server();
 		server.setServer(source);
 		server.setResult_size(size);
 		sTable.put(source, server);
@@ -92,6 +73,7 @@ public class WebAdapter implements Adapter {
 					WebResult result = new WebResult();
 					result.setLink("http://" + Link.getTextContent().trim());
 					result.setTitle(Title.getTextContent().trim());
+//					System.out.println(Title.getTextContent().trim());
 					result.setSummary(Summary.getTextContent().trim());
 					result.setSource(source);
 					result.setDsumary();
@@ -116,12 +98,6 @@ public class WebAdapter implements Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	}
-
-	@Override
-	public void run() {
-		results.AddRankList(source, query(queryTerm));
-
 	}
 
 }

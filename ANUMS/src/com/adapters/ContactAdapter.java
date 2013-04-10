@@ -1,13 +1,12 @@
 package com.adapters;
 
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,36 +14,23 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.datatype.ServerSource;
-import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.ContactResult;
-import com.util.Parser;
-import com.util.StringFormat;
 
 
-public class ContactAdapter implements Adapter {
+public class ContactAdapter extends Adapter {
 
-	Thread t;
-	public static String hostUrl = "http://www.anu.edu.au/dirs";
-	public String queryTerm = "";
-	public final int source = ServerSource.CONTACT;
-	private XPath xpath = XPathFactory.newInstance().newXPath();
-	private Document document;
-	private String redirectUrl = "http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext=";
-	public ResultTable results;
-	public HashMap<Integer, Server> sTable;
-	public ContactAdapter(String query, ResultTable results, HashMap<Integer, Server> serverTable) {
-		queryTerm = StringFormat.toURL(query);
-		redirectUrl = redirectUrl + queryTerm;
-		this.results=results;
-		this.sTable=serverTable;
-		document = Parser.parse(redirectUrl);
-		t = new Thread(this, "ContactAdapter");
+	
+
+	public ContactAdapter(CountDownLatch countDownLatch, Document document,
+			ResultTable results, HashMap<Integer, Server> serverTable,
+			String hostUrl, int source) {
+		super(countDownLatch, document, results, serverTable, hostUrl, source);
+		// TODO Auto-generated constructor stub
 	}
-
-	public RankList query(String query) {
+	public RankList query() {
 
 		if(document==null)
 			return null;
@@ -89,7 +75,7 @@ public class ContactAdapter implements Adapter {
 					if(value=="")
 					{
 						result.setSource(source);
-						result.setLink(redirectUrl);
+						result.setLink(document.getDocumentURI());
 						result.setDsumary();
 						ranklist.addResult(result);
 						result=new ContactResult();
@@ -150,9 +136,5 @@ public class ContactAdapter implements Adapter {
 	public static void main(String[] args) {
 	}
 
-	@Override
-	public void run() {
-		results.AddRankList(source, query(queryTerm));
-	}
 
 }

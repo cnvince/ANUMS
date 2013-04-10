@@ -1,59 +1,34 @@
 package com.adapters;
 
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 
-import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.datatype.ServerSource;
-import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.YoutubeResult;
-import com.util.Parser;
-import com.util.StringFormat;
 
-public class YouTubeAdapter implements Adapter {
+public class YouTubeAdapter extends Adapter {
 
-	Thread t;
-	private final int source = ServerSource.YOUTUBE;
-	private String queryTerm = "";
-	private static String hostUrl = "http://www.youtube.com";
-	private Document document;
-	private XPath xpath;
-	private String redirectUrl = "http://www.youtube.com/user/ANUchannel/videos?query=";
-	public ResultTable results;
-	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
-	public YouTubeAdapter(String query, ResultTable results,HashMap<Integer,Server> serverTable) {
+	
+
+	public YouTubeAdapter(CountDownLatch countDownLatch, Document document,
+			ResultTable results, HashMap<Integer, Server> serverTable,
+			String hostUrl, int source) {
+		super(countDownLatch, document, results, serverTable, hostUrl, source);
 		// TODO Auto-generated constructor stub
-		queryTerm = StringFormat.toURL(query);
-		redirectUrl = redirectUrl + queryTerm;
-		this.results=results;
-		this.sTable=serverTable;
-		document = Parser.parse(redirectUrl);
-		xpath = XPathFactory.newInstance().newXPath();
-		t = new Thread(this, "Youtube Adapter");
-	}
-
-	/**
-	 * @param args
-	 * @throws ServiceException
-	 * @throws IOException
-	 */
-	public static void main(String[] args) throws IOException {
 	}
 
 	@Override
-	public RankList query(String query) {
+	public RankList query() {
 		if (document == null)
 			return null;
 		
@@ -111,9 +86,5 @@ public class YouTubeAdapter implements Adapter {
 		return ranklist;
 	}
 
-	@Override
-	public void run() {
-		results.AddRankList(source, query(queryTerm));
-	}
 
 }

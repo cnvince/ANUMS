@@ -1,40 +1,22 @@
 package com.adapters;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+
+import org.w3c.dom.Document;
 
 import com.datatype.ServerSource;
+import com.parser.ParserFactory;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
-
+import com.util.StringFormat;
 
 public class AdapterFactory {
 
-	private ContactAdapter contactAdapter;
-	private LibraryCatalogAdapter libAdapter;
-	private StudyAtAdapter studyatAdapter;
-	private WebAdapter webadapter;
-	private YouTubeAdapter youtubeAdapter;
-	private MapAdapter mapAdapter;
-	private ResearcherAdapter resAdapter;
-	private ResearcherAdapter res_pubAdapter;
-	private DspaceAdapter dspaceAdapter;
-	public ResultTable results=new ResultTable();
-	public HashMap<Integer, Server> ServerTable=new HashMap<Integer,Server>();
-	public ResearcherAdapter getResAdapter() {
-		return resAdapter;
-	}
+	public ResultTable results = new ResultTable();
+	public HashMap<Integer, Server> ServerTable = new HashMap<Integer, Server>();
 
-	public void setResAdapter(ResearcherAdapter resAdapter) {
-		this.resAdapter = resAdapter;
-	}
-
-	public ResearcherAdapter getRes_pubAdapter() {
-		return res_pubAdapter;
-	}
-
-	public void setRes_pubAdapter(ResearcherAdapter res_pubAdapter) {
-		this.res_pubAdapter = res_pubAdapter;
-	}
 
 	public ResearcherAdapter getRes_proAdapter() {
 		return res_proAdapter;
@@ -45,105 +27,68 @@ public class AdapterFactory {
 	}
 
 	private ResearcherAdapter res_proAdapter;
-
-	public ContactAdapter getContactAdapter() {
-		return contactAdapter;
-	}
-
-	public void setContactAdapter(ContactAdapter contactAdapter) {
-		this.contactAdapter = contactAdapter;
-	}
-
-	public LibraryCatalogAdapter getLibAdapter() {
-		return libAdapter;
-	}
-
-	public void setLibAdapter(LibraryCatalogAdapter libAdapter) {
-		this.libAdapter = libAdapter;
-	}
-
-	public StudyAtAdapter getStudyatAdapter() {
-		return studyatAdapter;
-	}
-
-	public void setStudyatAdapter(StudyAtAdapter studyatAdapter) {
-		this.studyatAdapter = studyatAdapter;
-	}
-
-	public WebAdapter getWebadapter() {
-		return webadapter;
-	}
-
-	public void setWebadapter(WebAdapter webadapter) {
-		this.webadapter = webadapter;
-	}
-
-	public YouTubeAdapter getYoutubeAdapter() {
-		return youtubeAdapter;
-	}
-
-	public void setYoutubeAdapter(YouTubeAdapter youtubeAdapter) {
-		this.youtubeAdapter = youtubeAdapter;
-	}
-
-	public MapAdapter getMapAdapter() {
-		return mapAdapter;
-	}
-
-	public void setMapAdapter(MapAdapter mapAdapter) {
-		this.mapAdapter = mapAdapter;
-	}
-
-	public DspaceAdapter getDspaceAdapter() {
-		return dspaceAdapter;
-	}
-
-	public void setDspaceAdapter(DspaceAdapter dspaceAdapter) {
-		this.dspaceAdapter = dspaceAdapter;
-	}
-
 	public AdapterFactory() {
 		// TODO Auto-generated constructor stub
 	}
-
 	// initial instances of adapters
 	public void allocateAdapters(String query) {
-		contactAdapter = new ContactAdapter(query,results,ServerTable);
-		libAdapter = new LibraryCatalogAdapter(query,results,ServerTable);
-		studyatAdapter = new StudyAtAdapter(query,results,ServerTable);
-		webadapter = new WebAdapter(query,results,ServerTable);
-		youtubeAdapter = new YouTubeAdapter(query,results,ServerTable);
-		mapAdapter = new MapAdapter(query,results,ServerTable);
-		resAdapter = new ResearcherAdapter(ServerSource.RESEARCHERS, query,results,ServerTable);
-		res_pubAdapter = new ResearcherAdapter(ServerSource.RES_PUBLICATIONS,
-				query,results,ServerTable);
-		res_proAdapter = new ResearcherAdapter(ServerSource.RES_PROJECTS, query,results,ServerTable);
-//		dspaceAdapter = new DspaceAdapter(query);
-		contactAdapter.t.start();
-		libAdapter.t.start();
-		studyatAdapter.t.start();
-		webadapter.t.start();
-		youtubeAdapter.t.start();
-		mapAdapter.t.start();
-		resAdapter.t.start();
-		res_pubAdapter.t.start();
-		res_proAdapter.t.start();
-//		dspaceAdapter.t.start();
-		 try {
-		 contactAdapter.t.join();
-		 libAdapter.t.join();
-		 studyatAdapter.t.join();
-		 webadapter.t.join();
-		 youtubeAdapter.t.join();
-		 mapAdapter.t.join();
-		 resAdapter.t.join();
-		 res_pubAdapter.t.join();
-		 res_proAdapter.t.join();
-//		 dspaceAdapter.t.join();
-		 } catch (InterruptedException e) {
-		 // TODO Auto-generated catch block
-		 e.printStackTrace();
-		 }
+		query = StringFormat.toURL(query);
+		ParserFactory parserFactory = new ParserFactory(query);
+		parserFactory.initialDocuments();
+		HashMap<Integer, Document> documents = parserFactory
+				.getDocumentCollection();
+		CountDownLatch countDownLatch = new CountDownLatch(documents.size());
+		for (Map.Entry<Integer, Document> entry : documents.entrySet()) {
+			int server = entry.getKey();
+			Document document=entry.getValue();
+			Thread t=null;
+			switch (server) {
+			case ServerSource.CONTACT:
+				t = new Thread(new ContactAdapter(countDownLatch,document, results, ServerTable,"http://www.anu.edu.au/dirs",server));
+				break;
+			case ServerSource.DSPACE:
+				t = new Thread(new DspaceAdapter(countDownLatch,document,results, ServerTable,"https://digitalcollections.anu.edu.au",server));
+				break;
+			case ServerSource.LIBRARY:
+				t = new Thread(new LibraryCatalogAdapter(countDownLatch,document, results,
+						ServerTable,"http://library.anu.edu.au",server));
+				break;
+			case ServerSource.MAP:
+				t = new Thread(new MapAdapter(countDownLatch,document, results, ServerTable,"http://campusmap.anu.edu.au",server));
+				break;
+			case ServerSource.RES_PROJECTS:
+				t = new Thread(new ResearcherAdapter(countDownLatch,document, results, ServerTable,"https://researchers.anu.edu.au",server));
+				break;
+			case ServerSource.RES_PUBLICATIONS:
+				t = new Thread(new ResearcherAdapter(countDownLatch,document, results, ServerTable,"https://researchers.anu.edu.au",server));
+				break;
+			case ServerSource.RESEARCHERS:
+				t = new Thread(new ResearcherAdapter(countDownLatch,document, results, ServerTable,"https://researchers.anu.edu.au",server));
+				break;
+			case ServerSource.STUDYAT:
+				t = new Thread(new StudyAtAdapter(countDownLatch,document, results, ServerTable,"http://studyat.anu.edu.au",server));
+				break;
+			case ServerSource.TWITTER:
+				t = new Thread(new TwitterAdapter(countDownLatch,document, results, ServerTable,"",server));
+				break;
+			case ServerSource.WEB:
+				t = new Thread(new WebAdapter(countDownLatch,document, results, ServerTable,"http://search.anu.edu.au/search/",server));
+				break;
+			case ServerSource.YOUTUBE:
+				t = new Thread(new YouTubeAdapter(countDownLatch,document, results, ServerTable,"http://www.youtube.com/",server));
+				break;
+			default:
+				break;
+			}
+			t.start();
+		}
+		try {
+			countDownLatch.await();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public ResultTable executeQuery(String query) {

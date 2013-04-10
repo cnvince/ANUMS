@@ -1,52 +1,35 @@
 package com.adapters;
 
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.datatype.ServerSource;
-import com.interfaces.Adapter;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.StudyAtResult;
-import com.util.Parser;
-import com.util.StringFormat;
 
-public class StudyAtAdapter implements Adapter {
+public class StudyAtAdapter extends Adapter {
 
-	Thread t;
-	public final int source = ServerSource.STUDYAT;
-	public String queryTerm = "";
-	public static String hostUrl = "http://studyat.anu.edu.au";
-	public String redirectUrl = "http://studyat.anu.edu.au/search?search_terms=";
-	public Document document;
-	public XPath xpath;
-	public ResultTable results;
-	public HashMap<Integer,Server> sTable=new HashMap<Integer,Server>();
-	public StudyAtAdapter(String query, ResultTable results,HashMap<Integer,Server> serverTable) {
+
+	public StudyAtAdapter(CountDownLatch countDownLatch, Document document,
+			ResultTable results, HashMap<Integer, Server> serverTable,
+			String hostUrl, int source) {
+		super(countDownLatch, document, results, serverTable, hostUrl, source);
 		// TODO Auto-generated constructor stub
-		queryTerm = StringFormat.toURL(query);
-		redirectUrl = redirectUrl + queryTerm;
-		this.results=results;
-		this.sTable=serverTable;
-		document = Parser.parse(redirectUrl);
-		xpath = XPathFactory.newInstance().newXPath();
-		t = new Thread(this, "StudyAt Adapter");
 	}
 
 	@Override
-	public RankList query(String query) {
+	public RankList query() {
 		if (document == null)
 			return null;
 		
@@ -114,11 +97,6 @@ public class StudyAtAdapter implements Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	}
-
-	@Override
-	public void run() {
-		results.AddRankList(source, query(queryTerm));
 	}
 
 }
