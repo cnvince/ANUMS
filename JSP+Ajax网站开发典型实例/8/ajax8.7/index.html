@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var type="asc";
+function go(value)
+{
+		xmlhttp=createXMLHttpRequest();//调用创建XMLHttpRequest对象的方法
+		xmlhttp.onreadystatechange=callback;//设置回调函数
+		xmlhttp.open("post","index.jsp");//向服务器端发送请求
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+			var srcID=event.srcElement.id;
+			if(srcID=="t1")
+			{
+				document.getElementById("t2img2").style.display="none";
+				document.getElementById("t1img1").style.display="block";
+				if(type=="asc")
+				{
+					document.getElementById("t1img1").src="img/up.bmp";
+					type="desc";
+				}
+				else
+				{
+					document.getElementById("t1img1").src="img/down.bmp";
+					type="asc";
+				}
+			}
+			if(srcID=="t2")
+			{
+				document.getElementById("t1img1").style.display="none";
+				document.getElementById("t2img2").style.display="block";
+				if(type=="asc")
+				{
+					document.getElementById("t2img2").src="img/up.bmp";
+					type="desc";
+				}
+				else
+				{
+					document.getElementById("t2img2").src="img/down.bmp";
+					type="asc";
+				}
+			}
+	    xmlhttp.send("colname="+value+"&type="+type);	//设置发送参数		
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			var newvalue="<table width='100%' border='1'>";
+			var tempvalue;
+			var value=xmlhttp.responseText; //获得从服务器端返回的数据
+			value=value.substring(0,value.length-1).split(";");
+			for(var j=0;j<value.length;j++)
+			{
+				newvalue=newvalue.concat("<tr>");
+				tempvalue=value[j].split(",");
+				for(var k=0;k<tempvalue.length;k++)
+				{
+					newvalue=newvalue.concat("<td align='center' width='100'>");
+					newvalue=newvalue.concat(tempvalue[k]);
+					newvalue=newvalue.concat("</td>");
+				}
+				newvalue=newvalue.concat("</tr>");
+			}
+			newvalue=newvalue.concat("</table>");
+			document.getElementById("t").innerHTML=newvalue;
+			document.getElementById("t").style.display="block";	
+		}
+	}
+}
+function first()
+{
+	document.getElementById("t2").click();
+}
+</script>
+</head>
+<body background="img/bg.gif" onload="first()">
+<center><h2>信息排序</h2></center>
+<table  border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr bgcolor="#ECE9D8">
+    <td width="100"><center>姓名
+    </center></td>
+    <td width="55" align="center" id="t1" style="cursor:hand" onClick="go('age')">
+      &nbsp;&nbsp;年龄</td><td width="55" align="left" ><img src="img/down.bmp" name="t1img1" border="0" id="t1img1" style="display:none"></td>
+    <td width="55" align="center" id="t2" style="cursor:hand" onClick="go('chengji')">
+      &nbsp;&nbsp;成绩</td><td width="55" align="left" ><img src="img/down.bmp" name="t2img2" border="0" id="t2img2" style="display:none"></td>
+  </tr>
+</table>
+<center>
+<div id="t" style="background-color:#CCCC99; width:320; display:none"></div>
+</center>
+</body>
+</html>

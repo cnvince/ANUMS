@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script>
+<script language="javascript">
+var xmlhttp;
+var newtop;
+var newleft;	
+function dis(p)
+{
+	newtop=event.clientY;       //获得当前鼠标的纵坐标
+	newleft=event.clientX+10;   //获得当前鼠标的横坐标
+	xmlhttp=createXMLHttpRequest();     //调用创建XMLHttpRequest对象的方法
+	xmlhttp.onreadystatechange=callback;//设置回调函数
+	xmlhttp.open("post","index.jsp");   //向服务器端发送请求
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.send("name="+p);  //设置发送参数
+}	
+function hid()	
+{
+	document.getElementById("Layer1").innerHTML="";
+	document.getElementById("Layer1").style.display="none";
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			var info=xmlhttp.responseText;
+			document.getElementById("Layer1").innerHTML=info;    //设置层的显示内容
+			document.getElementById("Layer1").style.top=newtop;  //设置层的左边距
+			document.getElementById("Layer1").style.left=newleft;//设置层的上边距
+			document.getElementById("Layer1").style.display="block";		
+		}
+	}
+}
+</script>
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:258px;
+	top:188px;
+	width:200px;
+	height:110px;
+	z-index:3;
+	background-color:#FFFFDF;
+	display:none;
+}
+-->
+  </style>
+  </head>
+  <body background="bg.gif">
+  <div id="Layer1"></div>
+  <center><h2>创建工具提示</h2></center>
+<table width="47%" border="1" align="center">
+  <tr>
+    <td width="34%"><center>
+    商品名称
+    </center>    </td>
+    <td width="44%"><center>
+	商品价格    
+    </center>    </td>
+    <td width="22%"><center>
+	详细信息    
+    </center>    </td>
+  </tr>
+  <tr>
+    <td><center>
+    联想天开台式电脑
+    </center>    </td>
+    <td><center>
+      4999
+    </center>    </td>
+    <td><center><a  onMouseOver="dis('联想天开台式电脑')" onMouseOut="hid()" style="cursor:hand">显示</a>
+    </center>    </td>
+  </tr>
+    <tr>
+    <td><center>
+      联想旭日笔记本电脑
+    </center>    </td>
+    <td><center>
+      6999
+    </center>    </td>
+    <td><center><a  onMouseOver="dis('联想旭日笔记本电脑')" onMouseOut="hid()" style="cursor:hand">显示</a>
+    </center>    </td>
+  </tr>
+    <tr>
+    <td><center>
+      TCL锐翔台式电脑
+    </center>    </td>
+    <td><center>
+      5999
+    </center>    </td>
+    <td><center><a  onMouseOver="dis('TCL锐翔台式电脑')" onMouseOut="hid()" style="cursor:hand">显示</a>
+    </center>    </td>
+  </tr>
+</table>
+  </body>
+</html>

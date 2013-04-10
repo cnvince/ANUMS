@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="JavaScript" src="Dojo-lib/dojo/dojo.js" ></script>
+<script language="JavaScript">		
+	function go() {
+		var address = dojo.byId("address").value;
+		if (address == "") {
+			alert("RSS地址不能为空！");
+			return false;
+		} else {
+			dojo.xhrGet( {
+				url :address,     //设置接受客户端请求的服务器端页面
+				handleAs :"xml",  //设置数据格式
+				load :callBack,  //异步调用成功后触发的方法
+				error :callError,//出错时触发的方法
+				content : {}
+			//设置提交请求时的参数
+					});
+		}
+	}
+	function callBack(data, ioArgs) //参数data是从服务器端返回的数据
+	{
+		document.getElementById("content").innerHTML="";
+		var title = null;
+		var content = null;
+		var item = null;
+		var url = null;
+		var items = data.getElementsByTagName("item");
+		for ( var i = 0; i < items.length; i++) {
+			item = items[i];
+			title = item.getElementsByTagName("title")[0].firstChild.nodeValue;
+			content = item.getElementsByTagName("description")[0].firstChild.nodeValue;
+			url = item.getElementsByTagName("link")[0].firstChild.nodeValue;
+			addListRow(title, content, url);
+		}
+	}
+	function callError(data, ioArgs) {
+		alert('Error when retrieving data from the server!');
+	}
+	function addListRow(title, content, url) {
+		var row = document.createElement("ul");
+		var cell = createCellWithText(title, url);
+		var contentcell = createCellWithContent(content);
+		row.appendChild(cell);
+		row.appendChild(contentcell);
+		document.getElementById("content").style.textAlign="left";
+		document.getElementById("content").appendChild(row);
+	}
+	//创建标题节点
+	function createCellWithText(text, url) {
+		var cell = document.createElement("li");
+		var textNode = document.createTextNode(text);
+		var newAnchor = document.createElement("a");
+		newAnchor.href = url;
+		newAnchor.target = "_blank";
+		newAnchor.title = "单击查看详细内容";
+		newAnchor.appendChild(textNode);
+		cell.appendChild(newAnchor);
+		return cell;
+	}
+	//创建详细内容节点
+	function createCellWithContent(content) {
+		var cell = document.createElement("text")
+		var div = document.createElement("div");
+		var span = document.createElement("span");
+		span.innerHTML = content;
+		div.appendChild(span);
+		cell.appendChild(div);
+		return cell;
+	}
+</script>
+</head>
+<body background="bg.gif">
+<center><h2>Dojo实现RSS阅读</h2></center>
+<center>
+RSS地址：<input type="text" id="address" size="50" value="http://rss.sina.com.cn/news/marquee/ddt.xml">&nbsp;&nbsp;<input type="button" value="查看" id="btn" onclick="go()">
+<br /><div id="content"></div></center>
+</body>
+</html>

@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+
+\bibitem{Hiemstra2010}
+Djoerd Hiemstra.
+\newblock {Learning to Merge Search Results for Efficient Distributed
+  Information Retrieval}.
+\newblock pages 55--62, 2010.
+
+\bibitem{Jorg2007}
+H~Jorg, Eds Proceedings, Second International, Chengye Lu, Yue Xu, and Shlomo
+  Geva.
+\newblock {QUT Digital Repository : This is the author-version of the work .
+  Conference proceedings published , by http://www.springer.de/comp/lncs/
+  Lecture Notes in Computer Science Collection Profiling for Collection Fusion
+  in Distributed Information Retrieval Sys}.
+\newblock pages 279--288, 2007.
+
+\bibitem{Lin2003}
+Wen-cheng Lin and Hsin-hsi Chen.
+\newblock {Merging Mechanisms in Multilingual Information Retrieval}.
+\newblock pages 175--186, 2003.
+
+\bibitem{Lin2004}
+Wen-cheng Lin and Hsin-hsi Chen.
+\newblock {Merging Multilingual Information Retrieval Results Based on
+  Prediction of Retrieval Effectiveness}.
+\newblock (June):2--4, 2004.
+
+\bibitem{Rasolofo2001}
+Yves Rasolofo, F~Abbaci, and J~Savoy.
+\newblock {Approaches to collection selection and results merging for
+  distributed information retrieval}.
+\newblock {\em \ldots international conference on Information \ldots}, 2001.
+
+\bibitem{Selberg1999}
+EW~Selberg.
+\newblock {Towards comprehensive web search}.
+\newblock 1999.
+
+\bibitem{Voorhees1995}
+EM~Voorhees, NK~Gupta, and B~Johnson-Laird.
+\newblock {Learning Collection Fusion Strategies}.
+\newblock {\em Proceedings of the 18th \ldots}, pages 172--179, 1995.
+
+\end{thebibliography}

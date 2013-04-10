@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script language="javascript">
+var xmlHttp=false;
+var tid;
+function createXMLHttpRequest() 
+{
+	if (window.ActiveXObject)                          //在IE浏览器中创建XMLHttpRequest对象
+	{
+		try{
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+		}
+		catch(e){
+			try{
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+			}
+			catch(ee){
+				xmlHttp=false;
+			}
+		}
+    }
+	else if (window.XMLHttpRequest)                 //在非IE浏览器中创建XMLHttpRequest对象
+	{
+		try{
+			xmlHttp = new XMLHttpRequest();                      
+		}
+		catch(e){
+			xmlHttp=false;
+		}
+    }
+} 
+function check()
+{
+	if(document.getElementById("as").checked==true)
+		tid=window.setTimeout("run()",5000);
+	else
+	{
+		window.clearTimeout(tid);
+		document.getElementById("Layer1").innerHTML="<font color='red'>已经取消自动保存!</font>";
+	}
+}
+function run()
+{
+	createXMLHttpRequest();
+	xmlHttp.onreadystatechange=callback;
+	xmlHttp.open("post","index.jsp");
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlHttp.send("content="+document.getElementById("content").value);   		
+}
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+		{			
+			var content=xmlHttp.responseText;
+		    document.getElementById("Layer1").style.display="block";
+			document.getElementById("Layer1").innerHTML="<font color='red'>"+content+"</font>";		
+			check();			
+		}
+	}
+}
+</script>
+<style type="text/css">
+#Layer1 {
+	position:relative;
+	left:10px;
+	top:10px;
+	width:374px;
+	height:31px;
+	z-index:10;
+	border-style:inset;
+	display:none;
+}
+</style>
+</head>
+  <body background="bg.gif">
+  <center><h2>实现自动保存草稿</h2></center>
+<center>
+<textarea name="content" cols="47" rows="10"></textarea>
+<br><br>
+<input id="as" type="checkbox" value="" onClick="check()">是否自动保存
+  <div id="Layer1"></div>
+</center>
+</body>
+</html>

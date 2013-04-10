@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="JavaScript" src="mootools-release-1[2].11.js"></script><!-- 引入MooTools框架 -->
+<script language="JavaScript">
+function init()
+{
+	$('content').onkeydown = function(event)   //实现文本框触发onkeydown事件时调用的函数
+	{
+		var e = new Event(event); 	 //创建一个Event类
+		$("msg").innerHTML="您按了&nbsp;<font color='red'>"+e.key+"</font>&nbsp;键";
+	};
+	$('content').addEvent('click',function(){$("msg").innerHTML="文本框被点击了"});
+}
+window.addEvent('load', function(){init()});  //为onload事件绑定一个方法
+</script>
+</head>
+<body background="bg.gif">
+<center><h2>MoolTools框架实现事件处理</h2></center>
+<center><input type="text" id="content"><br><br><div id="msg"></div></center>
+</body>
+</html>

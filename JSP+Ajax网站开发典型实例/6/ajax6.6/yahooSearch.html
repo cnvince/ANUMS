@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var xmlHttp;
+function createXMLHttpRequest()      //创建XMLHttpRequest对象
+{
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } 
+    else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+function doSearch() 
+{
+    var url = "YahooSearchGateway?" + createQueryString() + "&ts=" + new Date().getTime(); //设置请求地址
+    createXMLHttpRequest();
+    xmlHttp.onreadystatechange = handleStateChange;   //设置回跳函数
+    xmlHttp.open("GET", url, true);   //发送请求
+    xmlHttp.send(null);
+}
+function createQueryString()    //合成请求参数字符串
+{
+    var searchString = document.getElementById("searchString").value;
+    searchString = escape(searchString);
+    var maxResultsCount = document.getElementById("maxResultCount").value;
+    var queryString = "query=" + searchString + "&results=" + maxResultsCount;
+    return queryString;
+}
+function handleStateChange() 
+{
+    if(xmlHttp.readyState == 4) {
+        if(xmlHttp.status == 200) {
+            parseSearchResults();
+        }
+        else {
+            alert("Error accessing Yahoo! search");
+        }
+    }
+}
+function parseSearchResults()   //显示获得的信息
+{
+    var resultsDiv = document.getElementById("results");
+    while(resultsDiv.childNodes.length > 0) {
+        resultsDiv.removeChild(resultsDiv.childNodes[0]);
+    }  
+    var allResults = xmlHttp.responseXML.getElementsByTagName("Result");
+    var result = null;
+    for(var i = 0; i < allResults.length; i++) {
+        result = allResults[i];
+        parseResult(result);
+    }
+}
+function parseResult(result)   //解析获得的XML数据
+{
+    var resultDiv = document.createElement("div");    
+    var title = document.createElement("h3");
+    title.appendChild(document.createTextNode(getChildElementText(result, "Title")));
+    resultDiv.appendChild(title);   
+    var summary = document.createTextNode(getChildElementText(result, "Summary"));
+    resultDiv.appendChild(summary);   
+    resultDiv.appendChild(document.createElement("br"));
+    var clickHere = document.createElement("a");
+    clickHere.setAttribute("href", getChildElementText(result, "ClickUrl"));
+    clickHere.appendChild(document.createTextNode(getChildElementText(result, "Url")));
+    resultDiv.appendChild(clickHere);   
+    document.getElementById("results").appendChild(resultDiv);
+}
+function getChildElementText(parentNode, childTagName) 
+{
+    var childTag = parentNode.getElementsByTagName(childTagName);
+    return childTag[0].firstChild.nodeValue;
+}
+</script>
+</head>
+
+<body background="bg.gif">
+  <h1 align="center">实现访问WEB服务</h1>
+    <center>
+    请输入搜索关键字： 
+      <input type="text" id="searchString"/>
+    请选择显示搜索结果的数量:
+    <select id="maxResultCount">
+      <option value="1">1</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+    <input type="button" value="搜索" onClick="doSearch();"/>
+    </center>
+  <h2 align="center">搜索结果</h2>
+  <div id="results"/>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="dwr/interface/ud.js"></script> 
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script language="javascript">
+function go()
+{
+	if(dwr.util.getValue("name")=="")
+	{
+		alert("登录名称必须填写！");
+		return false;
+	}
+	else if(dwr.util.getValue("pwd1")=="")
+	{
+		alert("登录密码必须填写！");
+		return false;
+	}
+	else if(dwr.util.getValue("pwd2")=="")
+	{
+		alert("登录密码必须输入2次！");
+		return false;
+	}	
+	else if(dwr.util.getValue("pwd1")!=dwr.util.getValue("pwd2"))
+	{
+		alert("2次输入的密码不一致！");
+		return false;
+	}
+	else
+		ud.addUser(dwr.util.getValue("name"),dwr.util.getValue("realname"),dwr.util.getValue("pwd1"),dwr.util.getValue("email"),dwr.util.getValue("phone"),dwr.util.getValue("address"),showJ);
+}
+function showJ(v)
+{
+		if(v==0)
+			alert("注册失败，登录名称已经存在");
+		if(v==1)
+			alert("注册成功");
+}
+</script>
+</head>
+<body background="bg.gif">
+<center><h2>DWR框架实现用户注册</h2></center>
+<table width="63%" height="202" border="0" align="center">
+  <tr>
+    <td><center>登录名称：<input type="text" id="name"></center></td></tr>
+  <tr><td><center>登录密码：<input type="password" id="pwd1"></center></td>
+  </tr>
+  <tr><td><center>确认密码：<input type="password" id="pwd2"></center></td>
+  </tr>
+  <tr><td><center>真实姓名：<input type="text" id="realname"></center></td>
+  </tr>
+  <tr><td><center>电子邮件：<input type="text" id="email"></center></td>
+  </tr>
+  <tr><td><center>联系电话：<input type="text" id="phone"></center></td>
+  </tr>
+  <tr><td><center>所在地址：<input type="text" id="address"></center></td>
+  </tr>
+  <tr><td><center><input type="button" name="Submit" value="注册" onClick="go()"></center></td>
+  </tr>
+</table>
+</body>
+</html>

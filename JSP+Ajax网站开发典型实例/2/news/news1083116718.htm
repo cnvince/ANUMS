@@ -1,0 +1,19 @@
+<title>ГЬађДњТы</title>
+<%
+  String title=request.getParameter("title");
+  title=new String(title.getBytes("ISO-8859-1"));
+  String content=request.getParameter("content");
+  content=new String(content.getBytes("ISO-8859-1"));
+  java.util.Date date=new java.util.Date();
+  String str="news"+date.getYear()+date.getMonth()+date.getDay()+
+  date.getHours()+date.getMinutes()+date.getSeconds();
+  File file=new File("C:\\Tomcat\\webapps\\JSP_DB\\news",str+".htm");
+  try{
+    createFile(title,content,file);
+    String fileName=file.getName();
+    insertSQL(title,fileName);
+    response.sendRedirect("news/"+fileName);
+  }catch(Exception e){
+    out.print(e.toString());  
+  }
+%>

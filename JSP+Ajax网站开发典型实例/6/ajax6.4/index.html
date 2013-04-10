@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var counter=1;
+var xmlhttp;
+function beg()
+{
+	counter=1;
+	go();
+}
+function go()
+{
+    xmlhttp=createXMLHttpRequest();       //调用创建XMLHttpRequest对象的方法
+	xmlhttp.onreadystatechange=callback;  //设置回调函数
+	xmlhttp.open("post","index.jsp");     //向服务器端发送请求
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.send("count="+counter);	      //设置发送参数
+}		
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			document.getElementById("btn").disabled=true;
+			var percent=xmlhttp.responseText;
+			document.getElementById("Layer1").style.display="block";
+			document.getElementById("Layer2").style.width=eval(percent*6);
+			document.getElementById("Layer2").innerHTML="<font color='red'>"+percent+"%</font>";
+			counter++;
+			if(counter<9)
+				setTimeout("go()",2000);   //设置定时器
+			if(percent==100)
+				document.getElementById("btn").disabled=false;
+		}
+	}
+}
+</script>  
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	width:600px;
+	height:30px;
+	z-index:1;
+	left: 100px;
+	top: 100px;
+	border-color: #FF0000;
+	border:thick;
+	display:block;
+	background-color: #FFFFFF;
+	display:none;
+}
+#Layer2 {
+	position:absolute;
+	width:0px;
+	height:30px;
+	z-index:2;
+	left: 100px;
+	top: 100px;
+	background-color: #3399FF;
+	display:block;
+	vertical-align:middle;
+}
+
+-->
+  </style>
+  </head>
+  <body background="bg.gif">
+  <center><h2>实现进度条</h2><input type="button" value="运行" onClick="beg()" id="btn"></center>
+  <br>
+  <div id="Layer1">&nbsp;</div>
+  <div id="Layer2" align="right"></div>
+  </body>
+</html>

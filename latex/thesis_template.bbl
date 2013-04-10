@@ -1,0 +1,126 @@
+\begin{thebibliography}{10}
+
+\bibitem{Aslam2001}
+Javed~a. Aslam and Mark Montague.
+\newblock {Models for metasearch}.
+\newblock {\em Proceedings of the 24th annual international ACM SIGIR
+  conference on Research and development in information retrieval - SIGIR '01},
+  pages 276--284, 2001.
+
+\bibitem{Bergman2001}
+MK~Bergman.
+\newblock {The deep web: Surfacing hidden value}.
+\newblock {\em Bright Planet}, pages 1--17, 2001.
+
+\bibitem{Callan1995}
+James~P Callan, Zhihong Lu, and W~Bruce Croft.
+\newblock {Searching Distributed Collections With Inference Networks}.
+\newblock {\em ACM SIGIR-95}, pages 21--28, 1995.
+
+\bibitem{Callan2000}
+Jamie Callan.
+\newblock {Distributed information retrieval}.
+\newblock In {\em Advances in Information Retrieval}, pages 127--150. 2000.
+
+\bibitem{Callan1992}
+JP~Callan, WB~Croft, and SM~Harding.
+\newblock {The INQUERY retrieval system}.
+\newblock {\em Database and Expert Systems \ldots}, 1992.
+
+\bibitem{Danzig1991}
+Peter~B Danzig, Jongsuk Ahn, John Noll, and Katia Obraczka.
+\newblock {Distributed Indexing : A Scalable Mechanism for Distributed
+  Information Retrieval 1 Introduction and Motivation}.
+\newblock pages 220--229, 1991.
+
+\bibitem{Dwork2001}
+Cynthia Dwork, Ravi Kumar, Moni Naor, and D.~Sivakumar.
+\newblock {Rank aggregation methods for the Web}.
+\newblock {\em Proceedings of the tenth international conference on World Wide
+  Web - WWW '01}, pages 613--622, 2001.
+
+\bibitem{Fox1994a}
+Edward~A Fox and Joseph~A Shaw.
+\newblock {Combination of Multiple Searches}.
+\newblock In D~K Harman, editor, {\em The 2nd Text Retrieval Conference TREC2
+  NIST SP 500215}, volume 500-215 of {\em NIST Special Publication}, pages
+  243--252. NIST, National Institute for Standards and Technology, NIST Special
+  Publication 500215, 1994.
+
+\bibitem{Jacso2004}
+P\'{e}ter Jacs\'{o}.
+\newblock {Thoughts about federated searching}.
+\newblock {\em Information Today}, 21(October 2004):7--9, 2004.
+
+\bibitem{Lee1997}
+Joon~Ho Lee.
+\newblock {Analyses of multiple evidence combination}.
+\newblock {\em Proceedings of the 20th annual international ACM SIGIR
+  conference on Research and development in information retrieval SIGIR 97},
+  31(SI):267--276, 1997.
+
+\bibitem{Rasolofo2001}
+Yves Rasolofo, F~Abbaci, and J~Savoy.
+\newblock {Approaches to collection selection and results merging for
+  distributed information retrieval}.
+\newblock {\em \ldots international conference on Information \ldots}, 2001.
+
+\bibitem{Rasolofo2003}
+Yves Rasolofo, David Hawking, and Jacques Savoy.
+\newblock {Result merging strategies for a current news metasearcher}.
+\newblock {\em Information Processing \& Management}, 39(4):581--609, July
+  2003.
+
+\bibitem{Renda2003}
+M~Elena Renda, Via~G Moruzzi, and Umberto Straccia.
+\newblock {Web Metasearch : Rank vs . Score Based Rank Aggregation Methods
+  Categories and Subject Descriptors}.
+\newblock 2003.
+
+\bibitem{Robertson1994}
+SE~Robertson and S~Walker.
+\newblock {Okapi at TREC-3}.
+\newblock {\em Proceedings of the Third Text REtrieval Conference (TREC 1994).
+  Gaithersburg, USA, November 1994.}, 1994.
+
+\bibitem{Shokouhi2007}
+Milad Shokouhi.
+\newblock {Central-Rank-Based Collection Selection in Uncooperative Distributed
+  Information Retrieval}.
+\newblock {\em Advances in Information Retrieval}, pages 160--172, 2007.
+
+\bibitem{Si2003}
+Luo Si and Jamie Callan.
+\newblock {Relevant document distribution estimation method for resource
+  selection}.
+\newblock {\em Proceedings of the 26th annual international ACM SIGIR
+  conference on Research and development in informaion retrieval - SIGIR '03},
+  page 298, 2003.
+
+\bibitem{Thomas2006}
+Paul Thomas and David Hawking.
+\newblock {Evaluation by comparing result sets in context}.
+\newblock {\em Proceedings of the 15th ACM international conference on
+  Information and knowledge management - CIKM '06}, page~94, 2006.
+
+\bibitem{Thomas2009}
+Paul Thomas and M~Shokouhi.
+\newblock {SUSHI: scoring scaled samples for server selection}.
+\newblock {\em Proceedings of the 32nd international ACM \ldots}, 2009.
+
+\bibitem{Vogt1998}
+Christopher~C Vogt and Garrison~W Cottrell.
+\newblock {Fusion Via a Linear Combination of Scores}.
+\newblock 27:1--27, 1998.
+
+\bibitem{Voorhees2005}
+E~Voorhees and DK~Harman.
+\newblock {\em {TREC: Experiment and evaluation in information retrieval}}.
+\newblock 2005.
+
+\bibitem{Voorhees1995}
+EM~Voorhees, NK~Gupta, and B~Johnson-Laird.
+\newblock {Learning Collection Fusion Strategies}.
+\newblock {\em Proceedings of the 18th \ldots}, pages 172--179, 1995.
+
+\end{thebibliography}

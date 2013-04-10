@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+function go()
+{
+	xmlhttp=createXMLHttpRequest();      //调用创建XMLHttpRequest对象的方法     
+	xmlhttp.onreadystatechange=callback;//设置回调函数
+	xmlhttp.open("post","index.jsp");  //向服务器端发送请求
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.send("startnum="+document.getElementById("startnum").value);	//设置发送参数
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			document.getElementById("content").value="";
+			var value=xmlhttp.responseText;      //获得服务器端返回的信息
+			document.getElementById("content").value=value;
+			document.getElementById("content").style.display="block";
+		}
+	}
+}
+</script>
+  </head>
+  <body background="bg.gif">
+  <center><h2>实现自动完成</h2></center>
+<table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td width="41%"><div align="right">请输入数字：</div></td>
+    <td width="59%"><input type="text" id="startnum" onKeyUp="go()" size="21">
+    (大于0小于1000)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><textarea name="textarea" cols="18"  rows="30" id="content" style="display:none" readonly></textarea></td>
+  </tr>
+</table>
+  </body>
+</html>

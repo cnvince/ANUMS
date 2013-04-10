@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis_template.aux
+A level-1 auxiliary file: thanks.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: chapter1.aux
+A level-1 auxiliary file: chapter2.aux
+The style file: plain.bst
+Database file #1: Reference.bib
+I was expecting a `,' or a `}'---line 18 of file Reference.bib
+ : @article{DeKretser 
+ :                    1998,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in Callan2000
+Warning--empty journal in Danzig1991
+Warning--empty journal in Renda2003
+Warning--empty journal in Vogt1998
+Warning--empty publisher in Voorhees2005
+You've used 21 entries,
+            2118 wiz_defined-function locations,
+            647 strings with 7827 characters,
+and the built_in function-call counts, 7338 in all, are:
+= -- 754
+> -- 297
+< -- 12
++ -- 116
+- -- 95
+* -- 449
+:= -- 1176
+add.period$ -- 65
+call.type$ -- 21
+change.case$ -- 109
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 322
+empty$ -- 553
+format.name$ -- 95
+if$ -- 1583
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 22
+newline$ -- 108
+num.names$ -- 44
+pop$ -- 120
+preamble$ -- 1
+purify$ -- 89
+quote$ -- 0
+skip$ -- 263
+stack$ -- 0
+substring$ -- 461
+swap$ -- 108
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 82
+warning$ -- 5
+while$ -- 80
+width$ -- 23
+write$ -- 226
+(There was 1 error message)

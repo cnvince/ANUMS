@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script>   <!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript" >
+function check()
+{
+	if(isNaN(document.getElementById("firstnum").value)||isNaN(document.getElementById("secondnum").value))
+	{
+		alert("必须输入数字");
+		return false;
+	}
+	else if(document.getElementById("op").options.selectedIndex==3&&document.getElementById("secondnum").value.substring(0,1)==0)
+	{
+		alert("除数不能是0");
+		return false;
+	}
+	else
+	{
+		createXMLHttpRequest();   //调用创建XMLHttpRequest对象的方法
+		xmlHttp.onreadystatechange=callback;   //设置回调函数
+		xmlHttp.open("post","index.jsp");      //向服务器端发送请求
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+		//设置发送参数
+        xmlHttp.send("firstnum="+document.getElementById("firstnum").value+"&fh="+document.getElementById("op").options[document.getElementById("op").selectedIndex].value+"&secondnum="+document.getElementById("secondnum").value);		
+	}
+}
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+		{
+			document.getElementById("jg").value=xmlHttp.responseText;
+		}
+	}
+}
+</script>   
+</head>
+<body background="bg.gif">
+<center><h2>实现Web页面局部动态更新</h2></center>
+<br>
+<table width="60%" align="center">
+<tr>
+<td><input type="text" name="firstnum" value="0.0"></td>
+<td><select name="op">
+<option value="#">加</option>
+<option value="-">减</option>
+<option value="*">乘</option>
+<option value="/">除</option>
+</select></td>
+<td><input type="text" name="secondnum" value="0.0"></td>
+<td><input type="button" value="计算" onclick="return check()"></td><td>
+<input type="text" name="jg" readonly="true" value="0.0"></td>
+</tr>
+</table>
+</body>
+</html>
+

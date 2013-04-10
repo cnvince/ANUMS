@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>     
+	<servlet-name>bfapp</servlet-name>     
+	<servlet-class>net.buffalo.web.servlet.ApplicationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>     
+	<servlet-name>bfapp</servlet-name>     
+	<url-pattern>/bfapp/*</url-pattern>
+	</servlet-mapping>
+</web-app>

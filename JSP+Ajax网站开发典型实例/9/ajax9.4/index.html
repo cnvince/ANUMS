@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="dwr/interface/callBack.js"></script>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script language="javascript">
+function go()
+{
+	if(dwr.util.getValue("name")=="")
+	{
+		alert("姓名必须填写！");
+		return false;
+	}
+	else
+		callBack.returnCall(dwr.util.getValue("name"),showJ);
+}
+function showJ(v)
+{
+	$("backname").innerHTML="<font color='red'>回复： "+v+"</font>";
+}
+</script>
+</head>
+<body background="bg.gif">
+<center><h2>DWR框架实现呼叫程序</h2></center>
+<center>
+呼叫人员姓名：<input id="name" type="text"><input name="" type="button" value="发送" onClick="go()">
+<br><br>
+<div id="backname"></div></center>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var type="asc";
+function go(value)
+{
+		xmlhttp=createXMLHttpRequest();         //调用创建XMLHttpRequest对象的方法
+		xmlhttp.onreadystatechange=callback;   //设置回调函数
+		xmlhttp.open("post","index.jsp");     //向服务器端发送请求
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+	    xmlhttp.send("chengjiOP="+document.getElementById("chengjiOP").value+"&chengji="+document.getElementById("chengji").value+"&colname="+value+"&type="+type);	//设置发送参数		
+			var srcID=event.srcElement.id;
+			if(srcID=="t1")
+			{
+				document.getElementById("t2img2").style.display="none";
+				document.getElementById("t1img1").style.display="block";
+				if(type=="asc")
+				{
+					document.getElementById("t1img1").src="img/up.bmp";
+					type="desc";
+				}
+				else
+				{
+					document.getElementById("t1img1").src="img/down.bmp";
+					type="asc";
+				}
+			}
+			if(srcID=="t2")
+			{
+				document.getElementById("t1img1").style.display="none";
+				document.getElementById("t2img2").style.display="block";
+				if(type=="asc")
+				{
+					document.getElementById("t2img2").src="img/up.bmp";
+					type="desc";
+				}
+				else
+				{
+					document.getElementById("t2img2").src="img/down.bmp";
+					type="asc";
+				}
+			}
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			var jsonObj=new Object();
+			jsonObj=eval("("+xmlhttp.responseText+")");   //获得从服务器端返回的数据
+			while(document.getElementById("stuinfo").rows.length>2)
+				document.getElementById("stuinfo").deleteRow();
+			for(var j=0;j<jsonObj.stu.length;j++)
+				addRow("center",jsonObj.stu[j].name,jsonObj.stu[j].age,jsonObj.stu[j].chengji);
+		}
+	}
+}
+function addRow(align,n1,n2,n4)
+{
+	var tt=document.getElementById("stuinfo");
+	var newRow=tt.insertRow();
+	for(var c=1;c<6;c++)
+	{
+		var newCell=newRow.insertCell();
+		newCell.align=align;
+		if(c==3||c==5)	
+			newCell.innerHTML="&nbsp;";
+		else
+			newCell.innerHTML=eval("n"+c);
+	}
+}
+function chx()
+{
+	document.getElementById("t2").click();
+}
+</script>
+</head>
+<body background="img/bg.gif">
+<center><h2>信息动态查询与排序</h2></center>
+<table  border="0" align="center" cellpadding="0" cellspacing="0" id="stuinfo">
+<tr><td colspan="5" align="center">
+查询条件：成绩<select id="chengjiOP">
+  <option value="&gt;=" selected>&gt;=</option>
+  <option value="&gt;">&gt;</option>
+  <option value="&lt;=">&lt;=</option>
+  <option value="&lt;">&lt;</option>
+</select>
+<input type="text" id="chengji" value="0" size="10">
+&nbsp;&nbsp;
+<input type="button" value="查询" onClick="chx()">
+</td></tr>
+  <tr bgcolor="#ECE9D8">
+    <td width="100"><center>姓名</center></td>
+    <td width="55" align="center" id="t1" style="cursor:hand" onClick="go('age')">
+      &nbsp;&nbsp;年龄</td><td width="55" align="left" >
+      <img src="img/down.bmp" name="t1img1" border="0" id="t1img1" style="display:none"></td>
+    <td width="55" align="center" id="t2" style="cursor:hand" onClick="go('chengji')">
+      &nbsp;&nbsp;成绩</td><td width="55" align="left" >
+      <img src="img/down.bmp" name="t2img2" border="0" id="t2img2" style="display:none"></td>
+  </tr>
+</table>
+<center>
+</center>
+</body>
+</html>

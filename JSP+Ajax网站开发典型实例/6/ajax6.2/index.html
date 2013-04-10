@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script>   <!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<title>读取响应首部</title>
+<script type="text/javascript">
+function go()
+{
+	createXMLHttpRequest();   //调用创建XMLHttpRequest对象的方法
+	xmlHttp.onreadystatechange=callback;   //设置回调函数
+	xmlHttp.open("post","index.jsp");      //向服务器端发送请求
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+	xmlHttp.send(null);	
+	function callback()
+	{
+		if(xmlHttp.readyState==4)
+		{
+			if(xmlHttp.status==200)
+			{
+				document.getElementById("content").innerHTML="服务器:"+xmlHttp.getResponseHeader("Server")+"<br>内容类型:"+xmlHttp.getResponseHeader("Content-Type")+"<br>内容长度:"+xmlHttp.getResponseHeader("Content-Length")+"<br>日期:"+xmlHttp.getResponseHeader("Date");
+			}
+		}		
+	}
+}	
+</script>
+</head>
+
+<body background="bg.gif">
+<center><h2>读取响应首部</h2></center>
+<br>
+<center><input type="button" value="读取" onclick="go()"></center>
+<br>
+<center><div id="content"></div></center>
+</body>
+</html>
+

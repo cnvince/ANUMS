@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script>   <!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+function go()
+{
+	createXMLHttpRequest();   //调用创建XMLHttpRequest对象的方法
+	xmlHttp.onreadystatechange=callback;   //设置回调函数
+	xmlHttp.open("post","index.jsp");      //向服务器端发送请求
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlHttp.send(null);		
+}
+function addRow(n1,n2,n3)
+{
+	var tt=document.getElementById("tableinfo");
+	var newRow=tt.insertRow();     //向表格中插入行
+	for(var c=1;c<=3;c++)
+	{
+		var newCell=newRow.insertCell();    //向行中插入单元格
+		newCell.align="center";
+		newCell.innerHTML=eval("n"+c);
+	}
+}
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+		{
+			var jsonObj = new Object();
+			jsonObj=eval("("+xmlHttp.responseText+")");
+			document.getElementById("dbinfo").innerHTML="数据库类型："+jsonObj.DBType+"&nbsp;&nbsp;&nbsp;数据库名称："+jsonObj.DBName;
+			while(document.getElementById("tableinfo").rows.length>0)
+					document.getElementById("tableinfo").deleteRow();				
+			for(var t=0;t<jsonObj.Tables.length;t++)
+			{
+				addRow("&nbsp;","表名："+jsonObj.Tables[t].TableName,"&nbsp;");
+				addRow("字段名","字段类型","字段大小");
+				for(var r=0;r<jsonObj.Tables[t].ColumnInfo.length;r++)
+				{
+					addRow(jsonObj.Tables[t].ColumnInfo[r].ColumnName,jsonObj.Tables[t].ColumnInfo[r].ColumnType,jsonObj.Tables[t].ColumnInfo[r].ColumnSize);
+				}
+				addRow("&nbsp;","&nbsp;","&nbsp;");
+			}			
+		}
+	}
+}
+</script>   
+</head>
+<body background="bg.gif">
+<center><h2>获取数据库信息</h2></center>
+<br>
+<center>
+<input type="button" value="获取" onclick="go()">
+<br><br>
+<div id="dbinfo"></div>
+<br>
+<table id="tableinfo" border="1">
+</table>
+</center>
+</body>
+</html>
+

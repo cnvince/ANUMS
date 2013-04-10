@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var menutype;
+function go(m)
+{
+	menutype=m;
+	xmlhttp=createXMLHttpRequest();//调用创建XMLHttpRequest对象的方法
+	xmlhttp.onreadystatechange=callback;//设置回调函数
+	xmlhttp.open("post","index.jsp");//向服务器端发送请求
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.send("obj="+menutype);	//设置发送参数	
+}		
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)    
+		{
+			value=xmlhttp.responseText;  //接受服务器端发送过来的信息
+			document.getElementById(menutype+"_submenu").innerHTML="";
+			document.getElementById(menutype+"_submenu").innerHTML=value;
+			if(document.getElementById(menutype+"_submenu").style.display=="none")
+			{
+				document.getElementById(menutype+"_submenu").style.display="block";
+				document.getElementById(menutype+"_bh").src="images/minus.gif";
+			}
+			else
+			{
+				document.getElementById(menutype+"_submenu").style.display="none";
+				document.getElementById(menutype+"_bh").src="images/plus.gif";		
+			}			
+		}
+	}
+}
+</script>
+</head>
+<body background="images/bg.gif">
+<center><h2>实现树状菜单</h2></center>
+<table border="0" align="center">
+<tr><td>
+<table border="0">
+<tr>
+<td style="cursor:hand" id="lx" onClick="go('lx')">
+<img src="images/blank.gif" border="0">
+<img src="images/plus.gif" border="0" id="lx_bh">
+<img src="images/folder.gif" border="0" id="lx_f">&nbsp;联想
+</td></tr>
+<tr>
+<td id="lx_submenu" style="display:none">&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<table border="0">
+<tr>
+<td style="cursor:hand" id="sx" onClick="go('sx')">
+<img src="images/blank.gif" border="0">
+<img src="images/plus.gif" border="0" id="sx_bh">
+<img src="images/folder.gif" border="0" id="sx_f">&nbsp;三星
+</td></tr>
+<tr>
+<td id="sx_submenu" style="display:none">&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<table border="0">
+<tr>
+<td style="cursor:hand" id="lx" onClick="go('dr')">
+<img src="images/blank.gif" border="0">
+<img src="images/plus.gif" border="0" id="dr_bh">
+<img src="images/folder.gif" border="0" id="dr_f">&nbsp;戴尔
+</td></tr>
+<tr>
+<td id="dr_submenu" style="display:none">&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+</table>
+  </body>
+</html>

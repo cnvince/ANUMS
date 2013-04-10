@@ -19,6 +19,7 @@ import util.StringFormat;
 
 import InterFaces.Adapter;
 import ResultPool.RankList;
+import Results.StudyAtResult;
 
 public class StudyAtAdapter implements Adapter {
 
@@ -52,10 +53,15 @@ public class StudyAtAdapter implements Adapter {
 						"DIV/P[@class=\"result_link\"]/B/A", Node_Li,
 						XPathConstants.NODESET);
 				for (int j = 0; j < ResultLink.getLength(); j++) {
+					StudyAtResult result=new StudyAtResult();
 					Element Link = (Element) ResultLink.item(j);
 					String title = Link.getTextContent().trim();
+					result.setTitle(title);
 					String link = Link.getAttribute("href");
-					System.out.println(title + " " + link + " " + area);
+					result.setLink(link);
+					result.setCategory(area.substring(0,area.indexOf(":")));
+//					System.out.println(title + " " + link + " " + area.substring(0,area.indexOf(":")));
+					ranklist.addResult(result);
 				}
 			}
 
@@ -79,7 +85,7 @@ public class StudyAtAdapter implements Adapter {
 		// TODO Auto-generated method stub
 		StudyAtAdapter adapter = new StudyAtAdapter();
 		try {
-			adapter.query("paul Thomas");
+			adapter.query("paul");
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

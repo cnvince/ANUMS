@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+<TITLE>用户注册</TITLE></HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script src="oa.js"></script>
+<script src="ajax.js"></script>
+<script type=text/javascript>
+function validate_form()
+{
+  if(document.form1.zhangh.value == "")
+	{
+		alert("帐号不能为空!");
+		return false;
+	}
+        if(bytelength(document.form1.zhangh.value)<1||bytelength(document.form1.zhangh.value)>50)
+	{
+
+		alert("帐号长度不合法!");
+		return false;
+	}
+ if(!checkPassword(document.form1.zhangh.value))
+	{
+
+		alert("请输入字母或数字");
+		return false;
+	}
+
+
+ if(document.form1.pws.value == "")
+	{
+		alert("用户密码不能为空!");
+		return false;
+	}
+if(document.form1.pws.value!=document.form1.pws1.value)
+	{
+		alert("密码和确认密码不一致");
+		return false;
+	}
+	 if(!checkPassword(document.form1.pws.value))
+	{
+
+		alert("请输入字母或数字");
+		return false;
+	}
+if(document.form1.zheshi.value == "")
+	{
+		alert("用户的真实姓名不能为空!");
+		return false;
+	}
+	
+if(document.form1.nc.value == "")
+	{
+		alert("用户昵称不能为空!");
+		return false;
+	}
+if(document.form1.mail.value == "")
+	{
+		alert("电子邮件不能为空!");
+		return false;
+	}	
+if(!verifyAddress(document.form1.mail.value)){
+	  　　alert("电子邮件格式错误，请重写"); 
+	      return false; 
+	}
+	
+if(document.form1.shouj.value == "")
+	{
+		alert("手机号码不能为空!");
+		return false;
+	}	
+	
+	if(!CheckPhone85(document.form1.shouj.value)){
+	       return false;
+	}
+       return true;
+}
+
+
+function reg()
+{
+	if(validate_form()==false)
+		return;
+	validate();
+}
+
+
+function validate(){
+   createXMLHttpRequest();
+   var zhangh=document.getElementById("zhangh").value;
+   var pws=document.getElementById("pws").value;
+   var zhenshi=document.getElementById("zhenshi").value;
+   var nc=document.getElementById("nc").value;
+   var gang=document.getElementById("gangw");
+   var gangw=gang.options[gang.selectedIndex].text;
+   var bu=document.getElementById("bum");
+   var bum=bu.options[bu.selectedIndex].text;
+   var mail=document.getElementById("mail").value;
+   var shouj=document.getElementById("shouj").value;
+   var phone=document.getElementById("phone").value;
+   var zhu=document.getElementById("zhu").value;
+   
+   var str="zhangh="+zhangh+"&pws="+pws+"&zhenshi="+zhenshi+"&nc="+nc+"&gangw="+gangw+"&bum="+bum+"&mail="+mail+"&shouj="+shouj+"&phone="+phone+"&zhu="+zhu;
+   var url="zhuce.jsp";
+   xmlHttp.open("POST",url,true);
+   xmlHttp.onreadystatechange=callback;
+   xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  
+   xmlHttp.send(str);
+}
+
+function callback(){
+   if(xmlHttp.readyState==4){
+       var str=xmlHttp.responseText;
+        if(trim(str)=="1")
+            { alert("用户添加成功");}
+    }
+}
+</script>
+
+
+<body topmargin="0">
+<center>
+<h1>用户注册</h1>
+<form action="zhuce.jsp" method="post" name="form1">
+<table width="80%" border="1" cellpadding="1" cellspacing="1" bgcolor="BCCEED">
+
+	<tr>
+		<td colspan="10" ><h3 align=center>填写个人信息</h3></td>
+	</tr>
+
+	<tr>
+		<td width="11%" >账号</td>
+		<td width="39%" ><input type="text" name="zhangh" id="zhangh"></td>
+		<td width="11%" >密码</td>
+		<td width="39%" ><input type="password" name="pws" id="pws"></td>
+	</tr>
+	
+
+	<tr>
+		<td width="11%" >确认密码</td>
+		<td width="39%" ><input type="password" name="pws1"></td>
+		<td width="11%" >真实姓名</td>
+		<td width="39%" ><input type="text" name="zheshi" id="zhenshi"></td>
+
+             
+
+	</tr>
+	
+	<tr>
+	        <td width="11%" >昵称</td>
+                 <td width="39%" ><input type="text" name="nc" id="nc"></td> 
+		<td width="11%" >岗位</td>
+		<td width="39%" ><select name="gangw" id="gangw">
+                     <option>总经理</option>
+                     <option>副总经理</option>
+                     <option>主任</option>
+                     <option>秘书</option>
+                     <option>经理</option>
+                     <option>工程师</option>
+                     <option>会计</option>
+                     <option>出纳</option>
+                     <option>业务员</option>
+                     <option>管理员</option>
+                  </select>
+				  </td>
+
+
+
+	</tr>
+	<tr>
+		<td width="11%" >部门</td>
+		<td width="39%" >
+                  <select name="bum" id="bum">
+                     <option>经理办</option>
+                     <option>办公室</option>
+                     <option>生产部</option>
+                     <option>财务部</option>
+                     <option>市场部</option>
+                     <option>信息中心</option>
+                  </select>
+                </td>
+                <td width="11%" >电子邮件</td>
+		<td width="39%" ><input type="text" name="mail" id="mail"></td>
+
+
+	</tr>
+	
+	<tr>
+		<td width="11%" >手机</td>
+		<td width="39%" ><input type="text" name="shouj" id="shouj"></td>
+
+		<td width="11%" >办公电话</td>
+		<td width="39%" ><input type="text" name="phone" id="phone"></td>
+
+	</tr>
+		
+	<tr>
+		<td width="11%" >家庭地址</td>
+		<td width="39%" colspan=3><input type="text" name="zhu" id="zhu"></td>
+	</tr>
+	
+</table>
+<input type="button" value="注册"  onclick="reg()">
+<input type="reset" value="重置">
+</form>
+</center>
+</BODY>
+</HTML>

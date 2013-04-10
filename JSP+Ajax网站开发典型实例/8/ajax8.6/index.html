@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var e_obj;
+function go(value)
+{
+		e_obj=document.getElementById(value);
+		xmlhttp=createXMLHttpRequest();//调用创建XMLHttpRequest对象的方法
+		xmlhttp.onreadystatechange=callback;//设置回调函数
+		xmlhttp.open("post","index.jsp");//向服务器端发送请求
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+	    xmlhttp.send("obj="+value);	//设置发送参数		
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			var value=xmlhttp.responseText;  //获得从服务器端返回的数据
+			document.getElementById("content").innerHTML="";
+			document.getElementById("content").innerHTML=value;
+			var j=document.getElementById("t").rows(0).cells.length;
+			for(var k=0;k<j;k++)
+			{
+				document.getElementById("t").rows(0).cells(k).style.backgroundColor="#ECE9D8";
+				document.getElementById("t").rows(0).cells(k).style.borderStyle ="inset";
+				//document.getElementById("t").rows(0).cells(k).borderWidth ="0";
+				document.getElementById("t").rows(0).cells(k).style.borderColor="#ECE9D8";				
+				document.getElementById("content").style.backgroundColor="#B2CFFB";	
+				document.getElementById("content").style.borderStyle="outset";
+			}		
+			e_obj.style.backgroundColor="#B2CFFB";
+			e_obj.style.borderStyle ="outset";
+			e_obj.style.borderWidth ="2";
+			e_obj.style.borderColor ="#B2CFFB";			
+		}
+	}
+}
+</script>
+<style type="text/css">
+.title {
+	background-color: #ECE9D8;
+	cursor:hand;
+}
+</style>
+</head>
+<body background="bg.gif">
+<center><h2>切换标签页</h2></center>
+<table width="28%" height="203" border="1" align="center" cellpadding="0" cellspacing="0" id="t">
+  <tr height="33">
+    <td height="32" class="title" onClick="go('p')" id="p"><center>笔记本</center></td>
+    <td class="title" onClick="go('m')" id="m"><center>内存</center></td>
+    <td class="title" onClick="go('d')" id="d"><center>显示器</center></td>
+  </tr>
+  <tr height="170">
+    <td colspan="3" valign="top" id="content" align="center">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

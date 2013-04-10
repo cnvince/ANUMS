@@ -1,0 +1,131 @@
+<html>
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        var xmlHttp;
+        var bar_color = 'green';
+        var span_id = "block";
+        var clear = "&nbsp;&nbsp;&nbsp;"
+        function createXMLHttpRequest() {    //创建XMLHttpRequest对象
+            if (window.ActiveXObject) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } 
+            else if (window.XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();                
+            }
+        }
+        function goUpFile(){
+			var obj=document.getElementById("file1");
+			if(obj.value == "")
+			{
+				alert("请选择需要上传的文件");
+				return false;
+			}
+            createXMLHttpRequest();
+            checkDiv();
+            var url = "uploadbar.jsp?task=create";  //设置处理文件上传的服务器地址
+            var button = document.getElementById("go");
+            button.disabled = true;
+            xmlHttp.open("GET", url, true);    //发送请求
+            xmlHttp.onreadystatechange = goCallback;   //设置回调函数
+            xmlHttp.send(null);
+        }
+        function goCallback() {
+            if (xmlHttp.readyState == 4) {
+                if (xmlHttp.status == 200) {
+                    setTimeout("pollServer()", 200);
+                }
+            }
+        }       
+        function pollServer() {
+            createXMLHttpRequest();
+            var url = "uploadbar.jsp?task=poll";  //设置处理进度条的服务器地址
+            xmlHttp.open("GET", url, true);
+            xmlHttp.onreadystatechange = pollCallback;
+            xmlHttp.send(null);
+        }       
+        function pollCallback() {   //实现进度条
+            if (xmlHttp.readyState == 4) {
+                if (xmlHttp.status == 200) {
+                    var percent_complete = xmlHttp.responseXML.getElementsByTagName("percent")[0].firstChild.data;                    
+                    var index = processResult(percent_complete);
+                    for (var i = 1; i <= index; i++) {
+                        var elem = document.getElementById("block" + i);
+                        elem.innerHTML = clear;
+                        elem.style.backgroundColor = bar_color;
+                        var next_cell = i + 1;
+                        if (next_cell > index && next_cell <= 10) {
+                            document.getElementById("block" + next_cell).innerHTML = percent_complete + "%";
+                        }
+                    }
+                    if (index < 10) {
+                        setTimeout("pollServer()", 200);
+                    } else {
+                        document.getElementById("complete").innerHTML = "完成";
+                        document.getElementById("go").disabled = false;
+						upfileform.enctype="multipart/form-data";
+						upfileform.action="upfile.jsp";
+						upfileform.submit();
+                    }
+                }
+            }
+        }       
+        function processResult(percent_complete) {
+            var ind;
+            if (percent_complete.length == 1) {
+                ind = 1;
+            } else if (percent_complete.length == 2) {
+                ind = percent_complete.substring(0, 1);
+            } else {
+                ind = 10;
+            }
+            return ind;
+        }
+        function checkDiv() {
+            var progress_bar = document.getElementById("progressBar");
+            if (progress_bar.style.visibility == "visible") {
+                clearBar();
+                document.getElementById("complete").innerHTML = "";
+            } else {
+                progress_bar.style.visibility = "visible"
+            }
+        }       
+        function clearBar() {
+            for (var i = 1; i < 11; i++) {
+                var elem = document.getElementById("block" + i);
+                elem.innerHTML = clear;
+                elem.style.backgroundColor = "white";
+            }
+        }
+    </script>
+    </head>
+    <body background="bg.gif" text="#000000">
+       <div align="center">
+	   <h2>实现文件上传进度条</h2>
+        <form name="upfileform" method="post" action="" enctype="multipart/form-data">
+             <input type="file" id="file1" name="file1"  size="50"><br>
+             <input type="submit" value="上传" id="go" onClick="goUpFile();">
+        </form>
+		</div>
+    <table align="center">
+        <tbody>
+            <tr><td>
+                <div id="progressBar" style="visibility:hidden">
+                    <span id="block1">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block2">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block3">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block4">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block5">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block6">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block7">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block8">&nbsp;&nbsp;&nbsp;</span>
+                    <span id="block9">&nbsp;&nbsp;&nbsp;</span>
+					<span id="block10">&nbsp;&nbsp;&nbsp;</span>
+                </div>
+            </td></tr>
+            <tr><td align="center" id="complete"></td></tr>
+        </tbody>
+    </table>
+    </body>
+</html>
+

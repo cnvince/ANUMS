@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="gb2312"?>
+<students>
+  <student>
+    <name>田明启</name>
+    <sex>男</sex>
+    <age>23</age>
+  </student>
+    <student>
+    <name>刘来庆</name>
+    <sex>男</sex>
+    <age>23</age>
+  </student>
+  <student>
+    <name>刘海霞</name>
+    <sex>女</sex>
+    <age>22</age>
+  </student> 
+  <student>
+    <name>王亚涛</name>
+    <sex>男</sex>
+    <age>23</age>
+  </student>
+</students>

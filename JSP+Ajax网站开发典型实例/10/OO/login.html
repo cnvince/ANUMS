@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<script src="oa.js"></script>
+<script src="ajax.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+function validate_form()
+{
+  if(document.form1.username.value == "")
+	{
+		alert("帐号不能为空!");
+		return false;
+	}
+        if(bytelength(document.form1.username.value)<1||bytelength(document.form1.username.value)>50)
+	{
+
+		alert("帐号长度不合法!");
+		return false;
+	}
+ if(!checkPassword(document.form1.username.value))
+	{
+
+		alert("请输入字母或数字");
+		return false;
+	}
+
+
+ if(document.form1.password.value == "")
+	{
+		alert("用户密码不能为空!");
+		return false;
+	}
+if(!checkPassword(document.form1.password.value))
+	{
+
+		alert("请输入字母或数字");
+		return false;
+	}
+       return true;
+}
+function login() {
+	if (validate_form())
+	    document.form1.submit();
+	else return;
+}
+</script>
+</head>
+<body>
+<h3 align="center">用户登录</h3>
+<form method="post" name="form1" action="login">
+				  <table   border="0" align="center" cellpadding="0" cellspacing="0" >
+                    <tr bgcolor='D0DCED'>
+                      <td> 账号:&nbsp;&nbsp;</td>
+                      <td>   <input type="text" name="username" id="username"   size="17"> &nbsp;</td>
+                    </tr>
+                    <tr bgcolor='D0DCED'>
+                      <td> 密码:&nbsp;&nbsp;</td>
+                      <td> <input type="password" name="password" id="password" size="17">&nbsp;</td>
+                    </tr>
+		<tr bgcolor='D0DCED'>
+                  <td><input type="button" onclick="login()" value="提交"></td>
+                  <td><input type="reset" value="重置"></td>
+               </tr>
+                  </table>
+</form>
+</body>
+</html>

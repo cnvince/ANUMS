@@ -2,6 +2,15 @@ package Results;
 
 public class StudyAtResult extends Result {
 
+	private String category;
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public StudyAtResult() {
 		// TODO Auto-generated constructor stub
 	}
@@ -13,5 +22,7 @@ public class StudyAtResult extends Result {
 		// TODO Auto-generated method stub
 
 	}
+
+
 
 }

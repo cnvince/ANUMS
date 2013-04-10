@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var jsonObj=new Object();
+function go()
+{
+		xmlhttp=createXMLHttpRequest();        //调用创建XMLHttpRequest对象的方法
+		xmlhttp.onreadystatechange=callback;  //设置回调函数
+		xmlhttp.open("post","index.jsp");    //向服务器端发送请求
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    	xmlhttp.send(null);	                //设置发送参数	
+}
+
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{		
+			jsonObj=eval("("+xmlhttp.responseText+")");   //获得从服务器端返回的数据
+			while(document.getElementById("userList").rows.length>1)
+				document.getElementById("userList").deleteRow();
+			for(var j=0;j<jsonObj.userList.length;j++)
+				addRow("center",jsonObj.userList[j].name,jsonObj.userList[j].age);			
+			addStyle();		
+			show();				
+		}
+	}
+}
+
+function addRow(align,n1,n2)
+{
+	var tt=document.getElementById("userList");
+	var newRow=tt.insertRow();
+	for(var c=1;c<3;c++)
+	{
+		var newCell=newRow.insertCell();
+		newCell.align=align;
+		newCell.innerHTML=eval("n"+c); 
+	}
+}
+
+function addStyle()
+{
+	for(var j=0;j<jsonObj.cssList.length;j++)
+	{
+		var newOption=document.createElement("option");
+		newOption.value=jsonObj.cssList[j].name;
+		newOption.text=jsonObj.cssList[j].desc;
+		if(j<3)
+			document.getElementById("style1").add(newOption);
+		else
+			document.getElementById("style2").add(newOption);
+	}
+}
+
+function show()
+{
+	var style1=document.getElementById("style1").value;
+	var style2=document.getElementById("style2").value;
+	if(style1=="bold")
+	{
+		document.getElementById("userList").style.fontWeight=style1;
+		document.getElementById("userList").style.fontStyle="normal";
+	}
+	else
+	{
+		document.getElementById("userList").style.fontStyle=style1;
+		document.getElementById("userList").style.fontWeight="normal";
+	}
+	document.getElementById("userList").style.fontFamily=style2;
+}
+</script>
+</head>
+<body background="bg.gif" onload="go()">
+<center><h2>用多种指定样式显示数据</h2></center>
+     <table  align="center">
+      <tr><td align="center">字体：<select id="style1"></select>&nbsp;&nbsp;
+      <select id="style2"></select>&nbsp;&nbsp;
+      <input type="button" value="确定" onclick="show()"></td></tr>
+     </table> 
+     <br><br>
+     <table  id="userList" align="center">
+     <tr><td align="center">姓名</td><td align="center">年龄</td></tr>
+     </table>
+     <br>
+</body>
+</html>

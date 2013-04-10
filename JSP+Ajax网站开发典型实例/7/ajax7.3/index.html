@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" src="xmlhttp.js"></script>   <!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var w;
+
+function dis(name,s)
+{
+	var rows=document.getElementById("info").rows;
+	for(var j=0;j<rows.length;j++)
+	{
+		if(name=="ff"&&s=="none")
+			location.reload();
+		if(rows(j).cells(0).id.substr(0,2)==name)
+			rows(j).cells(0).style.display=s;
+		document.getElementById("ft").style.display="block";
+	}
+}
+
+function diss()
+{
+    if(event.srcElement.src=="http://localhost:8080/ajax7.3/images/plus.gif")
+    {
+    	dis(event.srcElement.id,"block");
+    	event.srcElement.src="http://localhost:8080/ajax7.3/images/minus.gif";
+    }
+    else if(event.srcElement.src=="http://localhost:8080/ajax7.3/images/minus.gif")
+    {
+    	dis(event.srcElement.id,"none");
+    	event.srcElement.src="http://localhost:8080/ajax7.3/images/plus.gif";
+    }	
+}
+function go(d)
+{
+	w=d;
+	if(document.getElementById("info").rows.length<=1)
+	{	
+		createXMLHttpRequest();                 //调用创建XMLHttpRequest对象的方法	
+		xmlHttp.open("post","index.jsp");      //向服务器端发送请求
+		xmlHttp.onreadystatechange=callback;  //设置回调函数
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+	    xmlHttp.send(null);
+    }
+    else
+    {	
+    	if(event.srcElement.src=="http://localhost:8080/ajax7.3/images/plus.gif")
+    	{
+    		dis(event.srcElement.id,"block");
+    		event.srcElement.src="http://localhost:8080/ajax7.3/images/minus.gif";
+    	}
+    	else if(event.srcElement.src=="http://localhost:8080/ajax7.3/images/minus.gif")
+    	{
+    		dis(event.srcElement.id,"none");
+    		event.srcElement.src="http://localhost:8080/ajax7.3/images/plus.gif";
+    	}
+    }
+}
+
+
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+		{
+			document.getElementById("ff").src="http://localhost:8080/ajax7.3/images/minus.gif";
+			var jsonObj = new Object();
+			jsonObj=eval("("+xmlHttp.responseText+")");
+
+			for(var j=0;j<jsonObj.TypeInfo.length;j++)
+			{
+				addRow(w,w+j,jsonObj.TypeInfo[j].typeid,jsonObj.TypeInfo[j].typename);
+				var newtype=jsonObj.TypeInfo[j].typeid+"-";
+				for(var k=0;k<jsonObj.ProductInfo.length;k++)
+				{
+					if(jsonObj.ProductInfo[k].typeid==jsonObj.TypeInfo[j].typeid)
+						addRow(jsonObj.TypeInfo[j].typeid,newtype+k,"",jsonObj.ProductInfo[k].name);
+				}
+			}					
+		}
+	}
+}
+function addRow(type,id,cid,name)
+{
+	var tt=document.getElementById("info");
+	var newRow=tt.insertRow();
+	var newCell=newRow.insertCell();
+	if(type=="ff")
+	{
+		newCell.innerHTML="<img src='images/blank.gif' border='0'><img src='images/plus.gif' border='0' id='"+cid+"' onclick='diss()' style='cursor:hand'><img src='images/folder.gif' border='0'>"+name;
+		newCell.id=id;
+	}
+	else
+	{
+		newCell.style.display="none";
+		newCell.innerHTML="<img src='images/blank.gif' border='0'><img src='images/blank.gif' border='0'><img src='images/sheet.gif' border='0' id='"+id+"'>"+name;
+		newCell.id=id;
+	}
+	newCell.style.width=200;
+}
+</script>   
+</head>
+<body background="images/bg.gif">
+<center><h2>动态树形列表</h2></center>
+<br>
+<table id="info" border="0" align="center">	
+<tr><td id="ft" style="width:200px"><img  id="ff" src="images/plus.gif" border="0" onclick="go('ff')" style="cursor:hand">笔记本产品</td></tr>
+</table>
+</body>
+</html>
+

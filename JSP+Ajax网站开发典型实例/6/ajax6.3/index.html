@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script>  <!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+function submit()
+{
+	if(document.getElementById("province").options[document.getElementById("province").selectedIndex].value==0)
+	{
+		alert("请选择省份！");
+		return false;
+	}
+	else
+	{
+		createXMLHttpRequest();   //调用创建XMLHttpRequest对象的方法
+		xmlHttp.onreadystatechange=callback;    //设置回调函数
+		xmlHttp.open("post","index.jsp");      //向服务器端发送请求
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+		//设置发送参数
+        xmlHttp.send("province="+document.getElementById("province").options[document.getElementById("province").selectedIndex].value);		
+	}
+}
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+		{
+			var city_string=xmlHttp.responseText;
+			var city_array=city_string.split(",");
+			while(document.getElementById("city").options.length>0)
+			{
+				document.getElementById("city").options.remove(0);	
+			}
+			for(var j=0;j<city_array.length;j++)
+			{
+				var oOption = document.createElement("OPTION");    //生成OPTION对象
+				oOption.text=city_array[j];
+				oOption.value=city_array[j];
+				document.getElementById("city").add(oOption);     //把OPTION对象加入到SELECT对象中
+			}		
+		}
+	}
+}
+</script>  
+</head>
+<body background="bg.gif">
+<center><h2>动态加载列表框</h2></center>
+<center>
+省份：<select id="province" onchange="return submit()">
+<option value="0">-选择省份-</option>
+<option value="hn">河南省</option>
+<option value="gd">广东省</option>
+<option value="hb">湖北省</option>
+<option value="js">江苏省</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+城市:<select id="city">
+</select>
+</center>
+</body>
+</html>

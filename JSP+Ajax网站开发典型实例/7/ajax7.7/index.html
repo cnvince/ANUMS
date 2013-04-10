@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+var xmlhttp;
+var pageSize=5;     //每页显示5条记录
+var totalPage;     //总页数
+var totalRs;      //总记录数
+var jsonObj=new Object();
+function go()
+{
+		xmlhttp=createXMLHttpRequest();        //调用创建XMLHttpRequest对象的方法
+		xmlhttp.onreadystatechange=callback;  //设置回调函数
+		xmlhttp.open("post","index.jsp");    //向服务器端发送请求
+		xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+	    xmlhttp.send(null);	                //设置发送参数		
+}
+function callback()
+{
+	if(xmlhttp.readyState==4)
+	{
+		if(xmlhttp.status==200)
+		{
+			jsonObj=eval("("+xmlhttp.responseText+")");   //获得从服务器端返回的数据
+			totalRs=jsonObj.userList.length;
+			totalPage=Math.ceil(totalRs/pageSize);
+			splitPage(1);
+		}
+	}
+}
+function addRow(align,n1,n2)
+{
+	var tt=document.getElementById("userList");
+	var newRow=tt.insertRow();
+	for(var c=1;c<3;c++)
+	{
+		var newCell=newRow.insertCell();
+		newCell.align=align;
+		newCell.innerHTML=eval("n"+c);
+	}
+}
+function splitPage(currPage)
+{
+	while(document.getElementById("userList").rows.length>1)
+		document.getElementById("userList").deleteRow();
+	var end;	
+	if(currPage<1)
+		currPage=1;
+	end=currPage*pageSize;
+	if(currPage>=totalPage)
+	{
+		currPage=totalPage;
+		end=totalRs;
+	}
+	var begin=currPage*pageSize-pageSize;
+	for(var j=begin;j<end;j++)
+		addRow("center",jsonObj.userList[j].name,jsonObj.userList[j].age);
+	
+	document.getElementById("dh").innerHTML="<a href='#' onclick='splitPage(1)'>首页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='splitPage("+eval(currPage-1)+")'>上一页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='splitPage("+eval(currPage+1)+")'>下一页</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='splitPage("+totalPage+")'>尾页</a>";
+}
+</script>
+</head>
+<body background="bg.gif" onload="go()">
+<center><h2>数据分页显示</h2></center>
+     <table width="250" border="1" id="userList" align="center">
+     <tr><td align="center">姓名</td><td align="center">年龄</td></tr>
+     </table>
+     <table width="250" border="0" align="center">
+      <tr><td colspan="2" align="center" id="dh"></td></tr>
+     </table>    
+</body>
+</html>

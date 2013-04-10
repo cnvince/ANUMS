@@ -1,0 +1,15 @@
+\contentsline {chapter}{Declaration}{iii}
+\contentsline {chapter}{Acknowledgements}{v}
+\contentsline {chapter}{Abstract}{vii}
+\contentsline {chapter}{\numberline {1}Figures and References}{1}
+\contentsline {chapter}{\numberline {2}Literature Review}{3}
+\contentsline {section}{\numberline {2.1}Meta-Search}{3}
+\contentsline {section}{\numberline {2.2}Collection Selection}{3}
+\contentsline {section}{\numberline {2.3}Result Merging}{4}
+\contentsline {subsection}{\numberline {2.3.1}Round-Robin}{5}
+\contentsline {subsection}{\numberline {2.3.2}Score-based Methods}{5}
+\contentsline {subsection}{\numberline {2.3.3}Rank-based Methods}{7}
+\contentsline {subsection}{\numberline {2.3.4}Collection weight}{7}
+\contentsline {subsection}{\numberline {2.3.5}Machine Learning Approaches}{8}
+\contentsline {section}{\numberline {2.4}Evaluation}{9}
+\contentsline {chapter}{Bibliography}{11}

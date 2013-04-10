@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script language="javascript" src="xmlhttp.js"></script><!-- 引入创建了XMLHttpRequest对象的JS文件 -->
+<script language="javascript">
+function submit()
+{
+	if(document.getElementById("province").options[document.getElementById("province").selectedIndex].value==0)
+	{
+		document.getElementById("Layer1").style.display="none";
+		alert("请选择省份！");
+		return false;
+	}
+	else
+	{
+		createXMLHttpRequest();//调用创建XMLHttpRequest对象的方法
+		xmlHttp.onreadystatechange=callback;//设置回调函数
+		xmlHttp.open("post","index.jsp");//向服务器端发送请求
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+        xmlHttp.send("province="+document.getElementById("province").options[document.getElementById("province").selectedIndex].value);	
+	}
+}
+function callback()
+{
+	if(xmlHttp.readyState==4)
+	{
+		if(xmlHttp.status==200)
+			document.getElementById("Layer1").innerHTML=xmlHttp.responseText;//获得从服务器端返回的数据
+			document.getElementById("Layer1").style.display="block";
+	}
+}
+function MM_jumpMenu(targ,selObj,restore){
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+</script>  
+<style type="text/css">
+#Layer1 {
+	position:relative;
+	left:3px;
+	top:5px;
+	width:130px;
+	height:294px;
+	z-index:3;
+	border-style:inset;
+	display:none;
+}
+  </style>
+  </head>
+  <body background="bg.gif">
+<center><h2>根据省列出城市</h2></center>
+<center>
+省份：<select id="province" onChange="return submit()">
+<option value="0">-选择省份-</option>
+<option value="hn">河南省</option>
+<option value="gd">广东省</option>
+<option value="js">江苏省</option>
+</select>
+<div id="Layer1"></div>
+</center>
+</body>
+</html>

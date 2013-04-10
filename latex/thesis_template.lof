@@ -1,0 +1,4 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces This is an example of how to include an eps (encapsulated postscript) figure. Maths is OK in the caption $\epsilon ^2 =\Delta $. }}{1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A typical architecture of metasearch, the users' requests are fetched by the main component, which is named broker, some query expansion may be executed and the processed query will send to different collections. The collections execute searching on the query and return the retrieval results to the broker and then the }}{4}
