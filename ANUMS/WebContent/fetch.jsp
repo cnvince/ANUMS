@@ -4,6 +4,7 @@
 <%@page import="com.results.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.datatype.*"%>
+<%@page import="com.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
@@ -11,15 +12,18 @@
 	int pageSize = 15;
 	String cpage = request.getParameter("page");
 	int PageIndex = 1;
-	System.out.println("query:" + query + "," + "page:" + cpage);
+	int imethod=0;
 	if (cpage != null && !cpage.equals("null") && cpage != "")
 		PageIndex = Integer.parseInt(cpage);
 	ArrayList<Result> results = new ArrayList<Result>();
 	if (cpage == null || cpage == ""||cpage.equals("null")) {
 		Controller controller = new Controller();
 		String method=request.getParameter("method");
-		System.out.println(method);
-		results = controller.fetchResult(query,method);
+		/* System.out.println(method); */
+		
+		if(method!=null)
+			imethod=Integer.parseInt(method);
+		results = controller.fetchResult(query, imethod);
 		session.setAttribute("result", results);
 	} else
 	{
@@ -29,10 +33,9 @@
 	int totalPage = results.size() / pageSize + 1;
 %>
 <p id="fb-matching" class="">
-	<span class="fb-result-count" id="fb-page-start"><%=(PageIndex - 1) * pageSize + 1%></span>
-	- <span class="fb-result-count" id="fb-page-end"><%=PageIndex * pageSize%></span>
+	<span class="fb-result-count" id="fb-page-start">Page: <%=PageIndex%></span>
 	of <span class="fb-result-count" id="fb-total-matching"><%=results.size()%></span>
-	search results for <strong><%=query%></strong>
+	search results for <strong><%=query%> By Algorithm:<%=TermMapping.toMethod(imethod) %></strong>
 </p>
 
 <ol id="fb-results">

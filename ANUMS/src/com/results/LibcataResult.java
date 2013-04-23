@@ -1,6 +1,8 @@
 package com.results;
 
-public class LibcataResult extends Result {
+import java.io.Serializable;
+
+public class LibcataResult extends Result implements Serializable{
 
 	public LibcataResult(String summary) {
 		super();

@@ -46,22 +46,24 @@ public class DspaceAdapter extends Adapter {
 				if (IMG != null)
 					imgLink = hostUrl + ((Element) IMG).getAttribute("src");
 				Node Date = TD.item(1);
-				String date = Date.getTextContent().trim();
-				Node Title = TD.item(2);
-				String title = Title.getTextContent().trim();
-				String link = hostUrl + ((Element) Title).getAttribute("href");
-				Node Author = TD.item(3);
-				String author = Author.getTextContent().trim();
-				DSpaceResult result = new DSpaceResult();
-				result.setImgLink(imgLink);
-				result.setAuthor(author);
-				result.setDate(date);
-				result.setLink(link);
-				result.setSource(source);
-				result.setTitle(title);
-				result.setDsumary();
-				ranklist.addResult(result);
-
+				if (Date != null) {
+					String date = Date.getTextContent().trim();
+					Node Title = TD.item(2);
+					String title = Title.getTextContent().trim();
+					String link = hostUrl
+							+ ((Element) Title).getAttribute("href");
+					Node Author = TD.item(3);
+					String author = Author.getTextContent().trim();
+					DSpaceResult result = new DSpaceResult();
+					result.setImgLink(imgLink);
+					result.setAuthor(author);
+					result.setDate(date);
+					result.setLink(link);
+					result.setSource(source);
+					result.setTitle(title);
+					result.setDsumary();
+					ranklist.addResult(result);
+				}
 			}
 
 		} catch (XPathExpressionException e) {

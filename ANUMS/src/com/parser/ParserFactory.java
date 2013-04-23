@@ -1,25 +1,20 @@
 package com.parser;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import javax.servlet.http.HttpServlet;
 
 import org.w3c.dom.Document;
 
-import com.util.XMLUtils;
+import com.util.UrlMatcher;
 
-public class ParserFactory extends HttpServlet{
-
-	private String urlPath="/Users/user/git/honor_project/ANUMS/WebContent/WEB-INF/Classes/Resources/UrlMap.xml";
-	
+public class ParserFactory{
 	private String query;
 	//Document Collection to store the parsed documents
 	private HashMap<Integer,Document> DocumentCollection;
 	private HashMap<Integer,String> UrlCollection;
+	
 	public ParserFactory(String query) {
 		// TODO Auto-generated constructor stub
 		this.query=query;
@@ -28,7 +23,8 @@ public class ParserFactory extends HttpServlet{
 	}
 	private void initialUrlCollection()
 	{
-		UrlCollection=XMLUtils.ParseToHashMap(urlPath, query);
+//		match search url of each server
+		UrlCollection=UrlMatcher.match(query);
 	}
 	public void initialDocuments()
 	{
@@ -38,7 +34,6 @@ public class ParserFactory extends HttpServlet{
 		for(Map.Entry<Integer, String> entry:UrlCollection.entrySet())
 		{
 			String url=entry.getValue();
-			Document document=null;
 			Thread t=new Thread(new Parser(countDownLatch,url,DocumentCollection,entry.getKey()));
 			t.start();
 		}
@@ -47,7 +42,7 @@ public class ParserFactory extends HttpServlet{
 			long end=System.currentTimeMillis();
 			System.out.println("TotalTime:"+(end-start)/1000+"s");
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+//			 TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

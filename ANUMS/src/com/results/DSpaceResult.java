@@ -1,6 +1,8 @@
 package com.results;
 
-public class DSpaceResult extends Result {
+import java.io.Serializable;
+
+public class DSpaceResult extends Result implements Serializable{
 
 	/**
 	 * 

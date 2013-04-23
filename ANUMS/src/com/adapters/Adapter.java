@@ -14,7 +14,7 @@ import com.resultpool.Server;
 
 public abstract class Adapter implements Runnable {
 	protected int source;
-	protected static String hostUrl;
+	protected String hostUrl;
 	protected Document document;
 	protected XPath xpath;
 	public ResultTable results;
@@ -23,6 +23,7 @@ public abstract class Adapter implements Runnable {
 	public Adapter(CountDownLatch countDownLatch,
 			Document document, ResultTable results,
 			HashMap<Integer, Server> serverTable,String hostUrl,int source) {
+		this.hostUrl=hostUrl;
 		this.results=results;
 		this.sTable=serverTable;
 		setXpath(XPathFactory.newInstance().newXPath());
@@ -44,11 +45,11 @@ public abstract class Adapter implements Runnable {
 		// TODO Auto-generated method stub
 
 	}
-	public static String getHostUrl() {
+	public  String getHostUrl() {
 		return hostUrl;
 	}
-	public static void setHostUrl(String hostUrl) {
-		Adapter.hostUrl = hostUrl;
+	public void setHostUrl(String hostUrl) {
+		this.hostUrl = hostUrl;
 	}
 	public Document getDocument() {
 		return document;

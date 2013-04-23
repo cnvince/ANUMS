@@ -1,11 +1,15 @@
 package com.mergingalgorithms;
-
+/*	
+ * Author: PengFei Li
+ * Date:11/04/2013
+ * A prioritized Round-Robin algorithm, rank the lists in a round-robin manner, 
+ * the orders of server chosen in a cycle is ordered by the relevant document length.
+ * 
+*/
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.Map.Entry;
 
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
@@ -27,7 +31,7 @@ public class PRRMerger implements Merger {
 		// TODO Auto-generated method stub
 		HashMap<Integer, RankList> table = results.getTable();
 		ArrayList<Result> mergedList = new ArrayList<Result>();
-		ArrayList ranklists = new ArrayList();
+		ArrayList<ArrayList<Result>> ranklists = new ArrayList<ArrayList<Result>>();
 		int MaxSize = 0;
 		int totalSize = 0;
 		ArrayList<Server> serverlist = sortServer(serverTable);
@@ -59,7 +63,7 @@ public class PRRMerger implements Merger {
 
 	}
 
-	public ArrayList sortServer(HashMap<Integer, Server> serverTable) {
+	public ArrayList<Server> sortServer(HashMap<Integer, Server> serverTable) {
 		ArrayList<Server> list = new ArrayList<Server>();
 		for (Map.Entry<Integer, Server> entry : serverTable.entrySet()) {
 			list.add(entry.getValue());

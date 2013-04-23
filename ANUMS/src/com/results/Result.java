@@ -1,17 +1,24 @@
 package com.results;
 
-import java.io.Serializable;
-public class Result implements Serializable{
+public class Result implements Comparable<Result>{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	protected String Title;
 	protected String Link;
 	protected int Source;
 	protected String imgLink="";
 	protected String displaySummary;
+	protected double score;
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double d) {
+		this.score = d;
+	}
+
 	public String getDisplaySummary() {
 		return displaySummary;
 	}
@@ -99,6 +106,15 @@ public class Result implements Serializable{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public int compareTo(Result o) {
+		// TODO Auto-generated method stub
+		if(o.getScore()>this.score)
+			return 1;
+		else
+			return 0;
 	}
 
 }

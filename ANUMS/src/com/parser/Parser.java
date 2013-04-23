@@ -11,6 +11,14 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
+import com.datatype.ServerSource;
+import com.util.XMLUtils;
+
+/**
+ * @Author PengFei Li
+ * Parser class to parse returned result page
+ *
+ */
 public class Parser implements Runnable {
 	private CountDownLatch countDownLatch;
 	public String urlstr;
@@ -33,13 +41,15 @@ public class Parser implements Runnable {
 		DOMParser parser = new DOMParser();
 		try {
 			parser.setFeature("http://xml.org/sax/features/namespaces", false);
-			// long start1=System.currentTimeMillis();
 			InputStream byteStream = com.util.InputStreamLoader
 					.OpenStream(urlstr);
-			// long end1=System.currentTimeMillis();
-			// System.out.println("reading time:"+(end1-start1)/1000+"s");
 			parser.parse(new org.xml.sax.InputSource(byteStream));
 			document = parser.getDocument();
+//			if(server==ServerSource.STUDYAT)
+//			{
+//			System.out.println("Document:");
+//			XMLUtils.PrintNode(document);
+//			}
 		} catch (SAXNotRecognizedException | SAXNotSupportedException e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
@@ -55,7 +65,7 @@ public class Parser implements Runnable {
 		}
 
 		long end = System.currentTimeMillis();
-		System.out.println(urlstr + ":" + (end - start) / 1000 + "s");
+		System.out.println("server:"+server+"  "+urlstr + ":" + (end - start) / 1000 + "s");
 		documentCollection.put(server, document);
 		countDownLatch.countDown();
 	}
@@ -64,7 +74,8 @@ public class Parser implements Runnable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Parser.parse("http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext=david");
+		Parser parser=new Parser(null, "https://studyat.anu.edu.au/search?search_terms=TEST", null, 0);
+		 parser.parse();
 
 	}
 

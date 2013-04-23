@@ -1,6 +1,8 @@
 package com.results;
 
-public class ResearcherResult extends Result {
+import java.io.Serializable;
+
+public class ResearcherResult extends Result implements Serializable{
 	/**
 	 * 
 	 */

@@ -1,12 +1,17 @@
 package com.mergingalgorithms;
 
+/*	
+ * Author: PengFei Li
+ * Date:11/04/2013
+ * A simple Round-Robin algorithm, simply rank the lists in a round-robin manner, 
+ * the orders of server chosen in a cycle is random generated.
+ * 
+*/
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import com.datatype.ServerSource;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
@@ -16,7 +21,6 @@ import com.results.Result;
 public class SimpleRRMerger implements Merger {
 
 	public SimpleRRMerger() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -25,9 +29,8 @@ public class SimpleRRMerger implements Merger {
 		long start=System.currentTimeMillis();
 		// TODO Auto-generated method stub
 		HashMap<Integer, RankList> table=results.getTable();
-		int length=table.size();
 		ArrayList<Result> mergedList=new ArrayList<Result>();
-		ArrayList ranklists=new ArrayList();
+		ArrayList<ArrayList<Result>> ranklists=new ArrayList<ArrayList<Result>>();
 		int MaxSize=0;
 		int totalSize=0;
 		int[] order = new int[table.size()];
@@ -84,8 +87,6 @@ public class SimpleRRMerger implements Merger {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		SimpleRRMerger rr=new SimpleRRMerger();
 
 	}
 

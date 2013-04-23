@@ -1,6 +1,8 @@
 package com.results;
 
-public class ContactResult extends Result {
+import java.io.Serializable;
+
+public class ContactResult extends Result implements Serializable{
 
 	/**
 	 * 

@@ -1,6 +1,8 @@
 package com.results;
 
-public class WebResult extends Result {
+import java.io.Serializable;
+
+public class WebResult extends Result implements Serializable{
 
 	/**
 	 * 

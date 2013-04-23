@@ -1,6 +1,8 @@
 package com.results;
 
-public class StudyAtResult extends Result {
+import java.io.Serializable;
+
+public class StudyAtResult extends Result implements Serializable{
 	public StudyAtResult(String category) {
 		super();
 		this.category = category;

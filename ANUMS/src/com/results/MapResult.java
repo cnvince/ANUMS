@@ -1,6 +1,8 @@
 package com.results;
 
-public class MapResult extends Result {
+import java.io.Serializable;
+
+public class MapResult extends Result implements Serializable{
 
 	public MapResult(String number, String summary, String acronym) {
 		super();

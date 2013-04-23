@@ -1,6 +1,8 @@
 package com.results;
 
-public class YoutubeResult extends Result {
+import java.io.Serializable;
+
+public class YoutubeResult extends Result implements Serializable{
 
 	/**
 	 * 

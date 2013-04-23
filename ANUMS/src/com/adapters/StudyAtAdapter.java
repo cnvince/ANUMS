@@ -42,7 +42,8 @@ public class StudyAtAdapter extends Adapter {
 			body = (Node) xpath
 					.evaluate("//BODY", document,
 							XPathConstants.NODE);
-			matcher=pattern.matcher(body.getTextContent());
+			if (body!=null)
+					matcher=pattern.matcher(body.getTextContent());
 		} catch (XPathExpressionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -63,6 +64,7 @@ public class StudyAtAdapter extends Adapter {
 					"//DIV[@class=\"search_result_set\"]", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+			System.out.println("StudyAt:"+length);
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
 				Node Area = (Node) xpath.evaluate("H3", Node_Li,
