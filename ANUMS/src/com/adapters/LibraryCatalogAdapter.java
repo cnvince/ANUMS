@@ -49,7 +49,6 @@ public class LibraryCatalogAdapter extends Adapter {
 		{
 			String match=matcher.group();
 			size=Integer.parseInt(match.substring(0, match.indexOf("result")).trim());
-			System.out.println("size:"+size);
 		}
 		Server server=new Server();
 		server.setServer(source);
@@ -61,6 +60,9 @@ public class LibraryCatalogAdapter extends Adapter {
 					"//TD[@class=\"briefCitRow\"]", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			for (int i = 0; i < length; i++) {
 				Element ROW = (Element) nodeList.item(i);
 				LibcataResult result = new LibcataResult();

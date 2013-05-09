@@ -7,6 +7,10 @@ public class Server implements Comparable<Server>{
 	private float tf;
 	private float idf;
 	private int result_size;
+//	used to store collection score
+	private double score;
+//	used to store the collection weight 
+	private double weight;
 	public Server() {
 		// TODO Auto-generated constructor stub
 	}
@@ -63,6 +67,22 @@ public class Server implements Comparable<Server>{
 	public int compareTo(Server o) {
 		int size=o.getResult_size();
 		return size-this.result_size;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 }

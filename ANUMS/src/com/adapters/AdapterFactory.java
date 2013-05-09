@@ -93,7 +93,6 @@ public class AdapterFactory {
 
 	public ResultTable executeQuery(String query) {
 		allocateAdapters(query);
-		System.out.println("com.results:" + results.getTable().size());
 		return results;
 	}
 

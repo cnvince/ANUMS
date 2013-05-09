@@ -39,6 +39,9 @@ public class YouTubeAdapter extends Adapter {
 							"//LI[@class=\"channels-content-item\"]/SPAN[@class=\"context-data-item\"]",
 							document, XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			Server server=new Server();
 			server.setServer(source);
 			server.setResult_size(length);

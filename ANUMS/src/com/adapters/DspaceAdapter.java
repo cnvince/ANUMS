@@ -35,6 +35,9 @@ public class DspaceAdapter extends Adapter {
 					"//TABLE[@class=\"miscTable\"]//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			for (int i = 1; i < length; i++) {
 				Element TR = (Element) nodeList.item(i);
 				NodeList TD = (NodeList) xpath.evaluate("TD", TR,

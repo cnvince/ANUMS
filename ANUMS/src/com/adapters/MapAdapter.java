@@ -57,6 +57,9 @@ public class MapAdapter extends Adapter {
 					"//TABLE[@class=\"tbdr\"]//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			System.out.println(source + "analysis");
 			for (int i = 0; i < length; i++) {
 				Element TR = (Element) nodeList.item(i);

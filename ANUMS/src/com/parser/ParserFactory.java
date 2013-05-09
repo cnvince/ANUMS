@@ -31,12 +31,15 @@ public class ParserFactory{
 		long start=System.currentTimeMillis();
 		this.initialUrlCollection();
 		CountDownLatch countDownLatch = new CountDownLatch(UrlCollection.size());
+//		ExecutorService executor = Executors.newSingleThreadExecutor();
 		for(Map.Entry<Integer, String> entry:UrlCollection.entrySet())
 		{
 			String url=entry.getValue();
+//			executor.invokeAll(Arrays.asList(new Parser(countDownLatch,url,DocumentCollection,entry.getKey())), 10, TimeUnit.SECONDS); // Timeout of 10 minutes.
 			Thread t=new Thread(new Parser(countDownLatch,url,DocumentCollection,entry.getKey()));
 			t.start();
 		}
+//		executor.shutdown();
 		try {
 			countDownLatch.await();
 			long end=System.currentTimeMillis();

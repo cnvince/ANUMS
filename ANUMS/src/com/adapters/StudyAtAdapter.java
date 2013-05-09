@@ -64,7 +64,8 @@ public class StudyAtAdapter extends Adapter {
 					"//DIV[@class=\"search_result_set\"]", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
-			System.out.println("StudyAt:"+length);
+//			set returned Size
+//			int reNum=0;
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
 				Node Area = (Node) xpath.evaluate("H3", Node_Li,
@@ -79,12 +80,15 @@ public class StudyAtAdapter extends Adapter {
 					String link = "http://studyat.anu.edu.au"
 							+ Link.getAttribute("href").trim();
 					StudyAtResult result = new StudyAtResult();
+//					reNum++;
 					result.setTitle(title);
 					result.setLink(link);
 					result.setCategory(area);
 					result.setSource(source);
 					result.setDsumary();
 					ranklist.addResult(result);
+					if(ranklist.getList().size()>=10)
+						break;
 				}
 			}
 

@@ -258,3 +258,25 @@ form:after {
 	background-position: 0 -135px;
 	color: #00aeef;
 }
+.checkbox, .radio {
+  width: 19px;
+  height: 25px;
+  padding: 0 5px 0 0;
+  background: url(checkbox.png) no-repeat;
+  display: block;
+  clear: left;
+  float: left;
+}
+.radio {
+  background: url(radio.png) no-repeat;
+}
+.select {
+  position: absolute;
+  width: 158px;
+  height: 21px;
+  padding: 0 24px 0 8px;
+  color: #fff;
+  font: 12px/21px arial,sans-serif;
+  background: url(select.png) no-repeat;
+  overflow: hidden;
+}

@@ -36,6 +36,7 @@ public class ContactAdapter extends Adapter {
 			return null;
 		Pattern pattern=Pattern.compile("\\d+ (item|items) returned");
 		Node body;
+		
 		Matcher matcher = null;
 		try {
 			body = (Node) xpath
@@ -53,7 +54,6 @@ public class ContactAdapter extends Adapter {
 			System.out.println("true");
 			String match=matcher.group();
 			size=Integer.parseInt(match.substring(0, match.indexOf("item")).trim());
-			System.out.println("size:"+size);
 		}
 		Server server=new Server();
 		server.setServer(source);
@@ -104,6 +104,9 @@ public class ContactAdapter extends Adapter {
 			NodeList nodeList = (NodeList) xpath.evaluate("//P//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			for (int i = 0; i < length; i++) {
 				ContactResult result = new ContactResult();
 				Element row = (Element) nodeList.item(i);

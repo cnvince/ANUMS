@@ -11,13 +11,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
-import com.datatype.ServerSource;
-import com.util.XMLUtils;
 
 /**
- * @Author PengFei Li
- * Parser class to parse returned result page
- *
+ * @Author PengFei Li Parser class to parse returned result page
+ * 
  */
 public class Parser implements Runnable {
 	private CountDownLatch countDownLatch;
@@ -41,32 +38,33 @@ public class Parser implements Runnable {
 		DOMParser parser = new DOMParser();
 		try {
 			parser.setFeature("http://xml.org/sax/features/namespaces", false);
-			InputStream byteStream = com.util.InputStreamLoader
-					.OpenStream(urlstr);
-			parser.parse(new org.xml.sax.InputSource(byteStream));
-			document = parser.getDocument();
-//			if(server==ServerSource.STUDYAT)
-//			{
-//			System.out.println("Document:");
-//			XMLUtils.PrintNode(document);
-//			}
+//			InputStream byteStream = com.util.InputStreamLoader
+//					.OpenStream(urlstr);
+			InputStream byteStream =WebReader.OpenStream(urlstr);
+			if(byteStream!=null)
+			{
+				parser.parse(new org.xml.sax.InputSource(byteStream));
+				document=parser.getDocument();
+			}
 		} catch (SAXNotRecognizedException | SAXNotSupportedException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+//			 e.printStackTrace();
 			System.err.println(e.getMessage());
 			System.err.println(urlstr + " skipped");
 		} // IMPORTANT!!
 		catch (SAXException e) {
+			e.printStackTrace();
 			System.err.println(e.getMessage());
 			System.err.println(urlstr + " skipped");
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.err.println(e.getMessage());
 			System.err.println(urlstr + " skipped");
 		}
-
 		long end = System.currentTimeMillis();
 		System.out.println("server:"+server+"  "+urlstr + ":" + (end - start) / 1000 + "s");
-		documentCollection.put(server, document);
+		if(document!=null)
+			documentCollection.put(server, document);
 		countDownLatch.countDown();
 	}
 
@@ -74,8 +72,9 @@ public class Parser implements Runnable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Parser parser=new Parser(null, "https://studyat.anu.edu.au/search?search_terms=TEST", null, 0);
-		 parser.parse();
+		Parser parser = new Parser(null,
+				"https://studyat.anu.edu.au/search?search_terms=TEST", null, 0);
+		parser.parse();
 
 	}
 

@@ -60,6 +60,9 @@ public class WebAdapter extends Adapter {
 					"//OL[@id=\"fb-results\"]/LI", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
+//			no more than 10 results returned
+			if(length>10)
+				length=10;
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
 				Node Title = (Node) xpath.evaluate("H3", Node_Li,
