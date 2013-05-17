@@ -7,54 +7,59 @@ A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
 The style file: plain.bst
 Database file #1: Reference.bib
-I was expecting a `,' or a `}'---line 18 of file Reference.bib
+I was expecting a `,' or a `}'---line 19 of file Reference.bib
+ : @book{Shokouhi 
+ :                2011,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 305 of file Reference.bib
  : @article{DeKretser 
  :                    1998,
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Shokouhi2011"
+Warning--I didn't find a database entry for "DeKretser1998"
 Warning--empty publisher in Callan2000
 Warning--empty journal in Danzig1991
 Warning--empty journal in Renda2003
-Warning--empty journal in Vogt1998
 Warning--empty publisher in Voorhees2005
-You've used 21 entries,
+You've used 31 entries,
             2118 wiz_defined-function locations,
-            647 strings with 7827 characters,
-and the built_in function-call counts, 7338 in all, are:
-= -- 754
-> -- 297
-< -- 12
-+ -- 116
-- -- 95
-* -- 449
-:= -- 1176
-add.period$ -- 65
-call.type$ -- 21
-change.case$ -- 109
+            714 strings with 9527 characters,
+and the built_in function-call counts, 10635 in all, are:
+= -- 1094
+> -- 430
+< -- 17
++ -- 168
+- -- 137
+* -- 657
+:= -- 1710
+add.period$ -- 95
+call.type$ -- 31
+change.case$ -- 160
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 322
-empty$ -- 553
-format.name$ -- 95
-if$ -- 1583
+cite$ -- 35
+duplicate$ -- 468
+empty$ -- 799
+format.name$ -- 137
+if$ -- 2292
 int.to.chr$ -- 0
-int.to.str$ -- 21
-missing$ -- 22
-newline$ -- 108
-num.names$ -- 44
-pop$ -- 120
+int.to.str$ -- 31
+missing$ -- 32
+newline$ -- 158
+num.names$ -- 64
+pop$ -- 165
 preamble$ -- 1
-purify$ -- 89
+purify$ -- 130
 quote$ -- 0
-skip$ -- 263
+skip$ -- 383
 stack$ -- 0
-substring$ -- 461
-swap$ -- 108
-text.length$ -- 12
+substring$ -- 658
+swap$ -- 156
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 82
-warning$ -- 5
-while$ -- 80
-width$ -- 23
-write$ -- 226
-(There was 1 error message)
+type$ -- 122
+warning$ -- 4
+while$ -- 115
+width$ -- 33
+write$ -- 336
+(There were 2 error messages)

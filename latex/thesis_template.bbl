@@ -33,6 +33,11 @@ Peter~B Danzig, Jongsuk Ahn, John Noll, and Katia Obraczka.
   Information Retrieval 1 Introduction and Motivation}.
 \newblock pages 220--229, 1991.
 
+\bibitem{Dorn2008}
+J\"{u}rgen Dorn and Tabbasum Naz.
+\newblock {Structuring meta-search research by design patterns}.
+\newblock {\em and Technology Conference 2008}, 2008.
+
 \bibitem{Dwork2001}
 Cynthia Dwork, Ravi Kumar, Moni Naor, and D.~Sivakumar.
 \newblock {Rank aggregation methods for the Web}.
@@ -47,10 +52,23 @@ Edward~A Fox and Joseph~A Shaw.
   243--252. NIST, National Institute for Standards and Technology, NIST Special
   Publication 500215, 1994.
 
+\bibitem{Hong2012}
+Dzung Hong and Luo Si.
+\newblock {Mixture model with multiple centralized retrieval algorithms for
+  result merging in federated search}.
+\newblock {\em \ldots on Research and development in information retrieval},
+  pages 821--830, 2012.
+
 \bibitem{Jacso2004}
 P\'{e}ter Jacs\'{o}.
 \newblock {Thoughts about federated searching}.
 \newblock {\em Information Today}, 21(October 2004):7--9, 2004.
+
+\bibitem{Jones2004}
+Karen~Sp\"{a}rck Jones.
+\newblock {A statistical interpretation of term specificity and its application
+  in retrieval}.
+\newblock {\em Journal of Documentation}, 60(5):493--502, 2004.
 
 \bibitem{Lee1997}
 Joon~Ho Lee.
@@ -58,6 +76,19 @@ Joon~Ho Lee.
 \newblock {\em Proceedings of the 20th annual international ACM SIGIR
   conference on Research and development in information retrieval SIGIR 97},
   31(SI):267--276, 1997.
+
+\bibitem{Markov2012}
+Ilya Markov, Avi Arampatzis, and Fabio Crestani.
+\newblock {Unsupervised linear score normalization revisited}.
+\newblock {\em Proceedings of the 35th international ACM SIGIR conference on
+  Research and development in information retrieval - SIGIR '12}, page 1161,
+  2012.
+
+\bibitem{Montague2002}
+Mark Montague and Javed~a. Aslam.
+\newblock {Condorcet fusion for improved retrieval}.
+\newblock {\em Proceedings of the eleventh international conference on
+  Information and knowledge management - CIKM '02}, page 538, 2002.
 
 \bibitem{Rasolofo2001}
 Yves Rasolofo, F~Abbaci, and J~Savoy.
@@ -89,6 +120,24 @@ Milad Shokouhi.
   Information Retrieval}.
 \newblock {\em Advances in Information Retrieval}, pages 160--172, 2007.
 
+\bibitem{Shokouhi2009}
+Milad Shokouhi and Justin Zobel.
+\newblock {Robust result merging using sample-based score estimates}.
+\newblock {\em ACM Transactions on Information Systems}, 27(3):1--29, May 2009.
+
+\bibitem{Si2002}
+Luo Si and Jamie Callan.
+\newblock {Using sampled data and regression to merge search engine results}.
+\newblock {\em Proceedings of the 25th annual international ACM SIGIR
+  conference on Research and development in information retrieval - SIGIR '02},
+  page~19, 2002.
+
+\bibitem{Si2003a}
+Luo Si and Jamie Callan.
+\newblock {A semisupervised learning method to merge search engine results}.
+\newblock {\em ACM Transactions on Information Systems}, 21(4):457--491,
+  October 2003.
+
 \bibitem{Si2003}
 Luo Si and Jamie Callan.
 \newblock {Relevant document distribution estimation method for resource
@@ -109,9 +158,9 @@ Paul Thomas and M~Shokouhi.
 \newblock {\em Proceedings of the 32nd international ACM \ldots}, 2009.
 
 \bibitem{Vogt1998}
-Christopher~C Vogt and Garrison~W Cottrell.
-\newblock {Fusion Via a Linear Combination of Scores}.
-\newblock 27:1--27, 1998.
+CC~Vogt and GW~Cottrell.
+\newblock {Fusion via a linear combination of scores}.
+\newblock {\em Information Retrieval}, 27:1--27, 1999.
 
 \bibitem{Voorhees2005}
 E~Voorhees and DK~Harman.
@@ -122,5 +171,18 @@ E~Voorhees and DK~Harman.
 EM~Voorhees, NK~Gupta, and B~Johnson-Laird.
 \newblock {Learning Collection Fusion Strategies}.
 \newblock {\em Proceedings of the 18th \ldots}, pages 172--179, 1995.
+
+\bibitem{Wu2013}
+Shengli Wu.
+\newblock {The weighted Condorcet fusion in information retrieval}.
+\newblock {\em Information Processing \& Management}, 49(1):108--122, January
+  2013.
+
+\bibitem{Zhou2012}
+Ke~Zhou, Ronan Cummins, Mounia Lalmas, and Joemon~M. Jose.
+\newblock {Evaluating aggregated search pages}.
+\newblock {\em Proceedings of the 35th international ACM SIGIR conference on
+  Research and development in information retrieval - SIGIR '12}, page 115,
+  2012.
 
 \end{thebibliography}

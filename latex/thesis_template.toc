@@ -4,12 +4,13 @@
 \contentsline {chapter}{\numberline {1}Figures and References}{1}
 \contentsline {chapter}{\numberline {2}Literature Review}{3}
 \contentsline {section}{\numberline {2.1}Meta-Search}{3}
-\contentsline {section}{\numberline {2.2}Collection Selection}{3}
-\contentsline {section}{\numberline {2.3}Result Merging}{4}
-\contentsline {subsection}{\numberline {2.3.1}Round-Robin}{5}
-\contentsline {subsection}{\numberline {2.3.2}Score-based Methods}{5}
-\contentsline {subsection}{\numberline {2.3.3}Rank-based Methods}{7}
-\contentsline {subsection}{\numberline {2.3.4}Collection weight}{7}
-\contentsline {subsection}{\numberline {2.3.5}Machine Learning Approaches}{8}
-\contentsline {section}{\numberline {2.4}Evaluation}{9}
-\contentsline {chapter}{Bibliography}{11}
+\contentsline {section}{\numberline {2.2}Collection Selection}{4}
+\contentsline {section}{\numberline {2.3}Result Merging}{5}
+\contentsline {subsection}{\numberline {2.3.1}Aggregated and Non-aggregated Meta-Search}{5}
+\contentsline {subsection}{\numberline {2.3.2}General Methods}{6}
+\contentsline {subsubsection}{Round-Robin}{7}
+\contentsline {subsubsection}{Raw-Score Algorithms}{7}
+\contentsline {subsubsection}{Machine Learning Approaches}{9}
+\contentsline {subsection}{\numberline {2.3.3}Aggregated-Meta-Search-Specific Methods}{11}
+\contentsline {section}{\numberline {2.4}Evaluation}{12}
+\contentsline {chapter}{Bibliography}{15}
