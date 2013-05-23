@@ -18,11 +18,9 @@ import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.ContactResult;
-
+import com.util.DocumentSet;
 
 public class ContactAdapter extends Adapter {
-
-	
 
 	public ContactAdapter(CountDownLatch countDownLatch, Document document,
 			ResultTable results, HashMap<Integer, Server> serverTable,
@@ -30,41 +28,39 @@ public class ContactAdapter extends Adapter {
 		super(countDownLatch, document, results, serverTable, hostUrl, source);
 		// TODO Auto-generated constructor stub
 	}
+
 	public RankList query() {
 
-		if(document==null)
+		if (document == null)
 			return null;
-		Pattern pattern=Pattern.compile("\\d+ (item|items) returned");
+		Pattern pattern = Pattern.compile("\\d+ (item|items) returned");
 		Node body;
-		
 		Matcher matcher = null;
 		try {
-			body = (Node) xpath
-					.evaluate("//BODY", document,
-							XPathConstants.NODE);
-			matcher=pattern.matcher(body.getTextContent());
+			body = (Node) xpath.evaluate("//BODY", document,
+					XPathConstants.NODE);
+			matcher = pattern.matcher(body.getTextContent());
 		} catch (XPathExpressionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		int size=0;
-		while(matcher.find())
-		{
-			System.out.println("true");
-			String match=matcher.group();
-			size=Integer.parseInt(match.substring(0, match.indexOf("item")).trim());
+		// get the size of retrieved documents
+		int size = 0;
+		while (matcher.find()) {
+			String match = matcher.group();
+			size = Integer.parseInt(match.substring(0, match.indexOf("item"))
+					.trim());
 		}
-		Server server=new Server();
+		Server server = new Server();
 		server.setServer(source);
 		server.setResult_size(size);
 		sTable.put(source, server);
 		RankList ranklist = new RankList();
 		try {
-			Node CenterNode=(Node) xpath.evaluate("//CENTER", document,
+			Node CenterNode = (Node) xpath.evaluate("//CENTER", document,
 					XPathConstants.NODE);
-			if(CenterNode!=null)
-			{
+			// the case when there is just one contact
+			if (CenterNode != null) {
 				NodeList nodeList = (NodeList) xpath
 						.evaluate("//CENTER//TABLE//TR", document,
 								XPathConstants.NODESET);
@@ -72,13 +68,15 @@ public class ContactAdapter extends Adapter {
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					Node row = nodeList.item(i);
 					String value = row.getTextContent().trim();
-					if(value=="")
-					{
+					if (DocumentSet.contains(document.getDocumentURI()))
+						break;
+					if (value == "") {
 						result.setSource(source);
 						result.setLink(document.getDocumentURI());
+						DocumentSet.AddDocument(document.getDocumentURI());
 						result.setDsumary();
 						ranklist.addResult(result);
-						result=new ContactResult();
+						result = new ContactResult();
 					}
 					if (value.startsWith("Name")) {
 						result.setTitle(value.substring(value.indexOf(":") + 1)
@@ -97,16 +95,13 @@ public class ContactAdapter extends Adapter {
 					}
 				}
 				return ranklist;
-				
-				
 			}
-			
+			// when more than one contact information returned
 			NodeList nodeList = (NodeList) xpath.evaluate("//P//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
+			// no more than 10 results returned
+			int resultsize = 0;
 			for (int i = 0; i < length; i++) {
 				ContactResult result = new ContactResult();
 				Element row = (Element) nodeList.item(i);
@@ -119,11 +114,19 @@ public class ContactAdapter extends Adapter {
 				result.setTitle(Title.getTextContent().trim());
 				String link = Link.getAttribute("href").trim();
 				link = hostUrl + link.substring(link.indexOf(".") + 1);
-				result.setLink(link);
-				result.setSummary(Summary.getTextContent().trim());
-				result.setSource(ServerSource.CONTACT);
-				result.setDsumary();
-				ranklist.addResult(result);
+				if (!DocumentSet.contains(link))
+				{
+					result.setLink(link);
+					result.setSummary(Summary.getTextContent().trim());
+					result.setSource(ServerSource.CONTACT);
+					result.setDsumary();
+					ranklist.addResult(result);
+					DocumentSet.AddDocument(link);
+					resultsize++;
+				}
+//				when the result size==0, stop fetching 
+				if(resultsize>=10)
+					break;
 			}
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
@@ -138,6 +141,5 @@ public class ContactAdapter extends Adapter {
 	 */
 	public static void main(String[] args) {
 	}
-
 
 }

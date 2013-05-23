@@ -32,7 +32,6 @@ $(document).ready(function(){
 				{
 					if($(this).children().children('select').val()==-1)
 						{
-							window.alert('Please finish the judgement of this page first! Thank you.');
 							check=false;
 							return;
 						}
@@ -40,8 +39,11 @@ $(document).ready(function(){
 		/* when form is validated, submit the form */
 		if(check==true)
 			{
-				$('form.judgeform').submit();
+					$('form.judgeform').submit();
 			}
+		else
+			window.alert('Please finish the judgement of this page first! Thank you.');
+			
 	});
 });
 function popupaddpackage(urlToOpen) {
@@ -59,54 +61,48 @@ function popupaddpackage(urlToOpen) {
 <%
 	//current evaluation query
 	int queryIndex=-1;
-	if(request.getAttribute("index")!=null)
+	if(request.getParameter("index")!=null)
 	{
-		queryIndex=Integer.parseInt(request.getAttribute("index").toString());
+		queryIndex=Integer.parseInt(request.getParameter("index").toString());
 	}
 	else
 	{
 		//initial queries
 		ArrayList<String> queries=new ArrayList<String>();
-		String fileName = "/queries.txt";
+		String fileName = "/Queries/queries.txt";
 		InputStream ins = application.getResourceAsStream(fileName);
 		//read from file
 		BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
         StringBuilder sb = new StringBuilder();
         String cquery;
-
         while((cquery = reader.readLine())!= null){
             queries.add(cquery.trim());
         }
         //put into session
-        request.setAttribute("queries", queries);
+        session.setAttribute("queries", queries);
+        session.setAttribute("querySize", queries.size());
         //set current index=0;
         if(queryIndex==-1)
         	queryIndex=0;
         reader.close();
 	}
 	//get all queries
-	ArrayList<String> Queries=(ArrayList<String>)(request.getAttribute("queries"));
+	ArrayList<String> Queries=(ArrayList<String>)(session.getAttribute("queries"));
 	String query = Queries.get(queryIndex);
-	
-	ArrayList<Result> results = new ArrayList<Result>();
-	Controller controller = new Controller();
-	long start=System.currentTimeMillis();
-	results = controller.fetchResult(query, ALGORITHM.JUDGE);
-	if((queryIndex+1)<=Queries.size()-1)
-		queryIndex=queryIndex+1;
-	request.setAttribute("index", queryIndex);
-	long end=System.currentTimeMillis();
-	float sTime=(end-start)/1000;
+	int nextIndex=queryIndex+1;
 %>
 </head>
 <body>
 	<%@include file="banner.html"%>
 	<form class='judgeform' action="Recorder" method="post">
+	<input type="hidden" name="query" value=<%=query%>>
+	<input type="hidden" name="index" value=<%=nextIndex %>>
+	<input type="hidden" name="lastQuery" class="lquery" value=<%=Queries.size()-nextIndex %>>
 	<table>
 		<tr>
 			<td></td>
 			<th scope="col">Current query:<p><strong><%=query %></strong></p></th>
-			<th scope="col">Search Time:<%=sTime %>s currentIndex:<%=queryIndex %></th>
+			<th scope="col">currentIndex:<%=queryIndex %></th>
 			<th scope="col"><input type="button" class="nquery" value="Next Query"></th>
 		</tr>
 		<tr>
@@ -115,20 +111,29 @@ function popupaddpackage(urlToOpen) {
 			<th scope="col">Source</th>
 			<th scope="col">Relevance</th>
 		</tr>
-		<%for(int i=0;i<results.size();i++)
-		{
-			Result result=results.get(i);
-		%>
+		<%String queryPath = "/Queries/"+query.trim()+".txt";
+		InputStream ins = application.getResourceAsStream(queryPath);
+		//read from file
+		BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
+        StringBuilder sb = new StringBuilder();
+        String result;
+        int count=0;
+        while((result = reader.readLine())!= null){
+        	count++;
+        	String Title=result.substring(0, result.indexOf("[Link]"));
+        	String Link=result.substring(result.indexOf("[Link]")+6,result.indexOf("[Source]"));
+          	String Source=result.substring(result.indexOf("[Source]")+8);
+          %>
 		<tr class="docDes">
 			<th scope="row"><img alt="" src="images/cross.png" ></th>
-			<td><%=result.getTitle()%><input type="hidden" name='url' class="url" value=<%=result.getLink() %>>
+			<td><%=Title%><input type="hidden" name='url' class="url" value=<%=Link %>>
 			<input type="button" value="Click to see the page"
-		onClick="popupaddpackage('<%=result.getLink() %>')">
+		onClick="popupaddpackage('<%=Link %>')">
 			</td>
-			<td><%=result.getSourceName() %></td>
+			<td><%=Source %></td>
 			<td><select name="relevance" class="scoreslect">
 					<option value=-1 selected="selected">-Select-</option>
-					<option   value=0>Non-Relevant</option>
+					<option   value=0 > Non-Relevant</option>
 					<option value=1>On-topic but useless</option>
 					<option value=2>Somewhat useful</option>
 					<option value=3>Useful</option>
@@ -136,7 +141,9 @@ function popupaddpackage(urlToOpen) {
 					<option value=5>Exactly the intended page</option>
 			</select></td>
 		</tr>
-		<%} %>
+		<%}
+        System.out.println("Docuemnt Size:"+count);
+        %>
 	</table>
 	</form>
 </body>

@@ -6,7 +6,7 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-<title>Paper Stack</title>
+<title>Intial Queries</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
@@ -15,11 +15,7 @@
 		<form action="config">
 			<h1>ANUMS</h1>
 			<div>
-				<input type="text" placeholder="Type in your usernames" required="" name="query" />
-			</div>
-
-			<div>
-				<input type="submit" value="Intial Documents" />
+				<input type="submit" value="Intial" />
 				
 			</div>
 		</form><!-- form -->

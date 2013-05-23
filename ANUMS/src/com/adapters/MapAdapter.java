@@ -15,9 +15,9 @@ import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.MapResult;
+import com.util.DocumentSet;
 
 public class MapAdapter extends Adapter {
-
 
 	public MapAdapter(CountDownLatch countDownLatch, Document document,
 			ResultTable results, HashMap<Integer, Server> serverTable,
@@ -31,6 +31,7 @@ public class MapAdapter extends Adapter {
 		if (document == null)
 			return null;
 		RankList ranklist = new RankList();
+		// set retrieved document size
 		Pattern pattern = Pattern.compile("\\d+\\s+results");
 		Node body;
 		Matcher matcher = null;
@@ -57,10 +58,9 @@ public class MapAdapter extends Adapter {
 					"//TABLE[@class=\"tbdr\"]//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
-			System.out.println(source + "analysis");
+			// no more than 10 results returned
+			int resultsize = 10;
+			// System.out.println(source + "analysis");
 			for (int i = 0; i < length; i++) {
 				Element TR = (Element) nodeList.item(i);
 				NodeList TD = (NodeList) xpath.evaluate("TD[@class=\"bdr\"]",
@@ -77,14 +77,20 @@ public class MapAdapter extends Adapter {
 					String name = Name.getTextContent().trim();
 					String summary = Summary.getTextContent().trim();
 					String acronym = Acronym.getTextContent().trim();
-					mapResult.setTitle(name);
-					mapResult.setLink(link);
-					mapResult.setNumber(number);
-					mapResult.setAcronym(acronym);
-					mapResult.setSummary(summary);
-					mapResult.setSource(source);
-					mapResult.setDsumary();
-					ranklist.addResult(mapResult);
+					if (!DocumentSet.contains(link)) {
+						mapResult.setTitle(name);
+						mapResult.setLink(link);
+						mapResult.setNumber(number);
+						mapResult.setAcronym(acronym);
+						mapResult.setSummary(summary);
+						mapResult.setSource(source);
+						mapResult.setDsumary();
+						ranklist.addResult(mapResult);
+						DocumentSet.AddDocument(link);
+						resultsize++;
+					}
+					if (resultsize >= 10)
+						break;
 				}
 			}
 

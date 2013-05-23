@@ -17,6 +17,7 @@ import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.WebResult;
+import com.util.DocumentSet;
 
 public class WebAdapter extends Adapter {
 
@@ -60,9 +61,7 @@ public class WebAdapter extends Adapter {
 					"//OL[@id=\"fb-results\"]/LI", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
+			// no more than 10 results returned
 			for (int i = 0; i < length; i++) {
 				Element Node_Li = (Element) nodeList.item(i);
 				Node Title = (Node) xpath.evaluate("H3", Node_Li,
@@ -74,13 +73,19 @@ public class WebAdapter extends Adapter {
 						XPathConstants.NODE);
 				if (Title != null) {
 					WebResult result = new WebResult();
-					result.setLink("http://" + Link.getTextContent().trim());
-					result.setTitle(Title.getTextContent().trim());
-//					System.out.println(Title.getTextContent().trim());
-					result.setSummary(Summary.getTextContent().trim());
-					result.setSource(source);
-					result.setDsumary();
-					ranklist.addResult(result);
+					String link = "http://" + Link.getTextContent().trim();
+					if (!DocumentSet.contains(link)) {
+						result.setLink(link);
+						result.setTitle(Title.getTextContent().trim());
+						// System.out.println(Title.getTextContent().trim());
+						result.setSummary(Summary.getTextContent().trim());
+						result.setSource(source);
+						result.setDsumary();
+						ranklist.addResult(result);
+						DocumentSet.AddDocument(link);
+					}
+					if (ranklist.getList().size() >= 10)
+						break;
 				}
 			}
 

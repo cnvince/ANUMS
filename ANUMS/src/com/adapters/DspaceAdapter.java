@@ -2,6 +2,8 @@ package com.adapters;
 
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
@@ -14,6 +16,7 @@ import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.DSpaceResult;
+import com.util.DocumentSet;
 
 public class DspaceAdapter extends Adapter {
 
@@ -29,15 +32,40 @@ public class DspaceAdapter extends Adapter {
 		if (document == null)
 			return null;
 		RankList ranklist = new RankList();
+		// detect retrieved documents size
+		Pattern pattern = Pattern.compile("Results \\d+-\\d+ of \\d+.");
+		Node body;
+		Matcher matcher = null;
+		try {
+			body = (Node) xpath.evaluate("//BODY", document,
+					XPathConstants.NODE);
+			matcher = pattern.matcher(body.getTextContent());
+		} catch (XPathExpressionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		// get the size of retrieved documents
+		int size = 0;
+		while (matcher.find()) {
+			String match = matcher.group();
+			match = match.substring(match.lastIndexOf(" "), match.indexOf("."))
+					.trim();
+			// System.out.println("Dspace macthed text:"+match);
+			size = Integer.parseInt(match);
+		}
+		// set server
+		Server server = new Server();
+		server.setServer(source);
+		server.setResult_size(size);
+		sTable.put(source, server);
 		try {
 
 			NodeList nodeList = (NodeList) xpath.evaluate(
 					"//TABLE[@class=\"miscTable\"]//TR", document,
 					XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
+			// no more than 10 results returned
+			int resultsize = 0;
 			for (int i = 1; i < length; i++) {
 				Element TR = (Element) nodeList.item(i);
 				NodeList TD = (NodeList) xpath.evaluate("TD", TR,
@@ -51,21 +79,31 @@ public class DspaceAdapter extends Adapter {
 				Node Date = TD.item(1);
 				if (Date != null) {
 					String date = Date.getTextContent().trim();
-					Node Title = TD.item(2);
+					Node TD2 = TD.item(2);
+					Node Title=(Node) xpath.evaluate("A", TD2,
+							XPathConstants.NODE);
 					String title = Title.getTextContent().trim();
 					String link = hostUrl
 							+ ((Element) Title).getAttribute("href");
 					Node Author = TD.item(3);
 					String author = Author.getTextContent().trim();
 					DSpaceResult result = new DSpaceResult();
-					result.setImgLink(imgLink);
-					result.setAuthor(author);
-					result.setDate(date);
-					result.setLink(link);
-					result.setSource(source);
-					result.setTitle(title);
-					result.setDsumary();
-					ranklist.addResult(result);
+					if (!DocumentSet.contains(link)) {
+						result.setImgLink(imgLink);
+						result.setAuthor(author);
+						result.setDate(date);
+						result.setLink(link);
+						System.out.println("Dspace:"+link);
+						result.setSource(source);
+						result.setTitle(title);
+						result.setDsumary();
+						ranklist.addResult(result);
+						DocumentSet.AddDocument(link);
+						resultsize++;
+
+					}
+					if (resultsize >= 10)
+						break;
 				}
 			}
 
@@ -87,7 +125,8 @@ public class DspaceAdapter extends Adapter {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		// DspaceAdapter adapter=new DspaceAdapter();
+		// DspaceAdapter adapter=new DspaceAdapter(countDownLatch, document,
+		// results, sTable, hostUrl, source);
 		// try {
 		// adapter.query("paul");
 		// } catch (XPathExpressionException e) {

@@ -16,6 +16,12 @@ $(document).ready(function(){
 <p>If you click on me, I will disappear.</p>
 <p>Click me away!</p>
 <p>Click me too!</p>
+<%
+	session.setAttribute("test", "the session works");
+%>
+<form action="test2.jsp">
+<input type="submit" value="go">
+</form>
 <input type="text" id="t1" value="hello">
 </body>
 </html>

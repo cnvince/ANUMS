@@ -1,5 +1,6 @@
 package com.adapters;
 
+//no need to detect duplication
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
@@ -18,8 +19,6 @@ import com.results.YoutubeResult;
 
 public class YouTubeAdapter extends Adapter {
 
-	
-
 	public YouTubeAdapter(CountDownLatch countDownLatch, Document document,
 			ResultTable results, HashMap<Integer, Server> serverTable,
 			String hostUrl, int source) {
@@ -31,7 +30,7 @@ public class YouTubeAdapter extends Adapter {
 	public RankList query() {
 		if (document == null)
 			return null;
-		
+
 		RankList ranklist = new RankList();
 		try {
 			NodeList nodeList = (NodeList) xpath
@@ -39,10 +38,10 @@ public class YouTubeAdapter extends Adapter {
 							"//LI[@class=\"channels-content-item\"]/SPAN[@class=\"context-data-item\"]",
 							document, XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
-			Server server=new Server();
+			// no more than 10 results returned
+			if (length > 10)
+				length = 10;
+			Server server = new Server();
 			server.setServer(source);
 			server.setResult_size(length);
 			sTable.put(source, server);
@@ -88,6 +87,5 @@ public class YouTubeAdapter extends Adapter {
 		}
 		return ranklist;
 	}
-
 
 }

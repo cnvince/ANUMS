@@ -17,6 +17,7 @@ import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.ResearcherResult;
+import com.util.DocumentSet;
 
 public class ResearcherAdapter extends Adapter {
 
@@ -29,28 +30,27 @@ public class ResearcherAdapter extends Adapter {
 
 	@Override
 	public RankList query() {
-		if(document==null)
+		if (document == null)
 			return null;
-		
-		Pattern pattern=Pattern.compile("\\d+\\s+Next È");
+
+		Pattern pattern = Pattern.compile("\\d+\\s+Next È");
 		Node body;
 		Matcher matcher = null;
 		try {
-			body = (Node) xpath
-					.evaluate("//BODY", document,
-							XPathConstants.NODE);
-			matcher=pattern.matcher(body.getTextContent());
+			body = (Node) xpath.evaluate("//BODY", document,
+					XPathConstants.NODE);
+			matcher = pattern.matcher(body.getTextContent());
 		} catch (XPathExpressionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int size=0;
-		while(matcher.find())
-		{
-			String match=matcher.group();
-			size=Integer.parseInt(match.substring(0, match.indexOf("Next È")).trim());
+		int size = 0;
+		while (matcher.find()) {
+			String match = matcher.group();
+			size = Integer.parseInt(match.substring(0, match.indexOf("Next È"))
+					.trim());
 		}
-		Server server=new Server();
+		Server server = new Server();
 		server.setServer(source);
 		server.setResult_size(size);
 		sTable.put(source, server);
@@ -61,11 +61,10 @@ public class ResearcherAdapter extends Adapter {
 					"//UL[@class=\"search_results\"]//DIV[@class=\"content\"]",
 					document, XPathConstants.NODESET);
 			int length = nodeList.getLength();
-//			no more than 10 results returned
-			if(length>10)
-				length=10;
+			// no more than 10 results returned
+			int resultsize = 0;
 			for (int i = 0; i < length; i++) {
-//				System.out.println("running " + source + "....");
+				// System.out.println("running " + source + "....");
 				Node Content = nodeList.item(i);
 				Node Title = (Node) xpath.evaluate("H3/A", Content,
 						XPathConstants.NODE);
@@ -76,12 +75,18 @@ public class ResearcherAdapter extends Adapter {
 						XPathConstants.NODE);
 				String summary = Summary.getTextContent().trim();
 				ResearcherResult result = new ResearcherResult();
-				result.setLink(link);
-				result.setSource(source);
-				result.setSummary(summary);
-				result.setTitle(title);
-				result.setDsumary();
-				ranklist.addResult(result);
+				if (!DocumentSet.contains(link)) {
+					result.setLink(link);
+					result.setSource(source);
+					result.setSummary(summary);
+					result.setTitle(title);
+					result.setDsumary();
+					ranklist.addResult(result);
+					DocumentSet.AddDocument(link);
+					resultsize++;
+				}
+				if (resultsize >= 10)
+					break;
 			}
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
@@ -100,7 +105,5 @@ public class ResearcherAdapter extends Adapter {
 		// ResearcherAdapter(ServerSource.RES_PROJECTS);
 		// adapter.query("paul");
 	}
-
-
 
 }
