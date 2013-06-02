@@ -10,6 +10,7 @@ import com.datatype.ServerSource;
 import com.parser.ParserFactory;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
+import com.util.DocumentSet;
 import com.util.StringFormat;
 
 public class AdapterFactory {
@@ -35,6 +36,8 @@ public class AdapterFactory {
 		query = StringFormat.toURL(query);
 		ParserFactory parserFactory = new ParserFactory(query);
 		parserFactory.initialDocuments();
+		//reset DocumentSet
+		DocumentSet.reset();
 		HashMap<Integer, Document> documents = parserFactory
 				.getDocumentCollection();
 		CountDownLatch countDownLatch = new CountDownLatch(documents.size());

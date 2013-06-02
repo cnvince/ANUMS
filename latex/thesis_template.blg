@@ -7,40 +7,41 @@ A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
 The style file: plain.bst
 Database file #1: Reference.bib
-I was expecting a `,' or a `}'---line 19 of file Reference.bib
- : @book{Shokouhi 
- :                2011,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 305 of file Reference.bib
+I was expecting a `,' or a `}'---line 256 of file Reference.bib
  : @article{DeKretser 
  :                    1998,
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 493 of file Reference.bib
+ : @book{Shokouhi 
+ :                2011,
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Shokouhi2011"
-Warning--I didn't find a database entry for "DeKretser1998"
 Warning--empty publisher in Callan2000
 Warning--empty journal in Danzig1991
+Warning--there's a number but no series in Manning2008
+Warning--empty publisher in Manning2008
 Warning--empty journal in Renda2003
 Warning--empty publisher in Voorhees2005
 You've used 31 entries,
             2118 wiz_defined-function locations,
-            714 strings with 9527 characters,
-and the built_in function-call counts, 10635 in all, are:
-= -- 1094
-> -- 430
-< -- 17
+            715 strings with 9760 characters,
+and the built_in function-call counts, 10683 in all, are:
+= -- 1095
+> -- 429
+< -- 18
 + -- 168
 - -- 137
-* -- 657
-:= -- 1710
-add.period$ -- 95
+* -- 682
+:= -- 1716
+add.period$ -- 96
 call.type$ -- 31
 change.case$ -- 160
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 468
-empty$ -- 799
+cite$ -- 37
+duplicate$ -- 464
+empty$ -- 813
 format.name$ -- 137
-if$ -- 2292
+if$ -- 2296
 int.to.chr$ -- 0
 int.to.str$ -- 31
 missing$ -- 32
@@ -50,16 +51,16 @@ pop$ -- 165
 preamble$ -- 1
 purify$ -- 130
 quote$ -- 0
-skip$ -- 383
+skip$ -- 369
 stack$ -- 0
-substring$ -- 658
-swap$ -- 156
-text.length$ -- 17
+substring$ -- 675
+swap$ -- 149
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 122
-warning$ -- 4
-while$ -- 115
+warning$ -- 6
+while$ -- 114
 width$ -- 33
-write$ -- 336
+write$ -- 337
 (There were 2 error messages)

@@ -11,6 +11,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.net.*" %>
 <%@page import="java.io.BufferedReader"%>
+<title>Document Evaluation</title>
 <%@include file="head.html"%>
 <link href="css/theme" rel="stylesheet" type="text/css" media="screen">
 <%@ include file="/css/loader.css"%>
@@ -145,6 +146,7 @@ function popupaddpackage(urlToOpen) {
         System.out.println("Docuemnt Size:"+count);
         %>
 	</table>
+	<input type="button" class="nquery" value="Next Query">
 	</form>
 </body>
 </html>

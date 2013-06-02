@@ -7,10 +7,19 @@ Javed~a. Aslam and Mark Montague.
   conference on Research and development in information retrieval - SIGIR '01},
   pages 276--284, 2001.
 
-\bibitem{Bergman2001}
-MK~Bergman.
-\newblock {The deep web: Surfacing hidden value}.
-\newblock {\em Bright Planet}, pages 1--17, 2001.
+\bibitem{Bompada2007}
+Tanuja Bompada, Chi-Chao Chang, John Chen, Ravi Kumar, and Rajesh Shenoy.
+\newblock {On the robustness of relevance measures with incomplete judgments}.
+\newblock {\em Proceedings of the 30th annual international ACM SIGIR
+  conference on Research and development in information retrieval - SIGIR '07},
+  page 359, 2007.
+
+\bibitem{Buckley2004}
+Chris Buckley and Ellen~M. Voorhees.
+\newblock {Retrieval evaluation with incomplete information}.
+\newblock {\em Proceedings of the 27th annual international conference on
+  Research and development in information retrieval - SIGIR '04}, page~25,
+  2004.
 
 \bibitem{Callan1995}
 James~P Callan, Zhihong Lu, and W~Bruce Croft.
@@ -33,11 +42,6 @@ Peter~B Danzig, Jongsuk Ahn, John Noll, and Katia Obraczka.
   Information Retrieval 1 Introduction and Motivation}.
 \newblock pages 220--229, 1991.
 
-\bibitem{Dorn2008}
-J\"{u}rgen Dorn and Tabbasum Naz.
-\newblock {Structuring meta-search research by design patterns}.
-\newblock {\em and Technology Conference 2008}, 2008.
-
 \bibitem{Dwork2001}
 Cynthia Dwork, Ravi Kumar, Moni Naor, and D.~Sivakumar.
 \newblock {Rank aggregation methods for the Web}.
@@ -52,23 +56,23 @@ Edward~A Fox and Joseph~A Shaw.
   243--252. NIST, National Institute for Standards and Technology, NIST Special
   Publication 500215, 1994.
 
-\bibitem{Hong2012}
-Dzung Hong and Luo Si.
-\newblock {Mixture model with multiple centralized retrieval algorithms for
-  result merging in federated search}.
-\newblock {\em \ldots on Research and development in information retrieval},
-  pages 821--830, 2012.
-
 \bibitem{Jacso2004}
 P\'{e}ter Jacs\'{o}.
 \newblock {Thoughts about federated searching}.
 \newblock {\em Information Today}, 21(October 2004):7--9, 2004.
 
-\bibitem{Jones2004}
-Karen~Sp\"{a}rck Jones.
-\newblock {A statistical interpretation of term specificity and its application
-  in retrieval}.
-\newblock {\em Journal of Documentation}, 60(5):493--502, 2004.
+\bibitem{Jarvelin2002}
+K~J\"{a}rvelin and J~Kek\"{a}l\"{a}inen.
+\newblock {Cumulated gain-based evaluation of IR techniques}.
+\newblock {\em ACM Transactions on Information Systems ( \ldots},
+  20(4):422--446, 2002.
+
+\bibitem{Kekalainen2005}
+Jaana Kek\"{a}l\"{a}inen.
+\newblock {Binary and graded relevance in IR evaluations—Comparison of the
+  effects on ranking of IR systems}.
+\newblock {\em Information Processing \& Management}, 41(5):1019--1033,
+  September 2005.
 
 \bibitem{Lee1997}
 Joon~Ho Lee.
@@ -77,12 +81,18 @@ Joon~Ho Lee.
   conference on Research and development in information retrieval SIGIR 97},
   31(SI):267--276, 1997.
 
-\bibitem{Markov2012}
-Ilya Markov, Avi Arampatzis, and Fabio Crestani.
-\newblock {Unsupervised linear score normalization revisited}.
-\newblock {\em Proceedings of the 35th international ACM SIGIR conference on
-  Research and development in information retrieval - SIGIR '12}, page 1161,
-  2012.
+\bibitem{Manning2008}
+CD~Manning, P~Raghavan, and H~Sch\"{u}tze.
+\newblock {Introduction to Information Retrieval}.
+\newblock In {\em Introduction to Information Retrieval}, number~c, chapter~8,
+  pages 151--175. 2008.
+
+\bibitem{Mizzaro2001}
+Stefano Mizzaro.
+\newblock {A NEW MEASURE OF RETRIEVAL EFFECTIVENESS( OR : WHAT ’ S WRONG WITH
+  PRECISION AND RECALL )}.
+\newblock {\em International Workshop on Information Retrieval (IR' \ldots},
+  2001.
 
 \bibitem{Montague2002}
 Mark Montague and Javed~a. Aslam.
@@ -114,16 +124,18 @@ SE~Robertson and S~Walker.
 \newblock {\em Proceedings of the Third Text REtrieval Conference (TREC 1994).
   Gaithersburg, USA, November 1994.}, 1994.
 
+\bibitem{Sakai2007}
+Tetsuya Sakai.
+\newblock {On the reliability of information retrieval metrics based on graded
+  relevance}.
+\newblock {\em Information Processing \& Management}, 43(2):531--548, March
+  2007.
+
 \bibitem{Shokouhi2007}
 Milad Shokouhi.
 \newblock {Central-Rank-Based Collection Selection in Uncooperative Distributed
   Information Retrieval}.
 \newblock {\em Advances in Information Retrieval}, pages 160--172, 2007.
-
-\bibitem{Shokouhi2009}
-Milad Shokouhi and Justin Zobel.
-\newblock {Robust result merging using sample-based score estimates}.
-\newblock {\em ACM Transactions on Information Systems}, 27(3):1--29, May 2009.
 
 \bibitem{Si2002}
 Luo Si and Jamie Callan.
@@ -177,12 +189,5 @@ Shengli Wu.
 \newblock {The weighted Condorcet fusion in information retrieval}.
 \newblock {\em Information Processing \& Management}, 49(1):108--122, January
   2013.
-
-\bibitem{Zhou2012}
-Ke~Zhou, Ronan Cummins, Mounia Lalmas, and Joemon~M. Jose.
-\newblock {Evaluating aggregated search pages}.
-\newblock {\em Proceedings of the 35th international ACM SIGIR conference on
-  Research and development in information retrieval - SIGIR '12}, page 115,
-  2012.
 
 \end{thebibliography}

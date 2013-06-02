@@ -1,6 +1,6 @@
 \chapter{Literature Review}
-
-People took years to create information on the Internet, now they have to deal with this huge amount of information. Discovering useful information among the massive amount of resources existing on the Internet has been a hot topic for years, which brought the rise of the field of information retrieval. In early days, companies like Yahoo supplied people with a manually developed directory that classify web sites into different clusters. This is convenient for users to navigate to the website they intend to visit in the time when there are limited numbers of websites existing online. However, as time goes on, such navigation websites are limited by their poor abilities to discover information among the huge amount of websites. Then the more widely used index centralised search engines came into public's eyes.  These search engines use crawlers or spiders to crawl pages across the Internet and then index the fetched pages. Companies like Google maintain large amount of data of most of the website online. And they provide very good algorithms to rank all these pages to fit users' requirements. However, this procedure has a disadvantage due to its inability to retrieval information from Deep Web\cite{Bergman2001}. Traditional index centralised search engines can crawl pages that already existing on the Internet. But as a matter of fact, most of the sites existing on the Internet nowadays are generated dynamically by fetching data from its background database, these data are deep hidden from the surface web that index centralised searching engines can analysis. The size of deep web is much larger than surface web, as pointed out by Bergman \cite{Bergman2001}, and is still growing rapidly. So these difficulties in digging hidden web information has brought many challenges to the index centralised search engines.
+\section{Index centralised Search Engine}
+to be written
 \section{Meta-Search} 
 An alternative approach is to provide an integrated search engine that can send users' query to different search engines and then return the merged result. This method leaves the searching job to each component search engine, which is always built into the document collection and can retrieval its documents through its internal database. This approach is named distributed search\cite{Callan2000}, sometimes named federated search\cite{Jacso2004} or metasearch. A typical meta-search engine grabs users' query request, do some query expansion, which is optional, and then sends the query to different component search engines, finally the engine collection the results returned by all the collections and merging the resulting in a suitable ranking to display to users (Figure \ref{fig:ms}).
  \begin{figure}[h!]
@@ -135,8 +135,11 @@ taking log on both side and we can get a new formula:
 because $\frac{Pr[rel]}{Pr[irr]}$ is a common term for a document, which takes the same value so we can drop it and get the final formula 
 \begin{equation}
 	 rel(d)=\sum\limits_i{\log\frac{Pr[r_i(d)|rel]}{Pr[r_i(d)|irr]}}
-\end{equation} $Pr[r_i(d)|rel]$ represent the probability that a relevant document would be ranked at level $r_i$ by system i, while the $Pr[r_i(d)|irr]$is the probability that an irrelevant document would be ranked at level $r_i$ by system i. The model sounds reasonable in theory but hard to implement in reality. In the paper, the author used the trec\_eval to calculate these probabilities by human, which definitely cannot be applied to real world scenario. It may be practical to use training data to get these probabilities in real world. But, as the collections keep changes all the time and the training will take a vast mount of time, it’s hard to guarantee the efficiency and precision. Another example of machine learning approach is done by \cite{Voorhees1995}. They proposed two algorithms in \cite{Voorhees1995}, the first of which is Modeling relevant document distribution. Consider a scenario where meta-search engine is built. For a query $Q$, each collection $I$ has $n_Q^I$ numbers of relevant documents. As each component search engine execute a search on the query $Q$, it returns a list of documents ranged by the similarity in a descending order. And there exists a relation between the number of relevant documents and the size of returned documents,  denoted by a distribution $F_Q^I(S)$, where S is the size of the returned documents and $F$ is a function mapping the size of returned documents to the number of relevant documents. For C collections $I_1,I_2,\cdotp\cdotp\cdotp,I_C$, the aim of the algorithm is to find retrieved document sizes of each collection, denoted by $\lambda_1,\lambda_2,\cdotp\cdotp\cdotp,\lambda_i$ that can maximum the total number of relevant documents, which is $\sum\limits_{i=1}^CF_Q^{I_i}(\lambda_i)$, notice that $\sum\limits{i=1}^C{\lambda_i}=N$ where $N$ is the total number of retrieved documents. In the algorithm, they use training data to build the distribution on past queries. When a query comes, they use k nearest neighbours based on text similarity to get the average relevant document distribution. A maximisation procedure is applied to find the suitable $\lambda_i$ for each collection. Then final result is ranked using a so called C-faced die method. The document at rank k is obtained from the top of the collection with the most amount of remaining documents. The document then is removed of the original list. CLUSTERING(To be continued). \cite{Renda2003}:Markov
-chain(to be continue)
+\end{equation} $Pr[r_i(d)|rel]$ represent the probability that a relevant document would be ranked at level $r_i$ by system i, while the $Pr[r_i(d)|irr]$is the probability that an irrelevant document would be ranked at level $r_i$ by system i. The model sounds reasonable in theory but hard to implement in reality. In the paper, the author used the trec\_eval to calculate these probabilities by human, which definitely cannot be applied to real world scenario. It may be practical to use training data to get these probabilities in real world. But, as the collections keep changes all the time and the training will take a vast mount of time, it’s hard to guarantee the efficiency and precision. 
+
+Another example of machine learning approach is done by \cite{Voorhees1995}. They proposed two algorithms in \cite{Voorhees1995}, the first of which is Modeling relevant document distribution. Consider a scenario where meta-search engine is built. For a query $Q$, each collection $I$ has $n_Q^I$ numbers of relevant documents. As each component search engine execute a search on the query $Q$, it returns a list of documents ranged by the similarity in a descending order. And there exists a relation between the number of relevant documents and the size of returned documents,  denoted by a distribution $F_Q^I(S)$, where S is the size of the returned documents and $F$ is a function mapping the size of returned documents to the number of relevant documents. For C collections $I_1,I_2,\cdotp\cdotp\cdotp,I_C$, the aim of the algorithm is to find retrieved document sizes of each collection, denoted by $\lambda_1,\lambda_2,\cdotp\cdotp\cdotp,\lambda_i$ that can maximum the total number of relevant documents, which is $\sum\limits_{i=1}^CF_Q^{I_i}(\lambda_i)$, notice that $\sum\limits_{i=1}^C{\lambda_i}=N$ where $N$ is the total number of retrieved documents. In the algorithm, they use training data to build the distribution on past queries. When a query comes, they use k nearest neighbours based on text similarity to get the average relevant document distribution. A maximisation procedure is applied to find the suitable $\lambda_i$ for each collection. Then final result is ranked using a so called C-faced die method. The document at rank k is obtained from the top of the collection with the most amount of remaining documents. The document then is removed of the original list. The final result list is formed in the continuing process. Another algorithm based on the past training data is also proposed by \cite{Voorhees1995}, which uses past queries to build a clustering model. In this model, the queries are classified into the same cluster if they have many documents in common. Each query in the cluster is represented by the vector space. And the centroid of each cluster is generated by averaging the vectors of every query in the cluster. Each collection in the cluster is assigned a weight $w$, where $w$ equals the average number of documents that is retrieved by the queries from the collection. So when the meta-search engine passes a new query, the algorithm calculate the distance between the query and each centroid of the cluster and assign the query to the cluster with the shortest distance.  Then the size of documents returned from each collection is calculate in the following method:
+For a query $q$, the weights for $N$ collections ($C_1,C_2,\cdotp\cdotp\cdotp,C_n$) are ($w_1,w_2,\cdotp\cdotp\cdotp,w_n$), And there are $M$ documents to be returned, so the number of documents is returned by collection $C_i$ is $\frac{w_i}{\sum\limits_{j=1}^C{w_j}}*N$. And similarly, the final result is arranged using the C-faced die method. These two methods are more like algorithms learning collection weights during training. So it may can increase the precision and recall of the retrieved results, but the internal order of documents is not conserved during the C-faced die procedure. And on the other hand, all both models are trying to build a static model that can be applied into different queries in different time, and especially the clustering model is based on the hypotheses that particular collections are focused on some particular topics.
+\cite{Dwork2001} proposed an algorithm based on Markov chain, however, this algorithm can only be used in the aggregated meta-search.
 
 \subsection{Aggregated-Meta-Search-Specific Methods}
 In the environment of aggregated meta-search, there exists lot of document overlaps among different collections and thus can be regarded as a data fusion problems. There exits many algorithms based on the performances of documents on different collections and use aggregated methods to evaluate its final score. Linear combination methods are typical example of aggregated methods. For example, Fox and Shaw\cite{Fox1994a} developed 6 methods to normalise the overall similarity across all the individual search systems based on SMART by combining the scores across all the collections. 
@@ -189,9 +192,87 @@ In the environment of aggregated meta-search, there exists lot of document overl
 And they also tried to use training data to get a sever weight by the average precision of individual search system. \cite{Wu2013} modified the weighted condorcet fusion algorithms using a linear discriminant analysis(LDA) technology to train the weights.
 
 \section{Evaluation} As a matter of fact, it is a tough task to judge the performance of an information retrieval system. Many meta-searchers have trying to persuade others that their algorithms are better, but none of these algorithms can perform stably in every situation. And others are trying to find good ways to do these judgments on these algorithms. For lots of algorithms developed before, it is a common way to test the performance based on the Test Collection like TREC\cite{Voorhees2005}. However, as discussed by \cite{Thomas2006}, the test collection approach is lack of private data and will not evolve as a real data source. Another approach is to judge the performance based on search log like click-through data. This approach is based on the hypothesis that high-ranked documents tend to have more clicks. However, the hypothesis does not always hold in reality. On the other hand, the search log is not easy to achieve in an un-cooperative environment. Other methods like Human experimentation in the lab as well as naturalistic observation are widely used in the practice and they both have their drawbacks. \cite{Thomas2006} also implemented a tool to evaluate the performance based on embedded comparison and log analysis.
+\subsection{Evaluation on Binary Relevance}
+Many of the measurements widely used are based on the binary relevance of documents, namely relevant or non-relevant, retrieved or non-retrieved. Several basic measurements are based on binary relevance, for example, $precision$, $recall$. Documents are assigned values of according to the relevance-retrieval metric .  
+\begin{center}
+\begin{tabular}{  | c | c | c | r | }
+\hline
+{}
+ &  {Relevant}
+ &{Non-relevant} \\
+\hline
+Retrieved  &True Positives(TP) & False Positives(FP) \\
+\hline
+Not retrieved & False Negatives(FN)& True Negatives(TN)\\
+\hline
+\end{tabular}
+\end{center}
+$Precision$ is the proportion of relevant documents among all the retrieved documents, which equals $TP/(TP+FP)$ while $Recall$, on the other hand, represent the proportion of relevant documents that is retrieved, so $Recall=TP/(TP+FN)$. So recall can be easily achieved by return all the documents, which can bring an unstable evaluation of the performance. $Accuracy$ is another measurement that measures the proportion of documents that are correctly judged by the retrieval system, and $Accuracy=(TP+TN)/(TP+FP+FN+TN)$. \cite{Manning2008} gave an argument on the measurement saying that accuracy is not an appropriate measure for information retrieval problem because the accuracy can be easily achieved by treating all documents non-relevant due to the fact that most of the documents are irrelevant to a particular query. Precision and recall represent different aspect of the performance of a retrieval system. In some scenarios, precision is more significant than recall, for example, in a web search engine, users are more interested in the top returned documents, so $precision at k$ is usually applied in such a case ,while in a search tool searching documents across the disks, the recall in more important. So there exists a trade-off between these two criteria. And, $F-measure$ uses weighted harmonic mean of precision and recall to adjust the balance of the two measurements. Another measurement that is very popular in TREC as a criteria is the $Mean Average Precision$(widely know as MAP). The MAP precision is the average precision achieved by different queries at each point a relevant document is retrieved. Saying there is $N$ queries represent different topics, $MAP=\frac{1}{N}\sum\limits_{j=1}^N{\frac{1}{Q_j}\sum\limits_{i=1}^{Q_j}P(doc_i)}$, $P(doc_i)$ is the precision when document $i$ is retrieved for a query $j$. The MAP is proved to be very stable in practise and is widely used in the judgement of a new algorithm.
 
+\subsection{Evaluation on Non-binary Relevance}
+However, the relevance of documents to a query or a topic is not just relevant or irrelevant, some documents are much more than others among the judged relevant documents. Traditional binary evaluation  methods are much less sufficient to judge the performance of a retrieval system. Some researchers proposed graded relevance judgement method to tackle the drawbacks of the binary evaluation. One of the most famous grade based measurements is call Discount Cumulated Gain (DCG) and its normalisation Normalised Discount Cumulated Gain (NDCG) proposed in \cite{Jarvelin2002,Kekalainen2005}. The relevance of documents is not binary in this method and is assigned different value according to its similarity to the topic. Saying we allocate the value (0,1,2,3) to documents that is  for $Irrelevant$, $Marginally$ $relevant$, $Fairly$ $relevant$  and $Highly$ $relevant$ separately. In DCG, each document is assigned a new relevance score based on its gain value. The gain value is the sum of the document relevance and its previous gain value. For example, given a relevance vector of a list to a query,
+$G'=<3,2,3,0,0,1,2,2,3,0,....>$, for each element in the vector, the cumulated gain CG is calculated using the following equation:
+\begin{equation}
+\label{eq:cg}
+CG[i]=\begin{cases}
+G[1],& \text{if $i=1$}.\\
+CG[i-1]+G[i], & \text{otherwise}.
+\end{cases}
+\end{equation}
+So, the CG' equals $<3,5,8,8,8,9,11,13,16,...>$ and then the authors added a discount factor to the cumulated gain to reduce the gain of documents that is ranked marginally. The usual approach is divide the original CG by the log of the document rank. So the Discount Cumulated Gain, namely DCG now becomes:
+\begin{equation}
+DCG[i]=\begin{cases}
+CG[i],&\text{if $i<b$}.\\
+DCG[i-1]+\frac{G[i]}{\log_bi}, &\text{if $i>=b$}.
+\end{cases}
+\end{equation} 
+so the DCG turns out to be $<3,5,6.89,6.89,7.28,7.99,8.66,9.61...>$ when the base $b$ is set to 2.
+There exists another form of the equation, 
+ \begin{equation}
+DCG[i]=DCG[i]+\frac{2^{G[i]}-1}{\log_2(1+i)}
+\end{equation} 
+To evaluate a performance of a document, documents are judged by assessors in advance, for example, following is the distribution of the relevance of documents to a particular query:
+\begin{center}
+\begin{tabular}{  | c | c  | r | }
+\hline
+{}
+ {Relevance}&  {Number of documents}
+ \\
+\hline
+3  & a\\
+\hline
+2 & b\\
+\hline
+1 & c\\
+\hline
+0 & d\\
+\hline
+\end{tabular}
+\end{center}
+, for an ideal information retrieval system, the result returned should form a list in decrease order of document relevance, so the ideal gain vector ($IG$) should be like this: $IG=<3,3,3,...,2,2,2,...,1,1,1,....,0,0,0,0,..>$. According to the ideal gain vector, we can get the value of ideal cumulated gain vector(ICG) as well as ideal discount cumulated gain vector(IDCG). For a new retrieval system that we want to measure, we calculate the relative score of the DCG to the IDCG, which is named NDCG as proposed and get by dividing DCG by IDCG 
+\begin{equation}
+NDCG=\frac{DCG}{IDCG}
+\end{equation}
+Notice that NDCG is always in the range of 0 to 1. The NDCG method can also be used in binary evaluation, in which the relevance of a document and a query is just 1 for relevant and 0 for irrelevant.
 
-ALL:\cite{Callan1992,Callan2000,Renda2003,Thomas2006,Aslam2001,Callan1995,Vogt1998,Rasolofo2003,Dwork2001,Si2003,Thomas2009,Voorhees2005,Rasolofo2001,Voorhees1995,Bergman2001,Jacso2004,DeKretser 1998,Danzig1991,Jones2004,Robertson1994,Shokouhi2007,Fox1994a,Dorn2008,Lee1997,Montague2002,Markov2012,Zhou2012,Hong2012,Shokouhi2009}
+Apart from the NDCG methods, others tried to compare the system rank with the accurate rank of documents. \cite{Mizzaro2001} proposed such a method to calculate the distance between \textit{the actual relevance of documents (UREs)} and \textit{the estimates by the Information Retrieval System (SREs)}. The average distance measure(\textit{ADM}) is calculate using:
+\begin{equation}
+ADM_q=1-\frac{\sum\nolimits_{d\in{D}}|SRE_q(d_i)-URE_q(d_i)|}{|D|}.
+\end{equation}
+$SRE_q(d_i)$ is the actual relevance of a document to a query while $URE_q(d_i)$ is the relevance assigned by the information retrieval system. And $D$ is the number of documents in all the document collection. So this bring a problem in implementing the measurement, it is not possible for assessors to judgement each document for each query. However, it is a practical approach to use the retrieved documents, however, it has not been tested if the accuracy is preserved.
+\subsection{Evaluation on incomplete judgement}
+Although many of the measurement is said to have a robust evidence to judge a information retrieval system, however, it is usually the case that the judgement of documents is not complete and sometimes imperfect. \cite{Buckley2004} studied the problem of incomplete information and developed a measurement called \textit{bpref}. The \textit{bpref} method evaluate the chance of a situation when irrelevant documents are ranked ahead of relevant documents in a retrieval system. So we get the value of \textit{bpref} by:
+\begin{equation}
+bpref=\frac{1}{R}\sum\limits_r(1-\frac{|n\ ranked\ higher\ than\ r|}{R})
+\end{equation}
+In the equation, $R$ is the number of relevant document for a specific topic and n is a member of the first R judged irrelevant documents retrieved. To get avoid of the danger that there is very small number of documents, they proposed a $bpref-10$ method, which enlarge the number of judged irrelevant documents to 10+R, and now is 
+\begin{equation}
+bpref-10=\frac{1}{R}\sum\limits_r(1-\frac{|n\ ranked\ higher\ than\ r|}{10+R})
+\end{equation}
+The experiments showed that the measurement is quite stable even when there is 50 percent or less information is provided. And the other experiment in \cite{Buckley2004} also showed that even some documents disappeared from the collection, the result is not strongly affected.
+
+Actually other existing measurements can also work fine in the incomplete judgements situation, \cite{Bompada2007} did experiment on the robustness of three relevance measures, namely bred, NDCG and infAP with incomplete judgements. The result showed that the NDCG, which is modified to binary evaluation outperformed others in such an environment. The experiments also showed that binary NDCG is a little bit better than non-binary NDCG in preserving the system ranking in incomplete judgements, However, this has not been further experimented and non-binary NDCG may still be a good choice in the situation when there is limited amount of incompleteness.   
+
 
 
 

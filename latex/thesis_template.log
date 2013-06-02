@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 MAY 2013 17:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 MAY 2013 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -268,11 +268,15 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-] [3]
+]
+Overfull \hbox (47.88608pt too wide) in paragraph at lines 36--38
+[]    
+ []
+
+[3]
 \openout2 = `thanks.aux'.
 
- (./thanks.tex
-[4
+ (./thanks.tex [4
 
 
 ]) [5]
@@ -289,48 +293,31 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 \tf@toc=\write3
 \openout3 = `thesis_template.toc'.
 
- [9] [10
+[9] [10
 
-]
-(./thesis_template.lof)
+] (./thesis_template.lof)
 \tf@lof=\write4
 \openout4 = `thesis_template.lof'.
 
  [1]
 \openout2 = `chapter1.aux'.
 
- (./chapter1.tex
+ (./chapter1.tex [1
+
+] [2
+
+]
 Chapter 1.
-Package epstopdf Info: Source file: <fig1.eps>
-(epstopdf)                    date: 2013-03-28 12:36:48
-(epstopdf)                    size: 9464 bytes
-(epstopdf)             Output file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-03-28 12:38:47
-(epstopdf)                    size: 10030 bytes
-(epstopdf)             Command: <repstopdf --outfile=fig1-eps-converted-to.pdf 
-fig1.eps>
-(epstopdf)             \includegraphics on input line 13.
-Package epstopdf Info: Output file is already uptodate.
-<fig1-eps-converted-to.pdf, id=43, 536.0025pt x 443.6575pt>
-File: fig1-eps-converted-to.pdf Graphic file (type pdf)
-
-<use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf used on input line 13.
-(pdftex.def)             Requested size: 284.52756pt x 235.5029pt.
-) [1
-
-
- <./fig1-eps-converted-to.pdf>]
+) [3]
 \openout2 = `chapter2.aux'.
 
-
-(./chapter2.tex [2
+ (./chapter2.tex [4
 
 
 
 ]
 Chapter 2.
-<architecture.jpg, id=60, 1313.90875pt x 1042.89626pt>
+<architecture.jpg, id=54, 1313.90875pt x 1042.89626pt>
 File: architecture.jpg Graphic file (type jpg)
  <use architecture.jpg>
 Package pdftex.def Info: architecture.jpg used on input line 7.
@@ -339,34 +326,33 @@ Package pdftex.def Info: architecture.jpg used on input line 7.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3] [4 <./architecture.jpg>]
+[5]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
+ [6 <./architecture.jpg>]
 
+LaTeX Warning: Citation `Shokouhi2011' on page 7 undefined on input line 25.
 
-LaTeX Warning: Citation `Shokouhi2011' on page 5 undefined on input line 25.
-
-<CMS.jpg, id=68, 1415.2875pt x 654.445pt>
+<CMS.jpg, id=62, 1415.2875pt x 654.445pt>
 File: CMS.jpg Graphic file (type jpg)
  <use CMS.jpg>
 Package pdftex.def Info: CMS.jpg used on input line 28.
 (pdftex.def)             Requested size: 341.43306pt x 157.87888pt.
- [5] [6 <./CMS.jpg>]
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
+ [7] [8 <./CMS.jpg>]
 [9]
-Missing character: There is no Õ in font cmr10!
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
+Underfull \vbox (badness 3713) has occurred while \output is active []
+
+ [11]
+Missing character: There is no Õ in font cmr10!
+
+[12]
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
@@ -558,48 +544,57 @@ Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
+ [13]
 Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
+ [14]
+Missing character: There is no Ê in font cmr10!
+ [15]
+Missing character: There is no Ê in font cmr10!
+ [16] [17]) [18] (./thesis_template.bbl
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [19
 
-[11] [12]
 
-LaTeX Warning: Citation `DeKretser1998' on page 13 undefined on input line 194.
-
-
-) [13] (./thesis_template.bbl [14
-
-
-] [15] [16]) [17] (./thesis_template.aux
-(./thanks.aux) (./abstract.aux) (./chapter1.aux) (./chapter2.aux))
+]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+ [20]) [21]
+(./thesis_template.aux (./thanks.aux) (./abstract.aux) (./chapter1.aux)
+(./chapter2.aux))
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3110 strings out of 493488
- 42414 string characters out of 3141326
- 112131 words of memory out of 3000000
- 6322 multiletter control sequences out of 15000+200000
- 12825 words of font info for 50 fonts, out of 3000000 for 9000
+ 3099 strings out of 493488
+ 42215 string characters out of 3141326
+ 109135 words of memory out of 3000000
+ 6314 multiletter control sequences out of 15000+200000
+ 12386 words of font info for 47 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,16n,40p,2666b,260s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,16n,40p,2711b,236s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
-/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
-xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis_template.pdf (28 pages, 589613 bytes).
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/
+texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on thesis_template.pdf (32 pages, 606500 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 166 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
