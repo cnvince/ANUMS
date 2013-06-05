@@ -1,0 +1,70 @@
+[Title]Dr Hanna Suominen[Link]https://researchers.anu.edu.au/researchers/suominen-h[Source]RESEARCHERS
+[Title]Proceedings of the 1st ACM SIGSPATIAL International Workshop on Data Mining for Geoinformatics[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&10%2C10%2C[Source]LIBRARY
+[Title]Resource Distribution as a Self-Categorisation Cue: The Psychology of Inferring Group Membership from the Distribution of Valued Resources[Link]https://researchers.anu.edu.au/projects/381[Source]RES_PROJECTS
+[Title]Study at ANU Interest: Computer Science[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/interests/69[Source]STUDYAT
+[Title]Information, Divergence and Risk for Binary Experiments[Link]https://researchers.anu.edu.au/publications/47990[Source]RES_PUBLICATIONS
+[Title]Dr Adi Botea[Link]https://researchers.anu.edu.au/researchers/botea-a[Source]RESEARCHERS
+[Title]Dr Jun Zhou[Link]https://researchers.anu.edu.au/researchers/zhou-j[Source]RESEARCHERS
+[Title]ANU E Press[Link]http://epress.anu.edu.au/cw/html/banner.php?page=p&chapters=s[Source]WEB
+[Title]Proceedings of the Sixth International Workshop on Data Mining for Online Advertising and Internet E[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&1%2C1%2C[Source]LIBRARY
+[Title]Dr Stephen Roberts[Link]https://researchers.anu.edu.au/researchers/roberts-sg[Source]RESEARCHERS
+[Title]Courses - CS - CECS - ANU[Link]http://cs.anu.edu.au/courses/[Source]WEB
+[Title]Speakers - Learning ANU - CECS SSLL -[Link]http://ssll.cecs.anu.edu.au/speakers/mlss[Source]WEB
+[Title]Investigation of Hydrothermally Active Submarine Island Arc Volcanoes in the Tabar-Lihir-Tanga-Feni Group and Solomon Islands[Link]https://researchers.anu.edu.au/projects/1812[Source]RES_PROJECTS
+[Title]Courses - CECS - ANU[Link]http://cecs.anu.edu.au/courses/[Source]WEB
+[Title]Computer Science Major (CSCI-MAJ)[Link]http://studyat.anu.edu.au/majors/CSCI-MAJ;courses.html[Source]STUDYAT
+[Title]Data mining methodological weaknesses and suggested fixes[Link]https://researchers.anu.edu.au/publications/39299[Source]RES_PUBLICATIONS
+[Title]Timetable ANU - CECS SSLL -[Link]http://ssll.cecs.anu.edu.au/program[Source]WEB
+[Title]Self-Categorisation and Personal Identity: Integrating Group and Personality Processes[Link]https://researchers.anu.edu.au/projects/698[Source]RES_PROJECTS
+[Title]Peter CHRISTEN - CECS - ANU[Link]http://cecs.anu.edu.au/user/3952[Source]WEB
+[Title]Gendering the field : towards sustainable livelihoods for mining in mining communities[Link]https://digitalcollections.anu.edu.au/handle/1885/9711[Source]DSPACE
+[Title]Proper Group Actions in Complex Geometry[Link]https://researchers.anu.edu.au/projects/2136[Source]RES_PROJECTS
+[Title]Gender Equality and Corporate Social Responsibility in Mining: An Investigation of the Potential for Change at Kaltim Prima Coal, Indonesia[Link]https://digitalcollections.anu.edu.au/handle/1885/9234[Source]DSPACE
+[Title]Mining taxation in Fiji: the case of Emperor Gold Mines[Link]https://digitalcollections.anu.edu.au/handle/1885/40354[Source]DSPACE
+[Title]Unintended collieries: theorizing people and resources in India[Link]https://digitalcollections.anu.edu.au/handle/1885/40992[Source]DSPACE
+[Title]Study at ANU ANU College of Engineering and Computer Science (Courses)[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/acad_orgs/1043/courses/undergrad.html[Source]STUDYAT
+[Title]MATH3346 - MATH3346 Data Mining Honours[Link]http://studyat.anu.edu.au/courses/MATH3346;details.html[Source]STUDYAT
+[Title]Does post-mining rehabilitation on the Weipa bauxite plateau restore bird habitat values?[Link]https://digitalcollections.anu.edu.au/handle/1885/49426[Source]DSPACE
+[Title]Research areas - H-1NF - ANU[Link]http://h1nf.anu.edu.au/research/[Source]WEB
+[Title]Dr Peter Christen[Link]https://researchers.anu.edu.au/researchers/christen-pj[Source]RESEARCHERS
+[Title]KDD-2004 proceedings of the tenth ACM SIGKDD International Conference on Knowledge Discovery and Dat[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&7%2C7%2C[Source]LIBRARY
+[Title]Asymptotics of Semigroup Kernels; Lie Groups of Polynominal Growth and Almost-periodic Operators[Link]https://researchers.anu.edu.au/projects/1865[Source]RES_PROJECTS
+[Title]ANU DCS Technical Services Group[Link]http://tsg.anu.edu.au/Projects/Beowulf/[Source]WEB
+[Title]Social Adaptation to Climate Change in the Australian Public Sphere: A comparison of individual and group deliberative responses to scenarios of future climate change[Link]https://researchers.anu.edu.au/projects/2084[Source]RES_PROJECTS
+[Title]Proceedings of the Tenth International Workshop on Multimedia Data Mining[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&4%2C4%2C[Source]LIBRARY
+[Title]Dr Kim Blackmore[Link]https://researchers.anu.edu.au/researchers/blackmore-kl[Source]RESEARCHERS
+[Title]Adaptive regression and model selection in data mining problems[Link]https://digitalcollections.anu.edu.au/handle/1885/9449[Source]DSPACE
+[Title]Development and User Experiences of an Open Source Data Cleaning, Deduplication and Record Linkage System[Link]https://researchers.anu.edu.au/publications/13595[Source]RES_PUBLICATIONS
+[Title]Professor Markus Hegland[Link]https://researchers.anu.edu.au/researchers/hegland-tm[Source]RESEARCHERS
+[Title]Peter CHRISTEN - CS - CECS - ANU[Link]http://cs.anu.edu.au/user/3952[Source]WEB
+[Title]Dr Marconi Soares Barbosa[Link]https://researchers.anu.edu.au/researchers/soares-barbosa-m[Source]RESEARCHERS
+[Title]Mathematics Minor (MATH-MIN)[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/minors/MATH-MIN;courses.html[Source]STUDYAT
+[Title]A Bag Reconstruction Method for Multiple Instance Classification and Group Record Linkage[Link]https://researchers.anu.edu.au/publications/77009[Source]RES_PUBLICATIONS
+[Title]Ms Vanessa Robins[Link]https://researchers.anu.edu.au/researchers/robins-v[Source]RESEARCHERS
+[Title]Invariant Cluster Analysis for data mining[Link]https://researchers.anu.edu.au/projects/1615[Source]RES_PROJECTS
+[Title]Soundfield representation, reconstruction and perception[Link]https://digitalcollections.anu.edu.au/handle/1885/9728[Source]DSPACE
+[Title]Data Mining with Python[Link]https://researchers.anu.edu.au/publications/33573[Source]RES_PUBLICATIONS
+[Title]Parallel Data Mining on a Beowulf Cluster[Link]https://researchers.anu.edu.au/publications/33462[Source]RES_PUBLICATIONS
+[Title]Proceedings of the Third Workshop on Large Scale Data Mining Theory and Applications[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&3%2C3%2C[Source]LIBRARY
+[Title]Data Mining and Analytics 2007[Link]https://researchers.anu.edu.au/publications/13519[Source]RES_PUBLICATIONS
+[Title]KDD-2005 proceedings of the eleventh ACM SIGKDD International Conference on Knowledge Discovery and[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&6%2C6%2C[Source]LIBRARY
+[Title]Experimental constraints on Platinum-Group Element geochemisty: developing lithogeochemical exploration tools for nickel-sulfides in mafic and ultramafic systems (externally led by University of Western Australia)[Link]https://researchers.anu.edu.au/projects/991[Source]RES_PROJECTS
+[Title]SIGKDD explorations : newsletter of the Special Interest Group (SIG) on Knowledge Discovery & Data M[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&9%2C9%2C[Source]LIBRARY
+[Title]A Supervised Learning and Group Linking Method for Historical Census Household Linkage[Link]https://researchers.anu.edu.au/publications/67775[Source]RES_PUBLICATIONS
+[Title]Multiple Instance Learning for Group Record Linkage[Link]https://researchers.anu.edu.au/publications/67751[Source]RES_PUBLICATIONS
+[Title]COMP3420 - COMP3420 Advanced Databases and Data Mining[Link]http://studyat.anu.edu.au/courses/COMP3420;details.html[Source]STUDYAT
+[Title]SIGKDD explorations newsletter of the Special Interest Group on Knowledge Discovery and Data Mining[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&8%2C8%2C[Source]LIBRARY
+[Title]Mathematics Major (MATH-MAJ)[Link]http://studyat.anu.edu.au/majors/MATH-MAJ;courses.html[Source]STUDYAT
+[Title]KDD-2006 proceedings of the Twelfth ACM SIGKDD International Conference on Knowledge Discovery and D[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&5%2C5%2C[Source]LIBRARY
+[Title]Data wars over data stores: challenges in medical data linkage[Link]https://digitalcollections.anu.edu.au/handle/1885/46903[Source]DSPACE
+[Title]Data Mining of Administrative Claims Data of Pathology Services[Link]https://researchers.anu.edu.au/publications/11104[Source]RES_PUBLICATIONS
+[Title]Master of Mathematical Sciences (7619XMMASC)[Link]http://studyat.anu.edu.au/programs/7619XMMASC;requirements.html[Source]STUDYAT
+[Title]New approaches to using scientific data - statistics, data mining and related technologies in research and research training[Link]https://digitalcollections.anu.edu.au/handle/1885/41536[Source]DSPACE
+[Title]Proceedings of the First International Workshop on Crowdsourcing and Data Mining[Link]http://library.anu.edu.au/search~S8?/Ydata-mining+group&SORT=D/Ydata-mining+group&SORT=D&SUBKEY=data-mining+group/1%2C24%2C24%2CB/frameset&FF=Ydata-mining+group&SORT=D&2%2C2%2C[Source]LIBRARY
+[Title]High-performance computational data-mining techniques for feature detection in complex time series from large-scale, networked plasma experiments[Link]https://researchers.anu.edu.au/projects/276[Source]RES_PROJECTS
+[Title]Study at ANU[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/courses/[Source]STUDYAT
+[Title]Data Mining and Matching Research Projects - DMM - ANU[Link]http://dmm.anu.edu.au/[Source]WEB
+[Title]Evaluating mine safety legislation in Queensland[Link]https://digitalcollections.anu.edu.au/handle/1885/43143[Source]DSPACE
+[Title]Dr Tiberio Caetano[Link]https://researchers.anu.edu.au/researchers/caetano-t[Source]RESEARCHERS
+[Title]Master of Mathematical Sciences (Research) (7621XMMSR)[Link]http://studyat.anu.edu.au/programs/7621XMMSR;requirements.html[Source]STUDYAT
+[Title]Domains with Large Abelian Subgroups of the Automorphism Groups[Link]https://researchers.anu.edu.au/projects/1729[Source]RES_PROJECTS

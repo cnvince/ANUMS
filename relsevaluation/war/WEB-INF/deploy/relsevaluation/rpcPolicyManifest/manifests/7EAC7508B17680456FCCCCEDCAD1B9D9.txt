@@ -1,0 +1,2 @@
+serviceClass: com.google.rels.client.GreetingService
+path: 3C98757AB611EFE15BE7FD925E387B69.gwt.rpc
