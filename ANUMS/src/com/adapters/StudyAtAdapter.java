@@ -87,8 +87,8 @@ public class StudyAtAdapter extends Adapter {
 						result.setSource(source);
 						result.setDsumary();
 						ranklist.addResult(result);
-						DocumentSet.AddDocument(link);
 					}
+					DocumentSet.AddDocument(link);
 					if (ranklist.getList().size() >= 10)
 						break;
 				}

@@ -12,6 +12,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.datatype.ServerSource;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;
@@ -68,28 +70,32 @@ public class DspaceAdapter extends Adapter {
 			int resultsize = 0;
 			for (int i = 1; i < length; i++) {
 				Element TR = (Element) nodeList.item(i);
-				NodeList TD = (NodeList) xpath.evaluate("TD", TR,
-						XPathConstants.NODESET);
-				Node Preview = TD.item(0);
-				Node IMG = (Node) xpath.evaluate("A/IMG", Preview,
+				Node T1 = (Node) xpath.evaluate("TD[@headers=\"t1\"]", TR,
 						XPathConstants.NODE);
-				String imgLink = "";
-				if (IMG != null)
-					imgLink = hostUrl + ((Element) IMG).getAttribute("src");
-				Node Date = TD.item(1);
-				if (Date != null) {
-					String date = Date.getTextContent().trim();
-					Node TD2 = TD.item(2);
-					Node Title=(Node) xpath.evaluate("A", TD2,
+//				System.out.println(T1);
+//				Node IMG = (Node) xpath.evaluate("A/IMG", T1,
+//						XPathConstants.NODE);
+//				String imgLink = "";
+//				if (IMG != null)
+//					imgLink = hostUrl + ((Element) IMG).getAttribute("src");
+//				System.out.println("DSPACE:IMG"+imgLink);
+				Node T2 = (Node) xpath.evaluate("TD[@headers=\"t2\"]", TR,
+						XPathConstants.NODE);
+				if (T2 != null) {
+					String date = T2.getTextContent().trim();
+					Node T3 = (Node) xpath.evaluate("TD[@headers=\"t3\"]", TR,
+							XPathConstants.NODE);
+					Node Title=(Node) xpath.evaluate("A", T3,
 							XPathConstants.NODE);
 					String title = Title.getTextContent().trim();
 					String link = hostUrl
 							+ ((Element) Title).getAttribute("href");
-					Node Author = TD.item(3);
-					String author = Author.getTextContent().trim();
+					Node T4 = (Node) xpath.evaluate("TD[@headers=\"t4\"]", TR,
+							XPathConstants.NODE);
+					String author = T4.getTextContent().trim();
 					DSpaceResult result = new DSpaceResult();
 					if (!DocumentSet.contains(link)) {
-						result.setImgLink(imgLink);
+//						result.setImgLink(imgLink);
 						result.setAuthor(author);
 						result.setDate(date);
 						result.setLink(link);
@@ -98,10 +104,9 @@ public class DspaceAdapter extends Adapter {
 						result.setTitle(title);
 						result.setDsumary();
 						ranklist.addResult(result);
-						DocumentSet.AddDocument(link);
 						resultsize++;
-
 					}
+					DocumentSet.AddDocument(link);
 					if (resultsize >= 10)
 						break;
 				}
@@ -124,15 +129,15 @@ public class DspaceAdapter extends Adapter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// DspaceAdapter adapter=new DspaceAdapter(countDownLatch, document,
-		// results, sTable, hostUrl, source);
-		// try {
-		// adapter.query("paul");
-		// } catch (XPathExpressionException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+//		 TODO Auto-generated method stub
+//		 DspaceAdapter adapter=new DspaceAdapter(null, null,
+//		 null, null, null, ServerSource.DSPACE);
+//		 try {
+//		 adapter.query("paul");
+//		 } catch (XPathExpressionException e) {
+//		 // TODO Auto-generated catch block
+//		 e.printStackTrace();
+//		 }
 	}
 
 	public void display() {

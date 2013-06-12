@@ -56,8 +56,11 @@ public class YouTubeAdapter extends Adapter {
 				Node IMG = (Node) xpath.evaluate(
 						"A//SPAN[@class=\"yt-thumb-clip-inner\"]//IMG",
 						Node_SPAN, XPathConstants.NODE);
-				String imgLink = ((Element) IMG).getAttribute("src");
-				imgLink = imgLink.replaceAll("//", "");
+				String imgLink = "";
+				if (IMG != null) {
+					imgLink = ((Element) IMG).getAttribute("src");
+					imgLink = imgLink.replaceAll("//", "");
+				}
 				Node VIEWCOUNT = (Node) xpath
 						.evaluate(
 								"SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-view-count\"]",

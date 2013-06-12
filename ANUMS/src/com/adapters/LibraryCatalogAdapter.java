@@ -82,9 +82,9 @@ public class LibraryCatalogAdapter extends Adapter {
 					result.setSource(source);
 					result.setDsumary();
 					ranklist.addResult(result);
-					DocumentSet.AddDocument(Link);
 					resultsize++;
 				}
+				DocumentSet.AddDocument(Link);
 				if (resultsize >= 10)
 					break;
 			}

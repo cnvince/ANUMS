@@ -121,9 +121,9 @@ public class ContactAdapter extends Adapter {
 					result.setSource(ServerSource.CONTACT);
 					result.setDsumary();
 					ranklist.addResult(result);
-					DocumentSet.AddDocument(link);
 					resultsize++;
 				}
+				DocumentSet.AddDocument(link);
 //				when the result size==0, stop fetching 
 				if(resultsize>=10)
 					break;

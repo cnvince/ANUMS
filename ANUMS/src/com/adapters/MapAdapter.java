@@ -86,9 +86,9 @@ public class MapAdapter extends Adapter {
 						mapResult.setSource(source);
 						mapResult.setDsumary();
 						ranklist.addResult(mapResult);
-						DocumentSet.AddDocument(link);
 						resultsize++;
 					}
+					DocumentSet.AddDocument(link);
 					if (resultsize >= 10)
 						break;
 				}

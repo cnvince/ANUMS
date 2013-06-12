@@ -82,9 +82,9 @@ public class ResearcherAdapter extends Adapter {
 					result.setTitle(title);
 					result.setDsumary();
 					ranklist.addResult(result);
-					DocumentSet.AddDocument(link);
 					resultsize++;
 				}
+				DocumentSet.AddDocument(link);
 				if (resultsize >= 10)
 					break;
 			}
