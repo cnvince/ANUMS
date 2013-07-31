@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 MAY 2013 15:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  27 JUL 2013 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -181,7 +181,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@algorithm=\count109
 )
 (./thesis_template.aux (./thanks.aux) (./abstract.aux) (./chapter1.aux)
-(./chapter2.aux))
+(./chapter2.aux) (./c_experiment.aux))
 \openout1 = `thesis_template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -320,39 +320,42 @@ Chapter 2.
 <architecture.jpg, id=54, 1313.90875pt x 1042.89626pt>
 File: architecture.jpg Graphic file (type jpg)
  <use architecture.jpg>
-Package pdftex.def Info: architecture.jpg used on input line 7.
+Package pdftex.def Info: architecture.jpg used on input line 10.
 (pdftex.def)             Requested size: 341.43306pt x 271.00342pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [6 <./architecture.jpg>]
 
-LaTeX Warning: Citation `Shokouhi2011' on page 7 undefined on input line 25.
+LaTeX Warning: Citation `Shokouhi2011' on page 7 undefined on input line 28.
 
 <CMS.jpg, id=62, 1415.2875pt x 654.445pt>
 File: CMS.jpg Graphic file (type jpg)
  <use CMS.jpg>
-Package pdftex.def Info: CMS.jpg used on input line 28.
+Package pdftex.def Info: CMS.jpg used on input line 31.
 (pdftex.def)             Requested size: 341.43306pt x 157.87888pt.
  [7] [8 <./CMS.jpg>]
 [9]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
-Underfull \vbox (badness 3713) has occurred while \output is active []
-
- [11]
+[11]
 Missing character: There is no Õ in font cmr10!
 
-[12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
@@ -544,36 +547,45 @@ Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
- [13]
 Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
- [14]
+
+[13] [14]
 Missing character: There is no Ê in font cmr10!
  [15]
 Missing character: There is no Ê in font cmr10!
- [16] [17]) [18] (./thesis_template.bbl
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ” in font cmr10!
- [19
+ [16] [17]) [18]
+\openout2 = `c_experiment.aux'.
+
+ (./c_experiment.tex
+Chapter 3.
+) [19
+
+
+
+] (./thesis_template.bbl [20
 
 
 ]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
+Missing character: There is no ” in font cmr10!
+ [21]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [20]) [21]
-(./thesis_template.aux (./thanks.aux) (./abstract.aux) (./chapter1.aux)
-(./chapter2.aux))
+ [22]) [23] (./thesis_template.aux
+(./thanks.aux) (./abstract.aux) (./chapter1.aux) (./chapter2.aux)
+(./c_experiment.aux))
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3099 strings out of 493488
- 42215 string characters out of 3141326
- 109135 words of memory out of 3000000
- 6314 multiletter control sequences out of 15000+200000
+ 3107 strings out of 493488
+ 42344 string characters out of 3141326
+ 109560 words of memory out of 3000000
+ 6315 multiletter control sequences out of 15000+200000
  12386 words of font info for 47 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,16n,40p,2711b,236s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -591,10 +603,10 @@ cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
 texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis_template.pdf (32 pages, 606500 bytes).
+Output written on thesis_template.pdf (34 pages, 608387 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 172 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

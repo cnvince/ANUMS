@@ -76,8 +76,10 @@ public class StudyAtAdapter extends Adapter {
 				for (int j = 0; j < ResultLink.getLength(); j++) {
 					Element Link = (Element) ResultLink.item(j);
 					String title = Link.getTextContent().trim();
-					String link = "http://studyat.anu.edu.au"
-							+ Link.getAttribute("href").trim();
+					String link =Link.getAttribute("href").trim();
+					if(!link.startsWith("http"))
+						link="http://studyat.anu.edu.au"
+							+ link;
 					StudyAtResult result = new StudyAtResult();
 					// reNum++;
 					if (!DocumentSet.contains(link)) {

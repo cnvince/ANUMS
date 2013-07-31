@@ -17,7 +17,8 @@ public class AdapterFactory {
 
 	public ResultTable results = new ResultTable();
 	public HashMap<Integer, Server> ServerTable = new HashMap<Integer, Server>();
-
+//	query for public use
+	public static String query=null;
 
 	public ResearcherAdapter getRes_proAdapter() {
 		return res_proAdapter;
@@ -34,6 +35,7 @@ public class AdapterFactory {
 	// initial instances of adapters
 	public void allocateAdapters(String query) {
 		query = StringFormat.toURL(query);
+		this.query=query;
 		ParserFactory parserFactory = new ParserFactory(query);
 		parserFactory.initialDocuments();
 		//reset DocumentSet

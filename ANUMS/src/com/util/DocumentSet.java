@@ -50,7 +50,7 @@ public class DocumentSet {
 		try {
 			fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.append(documents.toString());
+			bw.append(documents.size()+"\n");
 			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -1,0 +1,34 @@
+[Title]Smoothing and Filling Holes with Dirichlet Boundary Conditions[Link]https://researchers.anu.edu.au/publications/42012[Source]RES_PUBLICATIONS
+[Title]Fitting Multidimensional Data Using Gradient Penalties and Combination Techniques[Link]https://researchers.anu.edu.au/publications/23545[Source]RES_PUBLICATIONS
+[Title]Double Double, Morphology and Trouble: Looking into Reduplication in Indonesian[Link]https://researchers.anu.edu.au/publications/24019[Source]RES_PUBLICATIONS
+[Title]Immunology The Making of a Modern Science[Link]http://library.anu.edu.au/search~S8?/YRolf+Zinkernagel&SORT=D/YRolf+Zinkernagel&SORT=D&SUBKEY=Rolf+Zinkernagel/1%2C3%2C3%2CB/frameset&FF=YRolf+Zinkernagel&SORT=D&1%2C1%2C[Source]LIBRARY
+[Title]Dr I Arka[Link]https://researchers.anu.edu.au/researchers/arka-iww[Source]RESEARCHERS
+[Title]Professor Markus Hegland[Link]https://researchers.anu.edu.au/researchers/hegland-tm[Source]RESEARCHERS
+[Title]ZINKERNAGEL Prof Rolf - ANU Archives[Link]http://archivescollection.anu.edu.au/index.php/zinkernagel-prof-rolf;isad[Source]WEB
+[Title]History & achievements - Science, Medicine & Health - ANU[Link]http://cmbe-cpms.anu.edu.au/about-us/history-achievements[Source]WEB
+[Title]Professor Michael Osborne[Link]https://researchers.anu.edu.au/researchers/osborne-mr[Source]RESEARCHERS
+[Title]Dr Stephen Roberts[Link]https://researchers.anu.edu.au/researchers/roberts-sg[Source]RESEARCHERS
+[Title]Some distinctive characteristics of the vocabulary of Australian languages[Link]https://researchers.anu.edu.au/publications/24066[Source]RES_PUBLICATIONS
+[Title]Are you an expert with a story to tell? - ANU News - ANU[Link]http://news.anu.edu.au/latest-news/page/8/[Source]WEB
+[Title]Simulation of Tsunami and Flash Floods[Link]https://researchers.anu.edu.au/publications/42011[Source]RES_PUBLICATIONS
+[Title]Professor Nicholas Evans[Link]https://researchers.anu.edu.au/researchers/evans-nrd[Source]RESEARCHERS
+[Title]Dr Linda Stals[Link]https://researchers.anu.edu.au/researchers/stals-l[Source]RESEARCHERS
+[Title]Blowfly protein key to terror poison antidote - ANU News - ANU[Link]http://news.anu.edu.au/category/media-releases/[Source]WEB
+[Title]About us - JCSMR - ANU[Link]http://jcsmr.anu.edu.au/about-us[Source]WEB
+[Title]Past events - JCSMR - ANU[Link]http://jcsmr.anu.edu.au/News-events/past-events[Source]WEB
+[Title]Dr Alistair Rendell[Link]https://researchers.anu.edu.au/researchers/rendell-apl[Source]RESEARCHERS
+[Title]Modelling the Performance of the Gaussian Chemistry Code on x86 Architectures[Link]https://researchers.anu.edu.au/publications/13545[Source]RES_PUBLICATIONS
+[Title]Modelling Gene Regulatory Networks Using Galerkin Techniques Based on State Space Aggregation and Sparse Grids[Link]https://researchers.anu.edu.au/publications/42231[Source]RES_PUBLICATIONS
+[Title]University history - About ANU - ANU[Link]http://www.anu.edu.au/about/history.php[Source]WEB
+[Title]An approach to parameter estimation and model selection in differential equations[Link]https://researchers.anu.edu.au/publications/35438[Source]RES_PUBLICATIONS
+[Title]ANU - Council and Governance - Honorary Degrees Committee - Graduates[Link]http://www.anu.edu.au/cabs/hdc/graduates.html[Source]WEB
+[Title]Places in 'Robbery Under Arms'[Link]https://researchers.anu.edu.au/publications/58583[Source]RES_PUBLICATIONS
+[Title]Immunology of diabetes : autoimmune mechanisms and the prevention and cure of type 1 diabetes[Link]http://library.anu.edu.au/search~S8?/YRolf+Zinkernagel&SORT=D/YRolf+Zinkernagel&SORT=D&SUBKEY=Rolf+Zinkernagel/1%2C3%2C3%2CB/frameset&FF=YRolf+Zinkernagel&SORT=D&3%2C3%2C[Source]LIBRARY
+[Title]Dr Julieanne Lamond[Link]https://researchers.anu.edu.au/researchers/lamond-jv[Source]RESEARCHERS
+[Title]The role of the H-2 gene complex in cell-mediated immunity to viral and bacterial infections in mice[Link]http://library.anu.edu.au/search~S8?/YRolf+Zinkernagel&SORT=D/YRolf+Zinkernagel&SORT=D&SUBKEY=Rolf+Zinkernagel/1%2C3%2C3%2CB/frameset&FF=YRolf+Zinkernagel&SORT=D&2%2C2%2C[Source]LIBRARY
+[Title]Animal Services - Australian Phenomics Facility - ANU[Link]http://apf.anu.edu.au/about-us/teams/animal-services[Source]WEB
+[Title]Dr Avery Andrews[Link]https://researchers.anu.edu.au/researchers/andrews-ad[Source]RESEARCHERS
+[Title]Dr Conrad Burden[Link]https://researchers.anu.edu.au/researchers/burden-cj[Source]RESEARCHERS
+[Title]Rejoinder to Paul Kay and Rolf G. Kuenhi[Link]https://researchers.anu.edu.au/publications/25618[Source]RES_PUBLICATIONS
+[Title]What is it like to be a PhD student? Advice to prospective supervisors[Link]https://digitalcollections.anu.edu.au/handle/1885/41538[Source]DSPACE
+[Title]Nobel Prizes - JCSMR - ANU[Link]http://jcsmr.anu.edu.au/about-us/nobel-prizes[Source]WEB

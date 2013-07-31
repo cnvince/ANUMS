@@ -2,3 +2,4 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces A typical architecture of metasearch, the users' requests are fetched by the main component, which is named broker, some query expansion may be executed and the processed query will send to different collections. The collections execute searching on the query and return the retrieval results to the broker }}{6}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Metasearch architectures from \cite {Montague2002}}}{8}
+\addvspace {10\p@ }

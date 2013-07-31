@@ -68,12 +68,13 @@ public class ContactAdapter extends Adapter {
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					Node row = nodeList.item(i);
 					String value = row.getTextContent().trim();
-					if (DocumentSet.contains(document.getDocumentURI()))
+					String link="http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext="+AdapterFactory.query;
+					if (DocumentSet.contains(link))
 						break;
 					if (value == "") {
 						result.setSource(source);
-						result.setLink(document.getDocumentURI());
-						DocumentSet.AddDocument(document.getDocumentURI());
+						result.setLink(link);
+						DocumentSet.AddDocument(link);
 						result.setDsumary();
 						ranklist.addResult(result);
 						result = new ContactResult();

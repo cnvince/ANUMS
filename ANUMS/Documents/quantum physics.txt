@@ -1,0 +1,70 @@
+[Title]Quantum physics[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&7%2C7%2C[Source]LIBRARY
+[Title]Applications of Posmom in Quantum Chemistry[Link]https://digitalcollections.anu.edu.au/handle/1885/49402[Source]DSPACE
+[Title]Professor Vladimir Bazhanov[Link]https://researchers.anu.edu.au/researchers/bazhanov-vv[Source]RESEARCHERS
+[Title]The quantum inverse scattering method with anyonic grading[Link]https://researchers.anu.edu.au/publications/41246[Source]RES_PUBLICATIONS
+[Title]Quantum grow - A quantum dynamics sampling approach for growing potential energy surfaces and nonadiabatic couplings[Link]https://researchers.anu.edu.au/publications/17983[Source]RES_PUBLICATIONS
+[Title]Spontaneous emission of guided polaritons by quantum dot coupled to metallic nanowire: beyond the dipole approximation[Link]https://digitalcollections.anu.edu.au/handle/10440/1053[Source]DSPACE
+[Title]Electron-hole quantum physics in ZnO[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&2%2C2%2C[Source]LIBRARY
+[Title]Quantum physics[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&6%2C6%2C[Source]LIBRARY
+[Title]Quantum Physics Without Quantum Philosophy[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&1%2C1%2C[Source]LIBRARY
+[Title]Quantum-chemical Design of Stereoregular Polyphosphines for Nanowires[Link]https://researchers.anu.edu.au/projects/479[Source]RES_PROJECTS
+[Title]Research School of Physics and Engineering - RSPE - ANU[Link]http://physics.anu.edu.au/[Source]WEB
+[Title]Dr Mahdi Hosseini[Link]https://researchers.anu.edu.au/researchers/hosseini-m[Source]RESEARCHERS
+[Title]Potential student research projects - Theoretical Physics - ANU[Link]http://physics.anu.edu.au/theophys/projects/[Source]WEB
+[Title]Mathematical horizons for quantum physics[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&4%2C4%2C[Source]LIBRARY
+[Title]Miss Shuangshuang Fu[Link]https://researchers.anu.edu.au/researchers/fu-sx[Source]RESEARCHERS
+[Title]Study at ANU[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/courses/[Source]STUDYAT
+[Title]Professor Ping Koy Lam[Link]https://researchers.anu.edu.au/researchers/lam-pk[Source]RESEARCHERS
+[Title]Theoretical Physics Major (THPH-MAJ)[Link]http://studyat.anu.edu.au/majors/THPH-MAJ;overview.html[Source]STUDYAT
+[Title]Minimising the Decoherence of Rare Earth Ion Solid State Spin Qubits[Link]https://digitalcollections.anu.edu.au/handle/1885/47058[Source]DSPACE
+[Title]Electro-optic control of quantum measurements[Link]https://digitalcollections.anu.edu.au/handle/1885/46232[Source]DSPACE
+[Title]ANU Centre for Gravitational Physics[Link]http://www.anu.edu.au/physics/cgp/index.html[Source]WEB
+[Title]Macroscopic quantum self-trapping of an ultracold Bose-Fermi mixture in a double-well potential[Link]https://researchers.anu.edu.au/publications/22789[Source]RES_PUBLICATIONS
+[Title]Influence of quantum well and barrier composition on the spectral behavior in InGasAs quantum dots-in-a-well infrared photodetectors[Link]https://researchers.anu.edu.au/publications/22177[Source]RES_PUBLICATIONS
+[Title]ANU Quantum Optics[Link]http://photonics.anu.edu.au/qoptics/index.php[Source]WEB
+[Title]Physics Minor (PHYS-MIN)[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/minors/PHYS-MIN;courses.html[Source]STUDYAT
+[Title]PHYS3031 - PHYS3031 Atomic Physics: Atom-light interactions[Link]http://studyat.anu.edu.au/courses/PHYS3031;details.html[Source]STUDYAT
+[Title]Metrology and Quantum Communication with Optical Parametric Oscillators[Link]https://researchers.anu.edu.au/projects/1689[Source]RES_PROJECTS
+[Title]Quantum-field dynamics of expanding and contracting Bose-Einstein condensates[Link]https://researchers.anu.edu.au/publications/45913[Source]RES_PUBLICATIONS
+[Title]Bachelor of Philosophy (Honours)/Bachelor of Science (Honours)/Joint Degree ANU-NUS (4661HPHB)[Link]http://studyat.anu.edu.au/programs/4661HPHB;study_options.html[Source]STUDYAT
+[Title]Bachelor of Science (Advanced) (Honours) (4600HBSC)[Link]http://studyat.anu.edu.au/programs/4600HBSC;study_options.html[Source]STUDYAT
+[Title]Interdiffused quantum well infrared photodetector tuning for colour sensitive arrays[Link]https://researchers.anu.edu.au/publications/7659[Source]RES_PUBLICATIONS
+[Title]Quantum Physics: A First Encounter Interference, Entanglement, and Reality[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&9%2C9%2C[Source]LIBRARY
+[Title]What is novel in quantum transport for mesoscopics?[Link]https://digitalcollections.anu.edu.au/handle/10440/413[Source]DSPACE
+[Title]Development of a Quantum Computer Based On Solid State Optical Impurity Sites[Link]https://researchers.anu.edu.au/projects/123[Source]RES_PROJECTS
+[Title]Quantum physics in one dimension[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&10%2C10%2C[Source]LIBRARY
+[Title]Experimental demonstration of a classical analog to quantum noise cancellation for use in gravitational wave detection[Link]https://digitalcollections.anu.edu.au/handle/10440/825[Source]DSPACE
+[Title]Low-dimensional quantum systems[Link]https://researchers.anu.edu.au/projects/244[Source]RES_PROJECTS
+[Title]Quantum Simulations with Dilute Gas Bose Einstein Condensates[Link]https://researchers.anu.edu.au/projects/795[Source]RES_PROJECTS
+[Title]Physics Major (PHYS-MAJ)[Link]http://studyat.anu.edu.au/majors/PHYS-MAJ;overview.html[Source]STUDYAT
+[Title]The investigation of quantum polarisation teleportation protocols[Link]https://digitalcollections.anu.edu.au/handle/1885/41359[Source]DSPACE
+[Title]Department of Quantum Science - DQS - ANU[Link]http://physics.anu.edu.au/quantum/[Source]WEB
+[Title]Mr Syed Assad[Link]https://researchers.anu.edu.au/researchers/assad-sm[Source]RESEARCHERS
+[Title]Quantum noise limited molecular spectrometry[Link]https://researchers.anu.edu.au/projects/1357[Source]RES_PROJECTS
+[Title]Quantum Opto-Mechanics with Whispering Gallery Modes in Crystalline Materials[Link]https://researchers.anu.edu.au/projects/1267[Source]RES_PROJECTS
+[Title]Mathematical Results in Quantum Physics Proceedings of the QMath11 Conference[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&3%2C3%2C[Source]LIBRARY
+[Title]Plasmonic quantum dot solar cells for enhanced infrared response[Link]https://researchers.anu.edu.au/publications/68400[Source]RES_PUBLICATIONS
+[Title]Home - Centre for Gravitational Physics - ANU[Link]http://cgp.anu.edu.au/[Source]WEB
+[Title]Hilbert space operators in quantum physics[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&5%2C5%2C[Source]LIBRARY
+[Title]Green's functions in quantum physics[Link]http://library.anu.edu.au/search~S8?/Yquantum+physics&SORT=D/Yquantum+physics&SORT=D&SUBKEY=quantum+physics/1%2C1781%2C1781%2CB/frameset&FF=Yquantum+physics&SORT=D&8%2C8%2C[Source]LIBRARY
+[Title]Beyond the Standard Quantum Limit[Link]https://researchers.anu.edu.au/projects/527[Source]RES_PROJECTS
+[Title]ANU - Laser Physics Centre - LPC[Link]http://laserspark.anu.edu.au/[Source]WEB
+[Title]Quantum Dot Optoelectronic Devices[Link]https://researchers.anu.edu.au/publications/1089[Source]RES_PUBLICATIONS
+[Title]A comparison of impurity-free and ion-implantation-induced intermixing of InGaAs/InP quantum wells[Link]https://digitalcollections.anu.edu.au/handle/10440/1028[Source]DSPACE
+[Title]Mr Jiri Janousek[Link]https://researchers.anu.edu.au/researchers/janousek-j[Source]RESEARCHERS
+[Title]Dr John Debs[Link]https://researchers.anu.edu.au/researchers/debs-je[Source]RESEARCHERS
+[Title]Research themes - RSPE - ANU[Link]http://physics.anu.edu.au/areas/[Source]WEB
+[Title]Quantum many-body systems with higher mathematical symmetries[Link]https://researchers.anu.edu.au/projects/1249[Source]RES_PROJECTS
+[Title]PHYS2013 - PHYS2013 Quantum Mechanics[Link]http://studyat.anu.edu.au/courses/PHYS2013;details.html[Source]STUDYAT
+[Title]Noncommutative analysis and geometry in interaction with quantum physics (externally led by University of New South Wales)[Link]https://researchers.anu.edu.au/projects/2100[Source]RES_PROJECTS
+[Title]Dr Matthew Sellars - RSPE - ANU[Link]http://physics.anu.edu.au/people/profile.php?ID=355[Source]WEB
+[Title]Dr Julien Bernu[Link]https://researchers.anu.edu.au/researchers/bernu-j[Source]RESEARCHERS
+[Title]Study at ANU Interest: Physics[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/2013/interests/73[Source]STUDYAT
+[Title]Scalable quantum field simulations of conditioned systems[Link]https://researchers.anu.edu.au/publications/44722[Source]RES_PUBLICATIONS
+[Title]Home[Link]http://qubit.anu.edu.au/~arrc/[Source]WEB
+[Title]Dr Thomas Symul[Link]https://researchers.anu.edu.au/researchers/symul-t[Source]RESEARCHERS
+[Title]Quantum coherence and decoherence in low energy nuclear collisions: from superposition to irreversibility[Link]https://researchers.anu.edu.au/publications/17174[Source]RES_PUBLICATIONS
+[Title]Anomalously slow cross symmetry phase relaxation, thermalized non-equilibrated matter and quantum computing beyond the quantum chaos border[Link]https://digitalcollections.anu.edu.au/handle/10440/432[Source]DSPACE
+[Title]PHYS3002 - PHYS3002 Advanced Theoretical Physics[Link]http://studyat.anu.edu.au/courses/PHYS3002;details.html[Source]STUDYAT
+[Title]Dr Peter J. Riggs[Link]https://researchers.anu.edu.au/researchers/riggs-pj[Source]RESEARCHERS
+[Title]Quantum Information Processing in Rare Earth Ion Doped Insulators[Link]https://digitalcollections.anu.edu.au/handle/1885/47689[Source]DSPACE

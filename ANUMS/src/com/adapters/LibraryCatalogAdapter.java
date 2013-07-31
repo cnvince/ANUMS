@@ -67,6 +67,8 @@ public class LibraryCatalogAdapter extends Adapter {
 				Node Title = (Node) xpath.evaluate(
 						"TABLE//SPAN[@class=\"briefcitTitle\"]/A", ROW,
 						XPathConstants.NODE);
+				if(Title==null)
+					continue;
 				String title = Title.getTextContent().trim();
 				result.setTitle(title);
 				String Link = hostUrl

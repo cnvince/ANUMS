@@ -1,0 +1,70 @@
+[Title]Development of high performance wide-bandgap polar oxide electronic and optoelectronic devices[Link]https://researchers.anu.edu.au/projects/1283[Source]RES_PROJECTS
+[Title]High Performance Computing Hotlist[Link]http://cs.anu.edu.au/people/Brian.Corrie/hotlist/super.html[Source]WEB
+[Title]Proceedings of the International Conference on High Performance Computing, Networking, Storage and A[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&4%2C4%2C[Source]LIBRARY
+[Title]Study at ANU ANU College of Engineering and Computer Science (Courses)[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/acad_orgs/1043/courses/undergrad.html[Source]STUDYAT
+[Title]Modelling the Performance of the Gaussian Chemistry Code on x86 Architectures[Link]https://researchers.anu.edu.au/publications/13545[Source]RES_PUBLICATIONS
+[Title]Service Oriented Approach to High Performance Scientific Computing[Link]https://researchers.anu.edu.au/publications/52600[Source]RES_PUBLICATIONS
+[Title]COMP6464 - COMP6464 High Performance Scientific Computing[Link]http://studyat.anu.edu.au/courses/COMP6464;details.html[Source]STUDYAT
+[Title]Proceedings of the 2012 Symposium on High Performance Computing[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&2%2C2%2C[Source]LIBRARY
+[Title]High-Performance Pseudo-Random Number Generation on Graphics Processing Units[Link]https://researchers.anu.edu.au/publications/68730[Source]RES_PUBLICATIONS
+[Title]High performance, high speed fluorescence activated cell sorter[Link]https://researchers.anu.edu.au/projects/1214[Source]RES_PROJECTS
+[Title]Computer Science Major (CSCI-MAJ)[Link]http://studyat.anu.edu.au/majors/CSCI-MAJ;courses.html[Source]STUDYAT
+[Title]High performance computing for synchotron radiation research[Link]https://digitalcollections.anu.edu.au/handle/1885/46881[Source]DSPACE
+[Title]Mathematical Modelling Major (MMOD-MAJ)[Link]http://studyat.anu.edu.au/majors/MMOD-MAJ;courses.html[Source]STUDYAT
+[Title]High Performance Neurophysiology Workstation[Link]https://researchers.anu.edu.au/projects/759[Source]RES_PROJECTS
+[Title]Study at ANU COMP6464 High Performance Scientific Computing[Link]http://https://studyat.anu.edu.au/courses/COMP6464;details.html[Source]WEB
+[Title]ACSys/RDN experiences with Telstra’s experimental broadband network, first progress report[Link]https://digitalcollections.anu.edu.au/handle/1885/40884[Source]DSPACE
+[Title]Collaborative working - from HPC, Vis to AG developments in Australia[Link]https://digitalcollections.anu.edu.au/handle/1885/46904[Source]DSPACE
+[Title]Dr Henry Gardner[Link]https://researchers.anu.edu.au/researchers/gardner-hj[Source]RESEARCHERS
+[Title]Study at ANU Honours[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/honours.html[Source]STUDYAT
+[Title]20 Short Piano Pieces of Pedagogic Intent, Using Aspects of Traditional Persian Sources[Link]https://digitalcollections.anu.edu.au/handle/1885/8989[Source]DSPACE
+[Title]COMP3320 - COMP3320 High Performance Scientific Computation[Link]http://studyat.anu.edu.au/courses/COMP3320;details.html[Source]STUDYAT
+[Title]Dr Alistair Rendell[Link]https://researchers.anu.edu.au/researchers/rendell-apl[Source]RESEARCHERS
+[Title]High Performance Computing and Communication & 2012 IEEE 9th International Conference on Embedded So[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&6%2C6%2C[Source]LIBRARY
+[Title]Dr Linda Stals[Link]https://researchers.anu.edu.au/researchers/stals-l[Source]RESEARCHERS
+[Title]Advancing Medical Image Ana... - Researchers - ANU[Link]http://researchers-acep.anu.edu.au/projects/1331[Source]WEB
+[Title]Study at ANU[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/courses/[Source]STUDYAT
+[Title]Towards High-Performance and Fault-Tolerant Distributed Java Implementations[Link]https://researchers.anu.edu.au/projects/251[Source]RES_PROJECTS
+[Title]High Performance Computing, Networking, Storage and Analysis (SC), 2012 International Conference for[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&10%2C10%2C[Source]LIBRARY
+[Title]Dr Leif Hanlen[Link]https://researchers.anu.edu.au/researchers/hanlen-l[Source]RESEARCHERS
+[Title]Distributed Support for Intelligent Environments[Link]https://digitalcollections.anu.edu.au/handle/1885/47796[Source]DSPACE
+[Title]Computer Architecture and High Performance Computing (SBAC-PAD), 2012 IEEE 24th International Sympos[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&9%2C9%2C[Source]LIBRARY
+[Title]Study at ANU COMP6464 High Performance Scientific Computing[Link]http://https://studyat.anu.edu.au/2012/courses/COMP6464;details.html[Source]WEB
+[Title]Master of Computing (7705XMCOMP)[Link]http://studyat.anu.edu.au/programs/7705XMCOMP;all.html[Source]STUDYAT
+[Title]Development of High Performance III-V Semiconductor Photoconductive Antennas for Terahertz Applications[Link]https://researchers.anu.edu.au/projects/665[Source]RES_PROJECTS
+[Title]Dr Eric McCreath[Link]https://researchers.anu.edu.au/researchers/mccreath-ec[Source]RESEARCHERS
+[Title]An SOA Approach to High Performance Scientific Computing: Early Experiences[Link]https://researchers.anu.edu.au/publications/68722[Source]RES_PUBLICATIONS
+[Title]High Performance Linear Systems Solution on a Beowulf Cluster[Link]https://researchers.anu.edu.au/publications/15738[Source]RES_PUBLICATIONS
+[Title]Proceedings of the 1st ACM SIGPLAN workshop on Functional high-performance computing[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&1%2C1%2C[Source]LIBRARY
+[Title]Fault-tolerant Data Services for High Performance Computing on Clouds...[Link]http://socs.cecs.anu.edu.au/projects/pid/0000000631[Source]WEB
+[Title]High-performance computational data-mining techniques for feature detection in complex time series from large-scale, networked plasma experiments[Link]https://researchers.anu.edu.au/projects/276[Source]RES_PROJECTS
+[Title]Oil and Water? High Performance Garbage Collection in Javq with MMTk[Link]https://researchers.anu.edu.au/publications/3525[Source]RES_PUBLICATIONS
+[Title]2012 Symposium on Application Accelerators in High Performance Computing[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&8%2C8%2C[Source]LIBRARY
+[Title]Advancing Medical Image Ana... - Researchers - ANU[Link]http://https://researchers.anu.edu.au/projects/1331[Source]WEB
+[Title]Integrated High-Performance Control of Aerial Robots in Dynamic Environments[Link]https://researchers.anu.edu.au/projects/2882[Source]RES_PROJECTS
+[Title]Quantum Information Processing in Rare Earth Ion Doped Insulators[Link]https://digitalcollections.anu.edu.au/handle/1885/47689[Source]DSPACE
+[Title]High Performance Numerical Computing on Service-Oriented...[Link]http://cs.anu.edu.au/~Peter.Strazdins/projects/HPNumSOA/[Source]WEB
+[Title]SPRUCE: A System for Supporting Urgent High-Performance Computing |...[Link]http://cs.anu.edu.au/iojs/index.php/ifip/article/view/11208[Source]WEB
+[Title]Fault-tolerant Data Services for High Performance Computing on Clouds...[Link]http://cecs.anu.edu.au/projects/pid/0000000631[Source]WEB
+[Title]Advancing Medical Image Analysis through High Performance Heterogeneous Computing, Numerical Simulation, and Novel Human Computer Interfaces[Link]https://researchers.anu.edu.au/projects/1331[Source]RES_PROJECTS
+[Title]Performance enhancement of SMP clusters with multiple network interfaces using virtualization[Link]https://researchers.anu.edu.au/publications/44217[Source]RES_PUBLICATIONS
+[Title]Proceedings of the ATIPA*CRC Workshop on Accelerator Technologies for High-Performance Computing Doe[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&7%2C7%2C[Source]LIBRARY
+[Title]2012 International Conference on High Performance Computing and Simulation[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&5%2C5%2C[Source]LIBRARY
+[Title]High Performance Runtimes for Next Generation Languages[Link]https://researchers.anu.edu.au/projects/1142[Source]RES_PROJECTS
+[Title]Master of Computing (7706XMCOMP)[Link]http://studyat.anu.edu.au/programs/7706XMCOMP;all.html[Source]STUDYAT
+[Title]The Changing Face of Research[Link]https://digitalcollections.anu.edu.au/handle/1885/46826[Source]DSPACE
+[Title]Study at ANU Interest: Computer Science[Link]http://studyat.anu.edu.auhttps://studyat.anu.edu.au/interests/69[Source]STUDYAT
+[Title]Professor Markus Hegland[Link]https://researchers.anu.edu.au/researchers/hegland-tm[Source]RESEARCHERS
+[Title]Proceedings of the 2012 workshop on High-Performance Computing for Astronomy Date[Link]http://library.anu.edu.au/search~S8?/YHigh+performance+computing&SORT=D/YHigh+performance+computing&SORT=D&SUBKEY=High+performance+computing/1%2C386%2C386%2CB/frameset&FF=YHigh+performance+computing&SORT=D&3%2C3%2C[Source]LIBRARY
+[Title]Efficient update of ghost regions using active messages[Link]https://researchers.anu.edu.au/publications/75820[Source]RES_PUBLICATIONS
+[Title]Adaptive Resource Relocation in Virtualized Heterogeneous Clusters[Link]https://digitalcollections.anu.edu.au/handle/1885/8234[Source]DSPACE
+[Title]High Performance GPU Computing with NVIDIA, CUDA, and Fermi : A half...[Link]http://cs.anu.edu.au/systems/gpuworkshop2010[Source]WEB
+[Title]Computational approach to scaling and criticality in planar Ising models[Link]https://digitalcollections.anu.edu.au/handle/1885/9860[Source]DSPACE
+[Title]Dr Peter Strazdins[Link]https://researchers.anu.edu.au/researchers/strazdins-pe[Source]RESEARCHERS
+[Title]Dr Daniel Frampton[Link]https://researchers.anu.edu.au/researchers/frampton-dj[Source]RESEARCHERS
+[Title]Mr Joshua Milthorpe[Link]https://researchers.anu.edu.au/researchers/milthorpe-jj[Source]RESEARCHERS
+[Title]High performance compound semiconductor nanowire optoelectronic devices[Link]https://researchers.anu.edu.au/projects/2610[Source]RES_PROJECTS
+[Title]Dr Stephen Blackburn[Link]https://researchers.anu.edu.au/researchers/blackburn-sm[Source]RESEARCHERS
+[Title]Parallel Data Mining on a Beowulf Cluster[Link]https://researchers.anu.edu.au/publications/33462[Source]RES_PUBLICATIONS
+[Title]National Grid and applications[Link]https://digitalcollections.anu.edu.au/handle/1885/46855[Source]DSPACE
+[Title]A Simple Performance Model for Multithreaded Applications Executing on Non-Uniform Memory Access Computers[Link]https://researchers.anu.edu.au/publications/13590[Source]RES_PUBLICATIONS

@@ -1,0 +1,3 @@
+# Module relsevaluation
+# RPC service class, partial path of RPC policy file
+com.google.rels.client.GreetingService, 3C98757AB611EFE15BE7FD925E387B69.gwt.rpc
