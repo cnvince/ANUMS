@@ -19,6 +19,7 @@ import com.resultpool.ResultTable;
 import com.resultpool.Server;
 import com.results.ContactResult;
 import com.util.DocumentSet;
+import com.util.StringFormat;
 
 public class ContactAdapter extends Adapter {
 
@@ -68,7 +69,7 @@ public class ContactAdapter extends Adapter {
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					Node row = nodeList.item(i);
 					String value = row.getTextContent().trim();
-					String link="http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext="+AdapterFactory.query;
+					String link="http://www.anu.edu.au/dirs/search.php?stype=Staff+Directory&querytext="+StringFormat.toURL(AdapterFactory.query);
 					if (DocumentSet.contains(link))
 						break;
 					if (value == "") {

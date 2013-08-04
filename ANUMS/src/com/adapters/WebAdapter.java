@@ -73,7 +73,9 @@ public class WebAdapter extends Adapter {
 						XPathConstants.NODE);
 				if (Title != null) {
 					WebResult result = new WebResult();
-					String link = "http://" + Link.getTextContent().trim();
+					String link = Link.getTextContent().trim();
+					if(!link.startsWith("http"))
+						link="http://" + link;
 					if (!DocumentSet.contains(link)) {
 						result.setLink(link);
 						result.setTitle(Title.getTextContent().trim());

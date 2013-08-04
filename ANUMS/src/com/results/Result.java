@@ -1,5 +1,7 @@
 package com.results;
 
+import org.w3c.dom.Document;
+
 public class Result implements Comparable<Result>{
 
 	/**
@@ -99,7 +101,11 @@ public class Result implements Comparable<Result>{
 	public void setSource(int source2) {
 		Source = source2;
 	}
-
+	//write result to xml document
+	public void store()
+	{
+		
+	}
 	/**
 	 * @param args
 	 */
@@ -115,6 +121,11 @@ public class Result implements Comparable<Result>{
 			return 1;
 		else
 			return 0;
+	}
+
+	public void store(Document doc) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
