@@ -9,7 +9,6 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.resultpool.RankList;
@@ -35,7 +34,7 @@ public class YouTubeAdapter extends Adapter {
 		try {
 			NodeList nodeList = (NodeList) xpath
 					.evaluate(
-							"//LI[@class=\"channels-content-item\"]/SPAN[@class=\"context-data-item\"]",
+							"//UL[@id=\"channels-browse-content-list\"]/LI",
 							document, XPathConstants.NODESET);
 			int length = nodeList.getLength();
 			// no more than 10 results returned
@@ -47,38 +46,47 @@ public class YouTubeAdapter extends Adapter {
 			sTable.put(source, server);
 			for (int i = 0; i < length; i++) {
 				Element Node_SPAN = (Element) nodeList.item(i);
-				Node Summary = (Node) xpath.evaluate(
-						"SPAN[@class=\"content-item-detail\"]/A", Node_SPAN,
+				Element TitleNode=(Element) xpath.evaluate(
+						"DIV/H3[@class=\"yt-lockup-title\"]/A", Node_SPAN,
 						XPathConstants.NODE);
-				Element summary = (Element) Summary;
-				String Title = summary.getAttribute("title");
-				String Link = summary.getAttribute("href");
-				Node IMG = (Node) xpath.evaluate(
-						"A//SPAN[@class=\"yt-thumb-clip-inner\"]//IMG",
-						Node_SPAN, XPathConstants.NODE);
-				String imgLink = "";
-				if (IMG != null) {
-					imgLink = ((Element) IMG).getAttribute("src");
-					imgLink = imgLink.replaceAll("//", "");
-				}
-				Node VIEWCOUNT = (Node) xpath
-						.evaluate(
-								"SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-view-count\"]",
-								Node_SPAN, XPathConstants.NODE);
-				String count = VIEWCOUNT.getTextContent();
-				count = count.substring(0, count.indexOf("views") - 1).trim();
-				Node TIME = (Node) xpath
-						.evaluate(
-								"SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-time-created\"]",
-								Node_SPAN, XPathConstants.NODE);
-				String time = TIME.getTextContent();
+				String Title = TitleNode.getAttribute("title");
+//				System.out.println("Title:"+Title);
+				String Link = hostUrl+TitleNode.getAttribute("href");
+//				System.out.println("Link:"+Link);
+				
+				Element Summary = (Element) xpath.evaluate(
+						"DIV/DIV[not(@class=\"yt-lockup-meta\")]", Node_SPAN,
+						XPathConstants.NODE);
+				String summary="";
+				if(Summary!=null)
+					summary=Summary.getTextContent().trim();
+//				Node IMG = (Node) xpath.evaluate(
+//						"A//SPAN[@class=\"yt-thumb-clip-inner\"]//IMG",
+//						Node_SPAN, XPathConstants.NODE);
+//				String imgLink = "";
+//				if (IMG != null) {
+//					imgLink = ((Element) IMG).getAttribute("src");
+//					imgLink = imgLink.replaceAll("//", "");
+//				}
+//				Node VIEWCOUNT = (Node) xpath
+//						.evaluate(
+//								"DIV/DIV[@class=\"yt-lockup-meta\"]",
+//								Node_SPAN, XPathConstants.NODE);
+////				String count = VIEWCOUNT.getTextContent();
+//				count = count.substring(0, count.indexOf("views") - 1).trim();
+//				Node TIME = (Node) xpath
+//						.evaluate(
+//								"SPAN[@class=\"content-item-detail\"]//SPAN[@class=\"content-item-time-created\"]",
+//								Node_SPAN, XPathConstants.NODE);
+//				String time = TIME.getTextContent();
 				YoutubeResult result = new YoutubeResult();
 				result.setTitle(Title);
-				result.setImgLink("http://" + imgLink);
-				result.setLink(hostUrl + Link);
-				// result.setSummary(summary);
-				result.setTime(time);
-				// result.setViewCount(Integer.parseInt(count));
+//				System.out.println(Title);
+//				result.setImgLink("http://" + imgLink);
+				result.setLink(Link);
+				result.setSummary(summary);
+//				result.setTime(time);
+//				 result.setViewCount(Integer.parseInt(count.replaceAll("", "")));
 				result.setSource(source);
 				result.setDsumary();
 				ranklist.addResult(result);

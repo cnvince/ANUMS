@@ -1,4 +1,4 @@
-package com.evaulation;
+package com.evaluation;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

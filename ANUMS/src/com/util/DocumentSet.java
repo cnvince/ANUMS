@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.UUID;
 
 //maintain a document set to check if the document is already existed;
 
@@ -19,7 +20,11 @@ public class DocumentSet {
 		else
 			documents.put(url, 1);
 	}
-
+	public static String gengerateID()
+	{
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
 	// duplication detection
 	public static boolean contains(String url) {
 		if (documents.containsKey(url)) {

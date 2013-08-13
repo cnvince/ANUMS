@@ -2,6 +2,8 @@ package com.results;
 
 import org.w3c.dom.Document;
 
+import com.util.DocumentSet;
+
 public class Result implements Comparable<Result>{
 
 	/**
@@ -13,6 +15,7 @@ public class Result implements Comparable<Result>{
 	protected String imgLink="";
 	protected String displaySummary;
 	protected double score;
+	protected String docID;
 	public double getScore() {
 		return score;
 	}
@@ -38,7 +41,7 @@ public class Result implements Comparable<Result>{
 	}
 
 	public Result() {
-		// TODO Auto-generated constructor stub
+		this.setDocID(DocumentSet.gengerateID());
 	}
 
 	public Result(String title, String link, int source) {
@@ -101,6 +104,14 @@ public class Result implements Comparable<Result>{
 	public void setSource(int source2) {
 		Source = source2;
 	}
+	public String getDocID() {
+		return docID;
+	}
+
+	public void setDocID(String string) {
+		this.docID = string;
+	}
+
 	//write result to xml document
 	public void store()
 	{

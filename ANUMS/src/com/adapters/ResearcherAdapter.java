@@ -33,7 +33,7 @@ public class ResearcherAdapter extends Adapter {
 		if (document == null)
 			return null;
 
-		Pattern pattern = Pattern.compile("\\d+\\s+Next È");
+		Pattern pattern = Pattern.compile("\\d+\\s+Next ï¿½");
 		Node body;
 		Matcher matcher = null;
 		try {
@@ -47,7 +47,7 @@ public class ResearcherAdapter extends Adapter {
 		int size = 0;
 		while (matcher.find()) {
 			String match = matcher.group();
-			size = Integer.parseInt(match.substring(0, match.indexOf("Next È"))
+			size = Integer.parseInt(match.substring(0, match.indexOf("Next ï¿½"))
 					.trim());
 		}
 		Server server = new Server();

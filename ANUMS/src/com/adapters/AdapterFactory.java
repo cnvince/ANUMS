@@ -17,6 +17,7 @@ public class AdapterFactory {
 
 	public ResultTable results = new ResultTable();
 	public static String query=null;
+	//a table describing the server information
 	public HashMap<Integer, Server> ServerTable = new HashMap<Integer, Server>();
 //	query for public use
 
@@ -74,13 +75,13 @@ public class AdapterFactory {
 				t = new Thread(new StudyAtAdapter(countDownLatch,document, results, ServerTable,"http://studyat.anu.edu.au",server));
 				break;
 			case ServerSource.TWITTER:
-				t = new Thread(new TwitterAdapter(countDownLatch,document, results, ServerTable,"",server,query));
+				t = new Thread(new TwitterAdapter(countDownLatch,document, results, ServerTable,"https://twitter.com",server));
 				break;
 			case ServerSource.WEB:
 				t = new Thread(new WebAdapter(countDownLatch,document, results, ServerTable,"http://search.anu.edu.au/search/",server));
 				break;
 			case ServerSource.YOUTUBE:
-				t = new Thread(new YouTubeAdapter(countDownLatch,document, results, ServerTable,"http://www.youtube.com/",server));
+				t = new Thread(new YouTubeAdapter(countDownLatch,document, results, ServerTable,"http://www.youtube.com",server));
 				break;
 			default:
 				break;

@@ -13,7 +13,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.datatype.ServerSource;
 import com.resultpool.RankList;
 import com.resultpool.ResultTable;
 import com.resultpool.Server;

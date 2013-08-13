@@ -1,3 +1,4 @@
+//mapping each urls of search result
 package com.util;
 
 import java.util.HashMap;
@@ -18,7 +19,10 @@ public class UrlMatcher {
 		UrlCollection.put(ServerSource.WEB, "http://search.anu.edu.au/search/search.cgi?collection=anu_search&query="+query);
 		UrlCollection.put(ServerSource.YOUTUBE, "http://www.youtube.com/user/ANUchannel/videos?query="+query);
 		UrlCollection.put(ServerSource.MAP, "http://campusmap.anu.edu.au/search.asp?ss=1&school="+query);
-		UrlCollection.put(ServerSource.TWITTER, "@query");
+		String twitterUrl=query+" from:ANUmedia";
+		twitterUrl=StringFormat.toURL(twitterUrl);
+		twitterUrl="https://twitter.com/search?src=typd&q="+twitterUrl+"&mode=realtime";
+		UrlCollection.put(ServerSource.TWITTER, twitterUrl);
 		UrlCollection.put(ServerSource.DSPACE, "https://digitalcollections.anu.edu.au/simple-search?query="+query);
 		UrlCollection.put(ServerSource.RESEARCHERS, "https://researchers.anu.edu.au/search?query="+query+"&type=researcher");
 		UrlCollection.put(ServerSource.RES_PUBLICATIONS, "https://researchers.anu.edu.au/search?query="+query+"&type=publication");
@@ -30,7 +34,10 @@ public class UrlMatcher {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		String twitterUrl="ACT from:ANUmedia";
+		twitterUrl=StringFormat.toURL(twitterUrl);
+		twitterUrl="https://twitter.com/search?src=typd&q="+twitterUrl+"&mode=realtime";
+		System.out.println(twitterUrl);
 	}
 
 }

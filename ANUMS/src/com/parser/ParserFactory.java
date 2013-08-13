@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-
 import org.w3c.dom.Document;
 
-import com.datatype.ServerSource;
+import com.adapters.AdapterFactory;
+import com.util.FileUtility;
 import com.util.UrlMatcher;
 
 public class ParserFactory{
@@ -30,9 +30,10 @@ public class ParserFactory{
 	public void initialDocuments()
 	{
 		long start=System.currentTimeMillis();
+		FileUtility.createDirectory("results/"+AdapterFactory.query);
 		this.initialUrlCollection();
 		//special case, twitter is not parsed by xpath
-		DocumentCollection.put(ServerSource.TWITTER, null);
+//		DocumentCollection.put(ServerSource.TWITTER, null);
 		CountDownLatch countDownLatch = new CountDownLatch(UrlCollection.size());
 //		ExecutorService executor = Executors.newSingleThreadExecutor();
 		for(Map.Entry<Integer, String> entry:UrlCollection.entrySet())
